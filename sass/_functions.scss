@@ -1,0 +1,16 @@
+$col: 12 ;
+$width: 1200px ;
+$col_margin: 0 ;
+$gout: 24px;
+
+@function col($nNumber){
+
+  @return ($nNumber / $col * 100%) - ( $gout / $width * 100% );
+
+}
+@function gutter(){
+
+  @return ($gout / $width * 100%);
+
+}
+/*l * 100 / 1024*/

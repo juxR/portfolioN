@@ -1,0 +1,76 @@
+@import "functions";
+
+@mixin c( $nNumber ) {
+
+  width: col( $nNumber );
+  margin-left: 0;
+  display:inline-block;
+  float:none; 
+  
+
+  &:after{
+    content:"";
+    clear:both;
+  }
+}
+@mixin cf( $nNumber ) {
+
+  width: col( $nNumber );
+  display:inline-block;
+  float:none;
+  
+  &:after{
+    content:"";
+    clear:both;
+  }
+}
+
+@mixin cl( $nNumber ) {
+
+  width: col( $nNumber );
+  margin-left: gutter();
+  float:left;
+  display:block;
+
+  &:after{
+    content:"";
+    clear:both;
+  }
+}
+@mixin cfl( $nNumber ) {
+
+  width: col( $nNumber );
+  float:left;
+  display:block;
+
+  &:after{
+    content:"";
+    clear:both;
+  }
+}
+
+@mixin cr( $nNumber ) {
+
+  width: col( $nNumber );
+  margin-left: gutter();
+  float:right;
+  display:block;
+
+  &:after{
+    content:"";
+    clear:both;
+  }
+}
+@mixin cfr( $nNumber ) {
+
+  width: col( $nNumber );
+  float:right;
+  display:block;
+
+  &:after{
+    content:"";
+    clear:both;
+  }
+}
+
+/*l * 100 / 1024*/
