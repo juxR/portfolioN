@@ -4,9 +4,9 @@
 
   width: col( $nNumber );
   margin-left: 0;
-  display:inline-block;
+  display:block;
   float:none; 
-  
+  box-sizing:border-box;
 
   &:after{
     content:"";
@@ -16,9 +16,9 @@
 @mixin cf( $nNumber ) {
 
   width: col( $nNumber );
-  display:inline-block;
+  display:block;
   float:none;
-  
+  box-sizing:border-box;
   &:after{
     content:"";
     clear:both;
@@ -31,18 +31,26 @@
   margin-left: gutter();
   float:left;
   display:block;
-
+  box-sizing:border-box;
   &:after{
     content:"";
     clear:both;
   }
+}
+@mixin offsetL( $nNumber ) {
+
+  margin-left: col( $nNumber );
+}
+@mixin offsetR( $nNumber ) {
+
+  margin-right: col( $nNumber );
 }
 @mixin cfl( $nNumber ) {
 
   width: col( $nNumber );
   float:left;
   display:block;
-
+  box-sizing:border-box;
   &:after{
     content:"";
     clear:both;
@@ -55,7 +63,7 @@
   margin-left: gutter();
   float:right;
   display:block;
-
+  box-sizing:border-box;
   &:after{
     content:"";
     clear:both;
@@ -66,11 +74,29 @@
   width: col( $nNumber );
   float:right;
   display:block;
-
+  box-sizing:border-box;
   &:after{
     content:"";
     clear:both;
   }
 }
-
+@mixin clear(){
+ content: ".";
+ display: block;
+ height: 0;
+ clear: both;
+ visibility: hidden;
+}
+@mixin cc( $nNumber ) {
+  display:block;
+  width: col( $nNumber );
+  margin: auto;
+  text-align: center;
+  float:none;
+  box-sizing:border-box;
+  &:after{
+    content:"";
+    clear:both;
+  }
+}
 /*l * 100 / 1024*/
