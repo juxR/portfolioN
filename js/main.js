@@ -1,8 +1,8 @@
 ;(function( $ )
 {
 	var $value,
-		$showType,
-		$nImage;
+	$showType,
+	$nImage;
 
 	$(function(){
 
@@ -11,56 +11,74 @@
 			e.preventDefault();
 			if($value ==="Web")
 			{
-				console.log(this);
-				console.log($value);
+
+				$('.tri li.printt').removeClass('active');
+				$('.tri li.toutt').removeClass('active');
+
+				$(this).parent('li').addClass('active');
+
 				$('.print.triage').parent('.p').css({
 					opacity: 0,
 					transition:"all 0.5s ease"
-				}).delay(300).fadeOut();
-				$('.print.triage').removeClass('active');
-
+				}).fadeOut();
+				$('.print.triage').parent('.p').removeClass('show');
+				$('.web.triage').parent('.p').removeClass('show').addClass('show');
 				$('.web.triage').parent('.p').css({
 					opacity: 1,
 					transition:"all 0.5s ease"
-				}).delay(300).fadeIn();
-				$(this).parent('li').addClass('active');
+				}).fadeIn();
+				$('.show:nth-child(odd)').addClass('impair');
+				$('.show:nth-child(even)').removeClass('impair');
 			}
 			else if($value ==="Print")
 			{
+				$('.tri li.webt').removeClass('active');
+				$('.tri li.toutt').removeClass('active');
+
+				$(this).parent('li').addClass('active');
+
 				$('.web.triage').parent('.p').css({
 					opacity: 0,
 					transition:"all 0.5s ease"
-				}).delay(300).fadeOut();
-				$(this).removeClass('active');
+				}).delay(100).fadeOut();
+				$('.web.triage').parent('.p').removeClass('show');
+				$('.print.triage').parent('.p').removeClass('show').addClass('show');
+
 
 				$('.print.triage').parent('.p').css({
 					opacity: 1,
 					transition:"all 0.5s ease"
-				}).delay(300).fadeIn();
-				$(this).parent('li').addClass('active');
+				}).fadeIn();
+
+				$('.show:nth-child(odd)').addClass('impair');
+				$('.show:nth-child(even)').removeClass('impair');
 			}
 			else if($value ==="Tout")
 			{
+				$('.tri li.webt').removeClass('active');
+				$('.tri li.printt').removeClass('active');
+
+				$(this).parent('li').addClass('active');
+
+				$('.web.triage').parent('.p').removeClass('show').addClass('show');
+				$('.print.triage').parent('.p').removeClass('show').addClass('show');
+
 				$('.print.triage').parent('.p').css({
 					opacity: 1,
 					transition:"all 0.5s ease"
-				}).delay(300).fadeIn();
+				}).fadeIn();
 				
 				$('.web.triage').parent('.p').css({
 					opacity: 1,
 					transition:"all 0.5s ease"
-				}).delay(300).fadeIn();
+				}).fadeIn();
 
-				$(this).addClass('active');
+				$('.show:nth-child(even)').addClass('impair');
+				$('.show:nth-child(odd)').removeClass('impair');
 			}
-			console.log($nImage = $('.p').length);
 			
 		});
-		if($nImage % 2){
-			this.removeClass().addClass('p pair');
+});
 
-		}
-	});
-	
 
 }).call(this, jQuery);

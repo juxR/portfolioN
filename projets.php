@@ -29,15 +29,15 @@
                     <section class="tri">
                         <h3 aria-level="3" role="heading" class="section">Système de tri des projects</h4>
                             <ul>
-                                <li class="active"><a href="">Tout</a></li>
-                                <li><a href="">Web</a></li>
-                                <li><a href="">Print</a></li>
+                                <li class="active toutt"><a href="">Tout</a></li>
+                                <li class="webt"><a href="">Web</a></li>
+                                <li class="printt"><a href="">Print</a></li>
                             </ul>
                         </section>
                         <section class="projets wrapper" itemscope itemtype="http://schema.org/Article">
                             <h3 aria-level="3" role="heading" class="section">Présentation de mes projets</h4>
 
-                                <div class="p">
+                                <div class="p show impair">
                                     <h4 aria-level="4" role="heading" class="section" itemprop="name">titre du projet</h4>
                                     <div class="web triage">Web</div>
                                     <div class="image" itemprop="image">
@@ -54,7 +54,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="p">
+                                <div class="p show ">
                                     <h4 aria-level="4" role="heading" class="section">titre du projet</h4>
                                     <div class="print triage">Print</div>
                                     <div class="image" itemprop="image">
@@ -70,7 +70,23 @@
                                         </div>
                                     </div>
                                 </div>  
-                                <div class="p impair">
+                                <div class="p show impair">
+                                    <h4 aria-level="4" role="heading" class="section">titre du projet</h4>
+                                    <div class="print triage">Print</div>
+                                    <div class="image" itemprop="image">
+                                        <img src="./img/test.jpg" alt="">
+                                    </div>
+                                    <div class="caption">
+                                        <div class="legend" itemprop="description">
+                                            Je suis une légende.
+                                        </div>
+                                        <div class="tools">
+                                            <a href="voirProjet.php" title="Aller sur la page du projet en question"><i class="fa fa-share"></i><span>Voir la fiche du projet</span></a>
+                                            <a href="./img/example.jpg" class="thumbnail" title="Afficher l'image en grand"><i class="fa fa-expand"></i><span>Agrandir l'image</span></a>
+                                        </div>
+                                    </div>
+                                </div> 
+                                <div class="p show ">
                                     <h4 aria-level="4" role="heading" class="section">titre du projet</h4>
                                     <div class="print triage">Print</div>
                                     <div class="image" itemprop="image">
@@ -86,7 +102,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="p ">
+                                <div class="p show impair">
                                     <h4 aria-level="4" role="heading" class="section">titre du projet</h4>
                                     <div class="print triage">Print</div>
                                     <div class="image" itemprop="image">
@@ -112,29 +128,29 @@
                     <script src="js/plugins.js"></script>
                     <script src="js/main.js"></script>
                     <script src="js/jquery.heplbox.js"></script>
-                    <script>
-                        jQuery( function() {
-                            jQuery( ' .caption a.thumbnail' ).heplbox();
+                 
+                            jQuery( function() {
+                                jQuery( ' .caption a.thumbnail' ).heplbox();
                     //jQuery( '#many a.thumbnail' ).heplbox();
                 } );
 
-                    </script>
-                    <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
-                    <script>
-                        (function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=
-                            function(){(b[l].q=b[l].q||[]).push(arguments)});b[l].l=+new Date;
-                        e=o.createElement(i);r=o.getElementsByTagName(i)[0];
-                        e.src='//www.google-analytics.com/analytics.js';
-                        r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));
-                        ga('create','UA-XXXXX-X');ga('send','pageview');
-                    </script>
-                    <div id="fb-root"></div>
-                    <script>(function(d, s, id) {
-                      var js, fjs = d.getElementsByTagName(s)[0];
-                      if (d.getElementById(id)) return;
-                      js = d.createElement(s); js.id = id;
-                      js.src = "//connect.facebook.net/fr_FR/all.js#xfbml=1";
-                      fjs.parentNode.insertBefore(js, fjs);
-                  }(document, 'script', 'facebook-jssdk'));</script>
-              </body>
-              </html>
+                        </script>
+                        <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
+                        <script>
+                            (function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=
+                                function(){(b[l].q=b[l].q||[]).push(arguments)});b[l].l=+new Date;
+                            e=o.createElement(i);r=o.getElementsByTagName(i)[0];
+                            e.src='//www.google-analytics.com/analytics.js';
+                            r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));
+                            ga('create','UA-XXXXX-X');ga('send','pageview');
+                        </script>
+                        <div id="fb-root"></div>
+                        <script>(function(d, s, id) {
+                          var js, fjs = d.getElementsByTagName(s)[0];
+                          if (d.getElementById(id)) return;
+                          js = d.createElement(s); js.id = id;
+                          js.src = "//connect.facebook.net/fr_FR/all.js#xfbml=1";
+                          fjs.parentNode.insertBefore(js, fjs);
+                      }(document, 'script', 'facebook-jssdk'));</script>
+                  </body>
+                  </html>
