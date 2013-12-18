@@ -1,5 +1,18 @@
 @import "functions";
 
+@mixin btn(){
+  color:white;
+  padding:5px 10px;
+  border:0;
+  display:inline-block;
+  text-decoration: none;
+  @include border-radius(5% 5%);
+
+  &:hover{
+    @include box-shadow(rgba(0,0,0,0.2)0 0 6px 2px);
+
+  }
+}
 @mixin c( $nNumber ) {
 
   width: col( $nNumber );

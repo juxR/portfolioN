@@ -34,6 +34,9 @@
  }
  a{
  	color:$gMain;
+ 	&:hover{
+ 		text-decoration: none;
+ 	}
  }
  .wrapper{
  	padding:1em 1em 0.5em 1em;
@@ -44,6 +47,18 @@
  	clear: both;
  	content: "";
  	display: block;
+ }
+ input,textarea{
+ 	outline:none;
+ 	-webkit-appearance: none;
+ 	&:hover,&:focus,&:active{
+
+ 		background-color: lighten($lBlue,55%);
+ 		border:0;
+ 		border:1px solid $lBlue;
+ 		@include single-box-shadow(lighten($lBlue,30%), 0 , 1px, 8px, 1px,inset);
+
+ 	}
  }
  /* SOCIAL */
  .facebook,
@@ -148,6 +163,14 @@
  	margin:0;
  	padding:0;
  }
+ .menu h1{
+ 	font-size: 1.1em;
+ 	font-weight: 400;
+ 	text-align: center;
+ 	color:white;
+ 	padding-bottom: 5px;
+ 	border-bottom: 1px solid $caca;
+ }
  .menu{
  	width:100%;
  	min-width: 300px;
@@ -201,10 +224,13 @@
  			}
  			a{
  				display:block;
- 				width:100%;
+ 				width:100px;
+ 				position:relative;
  				height:100%;
  				color:white;
  				text-decoration: none;
+ 				z-index: 10;
+
  				span{
  					//text-indent: -9999px;
  					position:absolute;
@@ -337,7 +363,7 @@
  /*END LAST PROJECT*/
 /* ARTICLE */
 .lastBlog{
-	text-align: justify;
+	text-align: left;
 	margin:1em 0 0 0;
 	img{
 		margin:1em 0;
@@ -479,10 +505,10 @@ body .sectionContent{
 /* FOOTER */
 .foot{
 	padding:1em 1em;
-	background-color: lighten($black,10%);
+	background-color: lighten($black,50%);
 	border-top:1em solid lighten($black,40%);
 	max-width: $mWidth;
-	//margin:auto;
+	color:black;
 	box-sizing: border-box;
 	font-size: 14px;
 	a{
@@ -496,7 +522,7 @@ body .sectionContent{
 	}
 	.wrapper{
 		
-		color:white;
+		color:black;
 		overflow:visible;
 		text-align: center;
 	}
@@ -567,55 +593,23 @@ address{
 	}
 }
 .cv{
+	@include btn();
+	width:80px;
+	text-align: center;
 	background-color: $gMain;
-	@include border-radius(50%);
-	width:40px;
-	height: 40px;
-	padding:10px;
-	border:10px solid lighten($gMain,20%);
-	display:block;
-	margin:1em auto;
-
-	&:hover,&:focus{
-		background-color: darken($gMain,10%);
-	}
 	a{
 		color:white;
-		font-weight: 700;
-		font-size: 1.2em;
 		text-decoration: none;
 		display:block;
 		width:100%;
-		height: 100%;
-		padding-top: 5px;
-		margin-left: 5px;
-		&:hover{
-			color:white;
-			font-weight: 700;
-			font-size: 1.2em;
-			text-decoration: none;
-		}
-		&:hover{
-			padding-bottom: 50px;
-		}
-
+		height:100%;	
 	}
 }
 /*END VCARD*/
 /* Random style */
 .btn{
 	background-color: $gMain;
-	color:white;
-	padding:5px 10px;
-	border:0;
-	display:inline-block;
-	text-decoration: none;
-	@include border-radius(5% 5%);
-
-	&:hover{
-		@include box-shadow(rgba(0,0,0,0.4)0 0 10px 2px);
-
-	}
+	@include btn();
 }
 /*END RS*/
 /*ONE ARTICLE*/
@@ -650,6 +644,9 @@ address{
 	.wrapper{
 		//margin-bottom: 0;
 	}
+	h3{
+		text-align: center;
+	}
 
 }
 .tri{
@@ -664,8 +661,10 @@ address{
 		li.active{
 			a{
 				background-color: yellow;
+				@include btn();
 				color:$black;
 				font-weight: bold;
+
 			}
 		}
 		a:hover,a:focus{
@@ -676,9 +675,8 @@ address{
 	a{
 		color:yellow;
 		background-color: $black;
-		padding:5px 1em;
-		text-decoration: none;
-		@include single-box-shadow(rgba(0,0,0,0.3),0,0,20px,1px,inset);
+		@include btn();
+		
 	}
 
 }
@@ -704,6 +702,7 @@ address{
 		background-position:100% 0;
 		background-size: cover;
 	}
+
 }
 /*END PROJETS*/
 
@@ -731,7 +730,7 @@ address{
 		input{
 			width:100%;
 			font-weight: 300;
-			@include border-radius(1em);
+			
 			padding:0.3em 0.5em;
 			border:1px solid $lightBlack;
 			box-sizing:border-box;
@@ -739,7 +738,7 @@ address{
 		}
 		button{
 			background-color: lighten($lBlue,20%);
-			@include border-radius(1em);
+
 			padding:0.3em 0.5em;
 			color:white;
 			border:none;
@@ -772,7 +771,7 @@ address{
 		box-sizing: border-box;
 		padding:0.3em 0.5em;
 		border:1px solid $lightBlack;
-		@include border-radius(1em);
+		
 		margin-bottom: 1em;
 		@include single-box-shadow($lightBlack, 0 , 1px, 8px, 1px,inset);
 
@@ -787,14 +786,25 @@ address{
 	}
 	input[type=submit]{
 		background-color: lighten($lBlue,20%);
+		margin:3em 0 1em 0;
 		color:white;
 	}
 	textarea{
 		border:1px solid $lightBlack;
-		@include border-radius(1em);
+		
 		width:100%;
 		min-height: 100px;
 		margin-bottom: 1em;
+		text-align: left;
+
+		&:hover,&:focus,&:active{
+
+			background-color: lighten($lBlue,55%);
+			border:0;
+			border:1px solid $lBlue;
+			@include single-box-shadow(lighten($lBlue,30%), 0 , 1px, 8px, 1px,inset);
+
+		}
 	}
 	&:after{
 		content:"";
@@ -811,7 +821,7 @@ address{
 
 	}
 	p{
-		text-align:justify;
+		text-align:left;
 		padding-bottom: 3em;
 		margin-bottom: 0.5em;
 		border-bottom: 1px solid rgba(100,100,100,0.5);
@@ -819,33 +829,74 @@ address{
 			border-bottom: none;
 		}
 	}
+	.previous{
+		display:block;
+		text-indent: -999999px;
+		width:99px;
+		float:left;
+		height:100px;
+		
+		a{
+			display:block;
+			background-image:url('../img/chevron-left.png'); 
+			background-repeat: no-repeat;
+			width:99px;
+			height:100px;
+			&:hover,&:focus{
+				background-image:url('../img/chevron-leftH.png'); 
+			}
+		}
+	}
+	.next{
+		display:block;
+		text-indent: -999999px;
+		width:99px;
+		height:100px;
+		float:right;
+
+		a{		
+			background-image:url('../img/chevron-right.png'); 
+			background-repeat: no-repeat;
+			display:block;
+			width:99px;
+			height:100px;
+			&:hover,&:focus{
+				background-image:url('../img/chevron-rightH.png'); 
+			}
+		}
+	}
+	iframe{
+		width:100px;
+	}
 	img{
 		float:right;
 		margin: 0 0 1em 1em;
 	}
+	.social{
+		display:inline-block;
+		width:auto;
+	}	
 	.projetLive{
+		
 		max-width: 200px;
 		display:block;
 		margin: auto;
 		text-align: center;
 		background-color: yellow;
-		padding:0.5em;
-		@include border-radius(0.5em);
-		//border:1px solid #333;
-		@include single-box-shadow(rgba(100,100,100,0.7), 0, 2px, 30px, 1px, inset);
+
+
 		a{
-			color:#333;
+			
+			box-sizing:border-box;
+			width:100%;
+			display:inline-block;
 			font-weight: 700;
+			@include btn();
+			color:#333;
 			text-decoration: none;
 		}
-		&:hover{
-			background-color: darken(yellow,5%);
-			@include single-box-shadow(rgba(0,0,0,0.5), 0, 2px, 30px, 1px, inset);
-			a{
 		
 
-			}
-		} 
 	}
 	.headerProjet{
 		margin-bottom: 2em;

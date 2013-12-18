@@ -37,8 +37,7 @@
                                 <input required type="email" id="mail"  placeholder="Votre e-mail">
 
                                 <label for="message">Ecrivez votre message</label>
-                                <textarea name="message" id="message" required>      
-                                </textarea>
+                                <textarea name="message" id="message" required></textarea>
 
                                 <input type="submit" value="Envoyer">
                             </fieldset>

@@ -1,5 +1,5 @@
 <nav role="navigation" class="menu">
-
+	<h1 aria-level="1" role="heading">Portfolio</h1>
     <a href="#main" class="reader" title="Aller directement au contenu">Passer directement au contenu</a>
     <h2 aria-level="2" role="heading" class="section">Barre de navigation principal du site</h2>
     <ul>

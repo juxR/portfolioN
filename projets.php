@@ -35,7 +35,7 @@
                             </ul>
                         </section>
                         <section class="projets wrapper" itemscope itemtype="http://schema.org/Article">
-                            <h3 aria-level="3" role="heading" class="section">Présentation de mes projets</h4>
+                            <h3 aria-level="3" role="heading" >Présentation de mes projets</h4>
 
                                 <div class="p show impair">
                                     <h4 aria-level="4" role="heading" class="section" itemprop="name">titre du projet</h4>
@@ -128,29 +128,29 @@
                     <script src="js/plugins.js"></script>
                     <script src="js/main.js"></script>
                     <script src="js/jquery.heplbox.js"></script>
-                 
-                            jQuery( function() {
-                                jQuery( ' .caption a.thumbnail' ).heplbox();
+                    <script>  
+                        jQuery( function() {
+                            jQuery( ' .caption a.thumbnail' ).heplbox();
                     //jQuery( '#many a.thumbnail' ).heplbox();
                 } );
 
-                        </script>
-                        <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
-                        <script>
-                            (function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=
-                                function(){(b[l].q=b[l].q||[]).push(arguments)});b[l].l=+new Date;
-                            e=o.createElement(i);r=o.getElementsByTagName(i)[0];
-                            e.src='//www.google-analytics.com/analytics.js';
-                            r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));
-                            ga('create','UA-XXXXX-X');ga('send','pageview');
-                        </script>
-                        <div id="fb-root"></div>
-                        <script>(function(d, s, id) {
-                          var js, fjs = d.getElementsByTagName(s)[0];
-                          if (d.getElementById(id)) return;
-                          js = d.createElement(s); js.id = id;
-                          js.src = "//connect.facebook.net/fr_FR/all.js#xfbml=1";
-                          fjs.parentNode.insertBefore(js, fjs);
-                      }(document, 'script', 'facebook-jssdk'));</script>
-                  </body>
-                  </html>
+                    </script>
+                    <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
+                    <script>
+                        (function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=
+                            function(){(b[l].q=b[l].q||[]).push(arguments)});b[l].l=+new Date;
+                        e=o.createElement(i);r=o.getElementsByTagName(i)[0];
+                        e.src='//www.google-analytics.com/analytics.js';
+                        r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));
+                        ga('create','UA-XXXXX-X');ga('send','pageview');
+                    </script>
+                    <div id="fb-root"></div>
+                    <script>(function(d, s, id) {
+                      var js, fjs = d.getElementsByTagName(s)[0];
+                      if (d.getElementById(id)) return;
+                      js = d.createElement(s); js.id = id;
+                      js.src = "//connect.facebook.net/fr_FR/all.js#xfbml=1";
+                      fjs.parentNode.insertBefore(js, fjs);
+                  }(document, 'script', 'facebook-jssdk'));</script>
+              </body>
+              </html>

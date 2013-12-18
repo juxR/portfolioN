@@ -15,7 +15,6 @@
   <link rel="stylesheet" href="css/normalize.css">
   <link rel="stylesheet" href="css/screen.css">
   <link rel="stylesheet" href="css/font-awesome.min.css">
-  <link rel="stylesheet" href="css/animate.css">
   <script src="js/vendor/modernizr-2.6.2.min.js"></script>
 </head>
 <body>
@@ -48,7 +47,7 @@
                     <meta class="category" content="Infographiste">
 
                   </address>
-                  <div class="cv animated bounce"><a href="http://julien-roland.be/cv/" title="Voir mon Curriculum Vitae">CV</a></div>
+                  <div class="cv"><a href="http://julien-roland.be/cv/" title="Voir mon Curriculum Vitae">CV</a></div>
                 </div>
                 <div class="photo">
                   <img src="http://placehold.it/350x150" alt="">
