@@ -28,9 +28,9 @@
                 <h2 aria-level="2" role="heading" class="section">Partie principale de la page</h3>
                     <section class="projet wrapper" itemscope itemtype="http://schema.org/Article">
                         <div class="headerProjet">
-                        <h3 itemprop="name" aria-level="3" role="heading">Voici le titre de mon projet</h4>
-                            <div class="projetLive"><span><a href="julien-roland.be/portfolio">Voir le projet</a></span></div>
-                        </div>
+                            <h3 itemprop="name" aria-level="3" role="heading">Voici le titre de mon projet</h4>
+                                <span class="projetLive"><a href="julien-roland.be/portfolio">Voir le projet</a></span>
+                            </div>
                             <h4 role="heading" aria-level="4">Introduction</h4>
                             <p>
                                 <img src="http://placehold.it/350x150" alt="">
@@ -41,6 +41,18 @@
                                 <img src="http://placehold.it/350x150" alt="">
                                 Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ipsam, molestias, necessitatibus, reiciendis, quo voluptate quisquam temporibus atque praesentium cum fugiat voluptatibus dolores illum aperiam voluptates nesciunt quas consequuntur placeat dignissimos.
                             </p>
+                            <footer>
+                                <div class="wrapper">
+                                    <span class="social"><span>J'aime</span><iframe src="//www.facebook.com/plugins/like.php?href=http%3A%2F%2Fjulien-roland.be&amp;width&amp;layout=button&amp;action=like&amp;show_faces=false&amp;share=true&amp;height=35" scrolling="no" frameborder="0" style="border:none; overflow:hidden; height:35px;" allowTransparency="true"></iframe></a></span> 
+                                    <span><a href="projets.html">Revenir aux projets</a></span>
+                                </div>
+                                <div class="wrapper">
+
+                                    <span class="previous"><a href="projets.html" title="Voir le projet précédent: Jean n'aime pas les moules">Voir le projet précédent: Jean n'aime pas les moules</a></span>
+                                    <span class="next"><a href="projets.html" title="Voir le projet suivant: Le chat et le cochon">Voir le projet suivant: Le chat et le cochon</a></span>
+                                    
+                                </div>
+                            </footer>
                         </section>
 
                     </section>

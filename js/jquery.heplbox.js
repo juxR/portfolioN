@@ -36,8 +36,8 @@
             
             if(!$overlay.size())
             {
-             $overlay = $('<div class='+ oSettings.cssPrefix+'overlay></div>')
-             .css( { 
+               $overlay = $('<div class='+ oSettings.cssPrefix+'overlay></div>')
+               .css( { 
                 width:"100%",
                 height: "100%",
                 background: "rgba(0,0,0,"+oSettings.overlayOpacity+")",
@@ -48,12 +48,12 @@
                 cursor:"pointer"
 
             } )
-             .hide()
-             .appendTo ("body")
-             .on('click', closeBox);
-         }
-         if(!$container.size())
-         {
+               .hide()
+               .appendTo ("body")
+               .on('click', closeBox);
+           }
+           if(!$container.size())
+           {
             $container = $('<div class='+ oSettings.cssPrefix+'container></div>')
             .css( {
                 width:50,
@@ -68,7 +68,10 @@
                 left:0,
                 right:0,
                 bottom:0,
-                margin:"auto"
+                margin:"auto",
+                maxHeight:'80%',
+                overflow:'hidden',
+                maxWidth:"80%",
 
             } )
             .hide()
@@ -111,10 +114,16 @@
             $container.animate({
                 width:$img.width(),
                 height:$img.height()
+
             },"fast",function(){
                 $img.remove().appendTo ($container).show().on("click",nextImage);
             });
-            
+            $img.css({
+                maxWidth:'100%',
+                maxHeight:'98%',
+                margin:'auto',
+                display:'block'
+            });
         });
     };
 

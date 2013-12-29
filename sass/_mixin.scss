@@ -1,102 +1,242 @@
 @import "functions";
-
-@mixin c( $nNumber ) {
-
-  width: col( $nNumber );
-  margin-left: 0;
-  display:block;
-  float:none; 
-  box-sizing:border-box;
-
-  &:after{
-    content:"";
-    clear:both;
+@mixin wrapper() {
+  .wrapper {
+    max-width: $mw;
+    overflow: hidden;
+    margin: auto;
+    height: 100%;
+    box-sizing: border-box;
+    @include c(12);
+    //margin-bottom: 1em;
+    &:after {
+      @include clear();
+    }
   }
 }
-@mixin cf( $nNumber ) {
-
-  width: col( $nNumber );
-  display:block;
-  float:none;
-  box-sizing:border-box;
-  &:after{
-    content:"";
-    clear:both;
+@mixin body() {
+  body {
+    font-family: $ff;
+    font-size: $fs;
+    line-height: $lh;
+    color: $tc;
+    min-height: 100%;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+  }
+  em {
+    font-style: italic;
+  }
+  b{
+    font-weight: bold;
+  }
+  html {
+    height: 100%;
+    min-height: 100%;
+  }
+  p {
+    margin: 0.5em 0;
+    line-height: 1.5;
+    font-family: $ff;
   }
 }
 
-@mixin cl( $nNumber ) {
+@mixin btn(){
+  color:white;
+  padding:5px 10px;
+  border:0;
+  display:inline-block;
+  text-decoration: none;
+  @include border-radius(5% 5%);
 
-  width: col( $nNumber );
+  &:hover{
+    @include box-shadow(rgba(0,0,0,0.2)0 0 6px 2px);
+
+  }
+}
+@mixin mhb-p($height, $item) {
+  background-color: $grey;
+  background: linear-gradient(to bottom, #efefef 0, #cdcdcd 100%);
+  color: white;
+  position: fixed;
+  width: 100%;
+  @include box-sizing(border-box);
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: auto;
+  height: $height+px;
+  outline: 1px solid $grey;
+  ul {
+    width: 100%;
+    height: $height+px;
+    text-align: center;
+    padding: 0;
+    margin: auto;
+    li, ol {
+      width: (100% / $item) - 2%;
+      display: inline-block;
+      height: 100%;
+      vertical-align: baseline;
+      border-left: 1px solid $grey;
+
+      //position:relative;
+      a {
+        display: block;
+        //height:100%;
+        //padding-top:8px;
+        height: auto;
+        text-decoration: none;
+        color: white;
+        font-weight: bold;
+        @include box-sizing(border-box);
+        border-top: 5px solid #efefef;
+        &:hover, &:focus {
+          // background-color: darken($greyDH,2%);
+          @include box-sizing(border-box);
+          border-top: 5px solid darken($greyDH, 20%);
+          outline: none;
+        }
+      }
+    }
+    li:first-child, ol:first-child {
+      border-left: 0;
+    }
+    li + li, ol + ol {
+      //margin-left: 1%;
+    }
+  }
+}
+
+@mixin clear() {
+  content: "";
+  display: block;
+  height: 0;
+  clear: both;
+  visibility: hidden;
+}
+
+@mixin c($nNumber) {
+
+  width: colAlone($nNumber);
+  margin: auto;
+  //margin-left: 0;
+  display: block;
+  float: none;
+  @include box-sizing(border-box);
+
+  &:after {
+    @include clear();
+  }
+}
+
+@mixin cf($nNumber) {
+
+  width: colf($nNumber);
+  display: block;
+  float: none;
+  @include box-sizing(border-box);
+  margin: 0;
+  &:after {
+    @include clear();
+  }
+}
+
+@mixin cl($nNumber) {
+
+  width: col($nNumber);
   margin-left: gutter();
-  float:left;
-  display:block;
-  box-sizing:border-box;
-  &:after{
-    content:"";
-    clear:both;
-  }
-}
-@mixin offsetL( $nNumber ) {
-
-  margin-left: col( $nNumber );
-}
-@mixin offsetR( $nNumber ) {
-
-  margin-right: col( $nNumber );
-}
-@mixin cfl( $nNumber ) {
-
-  width: col( $nNumber );
-  float:left;
-  display:block;
-  box-sizing:border-box;
-  &:after{
-    content:"";
-    clear:both;
+  margin-right: gutter();
+  float: left;
+  display: block;
+  @include box-sizing(border-box);
+  &:after {
+    @include clear();
   }
 }
 
-@mixin cr( $nNumber ) {
+@mixin cl-nm($nNumber) {
 
-  width: col( $nNumber );
+  width: colAlone($nNumber);
+  float: left;
+  display: block;
+  @include box-sizing(border-box);
+  &:after {
+    @include clear();
+  }
+}
+
+@mixin offsetL($nNumber) {
+
+  margin-left: colAlone($nNumber);
+}
+
+@mixin offsetR($nNumber) {
+
+  margin-right: col($nNumber);
+}
+
+@mixin cfl($nNumber) {
+
+  width: colf($nNumber);
+  float: left;
   margin-left: gutter();
-  float:right;
-  display:block;
-  box-sizing:border-box;
-  &:after{
-    content:"";
-    clear:both;
+  margin-right: gutter();
+  display: block;
+  @include box-sizing(border-box);
+  //margin-top:0; 
+  margin-bottom: gutter() * 2;
+  &:after {
+    @include clear();
   }
 }
-@mixin cfr( $nNumber ) {
 
-  width: col( $nNumber );
-  float:right;
-  display:block;
-  box-sizing:border-box;
-  &:after{
-    content:"";
-    clear:both;
+@mixin cfl-nm($nNumber) {
+
+  width: colAlone($nNumber);
+  float: left;
+  display: block;
+  @include box-sizing(border-box);
+  margin-top: 0;
+  margin-bottom: 0;
+  &:after {
+    @include clear();
   }
 }
-@mixin clear(){
- content: ".";
- display: block;
- height: 0;
- clear: both;
- visibility: hidden;
+
+@mixin cr($nNumber) {
+
+  width: col($nNumber);
+  margin-left: gutter();
+  float: right;
+  display: block;
+  @include box-sizing(border-box);
+  &:after {
+    @include clear();
+  }
 }
-@mixin cc( $nNumber ) {
-  display:block;
-  width: col( $nNumber );
+
+@mixin cfr($nNumber) {
+
+  width: colf($nNumber);
+  float: right;
+  margin-left: gutter();
+  margin-right: gutter();
+  display: block;
+  @include box-sizing(border-box);
+  &:after {
+    @include clear();
+  }
+}
+
+@mixin cc($nNumber) {
+  display: block;
+  width: col($nNumber);
   margin: auto;
   text-align: center;
-  float:none;
-  box-sizing:border-box;
-  &:after{
-    content:"";
-    clear:both;
+  float: none;
+  @include box-sizing(border-box);
+  &:after {
+    @include clear();
   }
 }
 /*l * 100 / 1024*/
