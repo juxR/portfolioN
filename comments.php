@@ -25,7 +25,7 @@ $oddcomment = 'comment';
 
             <div class="nbComments">
 
-                <h3 class="subheader" id="comments">&nbsp;<?php comments_number('Pas de commentaire', 'Un commentaire', '% commentaires' );?></h3>
+                <h3 class="subheader" id="comments">&nbsp;<?php comments_number('Pas de commentaire', '1 personne en parle', '% personnes en parlent' );?></h3>
             </div>
         </div>
 
@@ -102,7 +102,7 @@ $oddcomment = 'comment';
                                 <!--<p><small><strong>XHTML:</strong> <?php _e('Vous pouvez utiliser ces tags&#58;'); ?> <?php echo allowed_tags(); ?></small></p>-->
                                 <p>
                                 <label for="commentaire">Poster un commentaire</label>
-                                <textarea id="commentaire comment" placeholder="Entrer votre commentaire ici" name="comment"  cols="60" rows="10" tabindex="4"></textarea>
+                                <textarea id="commentaire comment" placeholder="Entrer votre commentaire ici" name="comment"  cols="60" rows="5" tabindex="4"></textarea>
                                 </p>
 
                                 <p><input name="submit"  class="small button" value="Poster" type="submit" id="submit" tabindex="5" />

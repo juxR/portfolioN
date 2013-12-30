@@ -27,11 +27,11 @@ function remove_width_attribute( $html ) {
  return $html;
 }
 function olab_add_image_category_filter() {
-    $screen = get_current_screen();
-    if ( 'upload' == $screen->id ) {
-        $dropdown_options = array( 'show_option_all' => __( 'View all categories', 'olab' ), 'hide_empty' => false, 'hierarchical' => true, 'orderby' => 'name', );
-        wp_dropdown_categories( $dropdown_options );
-    }
+  $screen = get_current_screen();
+  if ( 'upload' == $screen->id ) {
+    $dropdown_options = array( 'show_option_all' => __( 'View all categories', 'olab' ), 'hide_empty' => false, 'hierarchical' => true, 'orderby' => 'name', );
+    wp_dropdown_categories( $dropdown_options );
+  }
 }
 function new_excerpt_more( $more ) {
   return '...';   
@@ -39,10 +39,10 @@ function new_excerpt_more( $more ) {
 function addlightboxrel_replace ($content)
 { global $post;
   $pattern = "/<a(.*?)href=('|\")(.*?).(bmp|gif|jpeg|jpg|png)('|\")(.*?)>/i";
-    $replacement = '<a$1class="thumbnail" href=$2$3.$4$5$6</a>';
-    $content = preg_replace($pattern, $replacement, $content);
+  $replacement = '<a$1class="thumbnail" href=$2$3.$4$5$6</a>';
+  $content = preg_replace($pattern, $replacement, $content);
   $content = str_replace("%LIGHTID%", $post->ID, $content);
-    return $content;
+  return $content;
 }
 function create_post_type() {
 	register_post_type( 'projets',
@@ -55,8 +55,9 @@ function create_post_type() {
 			'has_archive' => true,
 			'show_in_menu'=> true,
 			'show_in_nav_menus' => true,
-			'supports' => array('title','editor','thumbnail','custom-fields','pagination')
-			)
+     'taxonomies' => array( 'category', 'post_tag' ),
+     'supports' => array('title','editor','thumbnail','custom-fields','pagination')
+     )
 		);
 }
 

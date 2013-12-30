@@ -1,111 +1,55 @@
-<!DOCTYPE html>
-<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
-<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
-<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
-<head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title></title>
-    <meta name="description" content="">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+<?php 
+/*
+Template Name: Blog
+*/
+?>
+<?php get_header();?>
+<h1 aria-level="1" role="heading" class="section">Page répertoriant mes articles.</h1>
+<?php include('nav.php'); ?>
+<section role="main" id="main" class="main">
+    <h2 aria-level="2" role="heading" class="section">Partie principale de la page</h3>
+    <section class="listArticles">
+           <h4 class="section" role="heading" aria-level="4">Les 5 derniers articles que j'ai postés</h4>
 
-    <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+           <?php if ( have_posts() ) : ?>
+             <? $args = array(
+                 'posts_per_page' => 5,
+                 'paged' => $paged
+                 );?>
 
-    <link rel="stylesheet" href="css/normalize.css">
-    <link rel="stylesheet" href="css/screen.css">
-    <link rel="stylesheet" href="css/font-awesome.min.css">
-    <link rel="stylesheet" href="css/animate.css">
-    <script src="js/vendor/modernizr-2.6.2.min.js"></script>
-</head> 
-<body>
-        <!--[if lt IE 7]>
-            <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
-            <![endif]-->
-            <h1 aria-level="1" role="heading" class="section">Page répertoriant mes articles.</h1>
-            <?php include('nav.php'); ?>
-            <section role="main" id="main" class="main">
-                <h2 aria-level="2" role="heading" class="section">Partie principale de la page</h3>
-                        <section>
-                         <h4 class="section" role="heading" aria-level="4">Les 5 derniers articles que j'ai postés</h4>
-                         <article itemscope itemtype="http://schema.org/BlogPosting" class="lastBlog wrapper">
+                 <?php query_posts($args); ?>
+                 <?php while ( have_posts() ) : the_post(); ?>
 
-                            <div itemprop="text" class="article">
-                                <h3 aria-level="3" role="heading" itemprop="headline">Découverte de Modernizr</h3>
-                                <p>
-                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Tempora temporibus quod distinctio cupiditate autem. Doloribus, suscipit, vitae nulla quas commodi consectetur eum at ipsa voluptate minima deserunt id repellat molestias.
-                                </p>
-                                <p>
-                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nisi, unde, laudantium, cumque, voluptatem error dolore aperiam soluta numquam tempore amet natus impedit quia obcaecati laboriosam saepe labore quod beatae tenetur?
-                                </p>
-                                <div class="image">
-                                    <img src="http://placehold.it/350x150" alt="">
-                                </div>
-                                <p>
-                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatum, magni, assumenda dignissimos quo corporis eligendi temporibus doloribus molestias quas similique molestiae obcaecati alias itaque. Amet repellat velit alias commodi nisi.
-                                </p>
-                                <p><a class="btn" itemprop="url" href="voirArticle.php" title="Lire la suite de l'article">Lire la suite</a></p>
-                            </div>
-                            <footer role="contentinfo" class="infoSupp">
-                                <time class="inf" datetime="" date="2013-10-28" itemprop="datePublished">Mardi 28 Octobre</time>
+                    <article itemscope itemtype="http://schema.org/BlogPosting" class="lastBlog wrapper">
 
-                                <span itemprop="comment" class="commentaire inf"><i class="fa fa-comments">&nbsp;</i>3 commentaires</span>      
-                                <span class="inf social"><a href="" title="Aller sur l'article en entier"><span>J'aime</span><iframe src="//www.facebook.com/plugins/like.php?href=http%3A%2F%2Fjulien-roland.be&amp;width&amp;layout=button&amp;action=like&amp;show_faces=false&amp;share=true&amp;height=35" scrolling="no" frameborder="0" style="border:none; overflow:hidden; height:35px;" allowTransparency="true"></iframe></a></span> 
-                                <span class="inf social"><a href="" title="Aller sur l'article en entier"><span>Partager</span></a></span>  
-                            </footer>
-                        </article> 
-                        <article class="lastBlog wrapper" >
-                            <div class="article">
-                                <h3 aria-level="3" role="heading">Node.js</h3>
-                                <p>
-                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Tempora temporibus quod distinctio cupiditate autem. Doloribus, suscipit, vitae nulla quas commodi consectetur eum at ipsa voluptate minima deserunt id repellat molestias.
-                                </p>
-                                <div class="image">
-                                    <img src="http://placehold.it/350x150" alt="">
-                                </div> 
-                                <div class="image">
-                                    <img src="http://placehold.it/350x150" alt="">
-                                </div>
-                                <p>
-                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatum, magni, assumenda dignissimos quo corporis eligendi temporibus doloribus molestias quas similique molestiae obcaecati alias itaque. Amet repellat velit alias commodi nisi.
-                                </p>
-                                <p><a class="btn" href="voirArticle.php" title="Lire la suite de l'article">Lire la suite</a></p>
-                            </div>
-
-                            <footer role="contentinfo" class="infoSupp">
-                                <time class="inf" datetime="" >Jeudi 30 Décembre</time>
-                                <span class="commentaire inf"><i class="fa fa-comments">&nbsp;</i>30 commentaires</span>   
-                                <span class="inf social"><a href="" title="Aller sur l'article en entier"><span>J'aime</span><iframe src="//www.facebook.com/plugins/like.php?href=http%3A%2F%2Fjulien-roland.be&amp;width&amp;layout=button&amp;action=like&amp;show_faces=false&amp;share=true&amp;height=35" scrolling="no" frameborder="0" style="border:none; overflow:hidden; height:35px;" allowTransparency="true"></iframe></a></span> 
-                                <span class="inf social"><a href="" title="Aller sur l'article en entier"><span>Partager</span></a></span>   
-                            </footer>
-                        </article>
-                    </section>
-                </section>
-                <?php include('footer.php'); ?>
+                        <div itemprop="text" class="article">
+                            <h3 aria-level="3" role="heading" itemprop="headline"><?php the_title(); ?></h3>
+                            <?php the_excerpt(); ?>
+                            <p><a class="btn" itemprop="url" href="<?php the_permalink(); ?>" title="Lire la suite de l'article">Lire la suite</a></p>
+                        </div>
+                        <footer role="contentinfo" class="infoSupp">
+                          <div class="imageTheme">
+                              <a href="<?php the_permalink(); ?>" title="Voir l'article">
+                                <?php if(has_post_thumbnail()): the_post_thumbnail(); endif; ?>
+                            </a>
+                        </div>
+                        <time class="inf" datetime="<?php the_time('c'); ?>" date="<?php the_time('Y-m-d'); ?>" itemprop="datePublished"><?php the_time('j F Y'); ?></time>
+                        <span itemprop="comment" class="commentaire inf"><i class="fa fa-comments">&nbsp;</i><?php comments_number('Pas de commentaire', '1 commentaire', '% commentaires' );?></span>      
+                        <span class="inf social"><a href="<?php the_permalink(); ?>" title="Aller sur l'article en entier"><span>J'aime</span><iframe src="//www.facebook.com/plugins/like.php?href=http%3A%2F%2Fjulien-roland.be".<?php the_permalink();?>."&amp;width&amp;layout=button&amp;action=like&amp;show_faces=false&amp;share=true&amp;height=35" scrolling="no" frameborder="0" style="border:none; overflow:hidden; height:35px;" allowTransparency="true"></iframe></a></span> 
 
 
-         </section>
-         <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
-         <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.10.2.min.js"><\/script>')</script>
-         <script src="js/plugins.js"></script>
-         <script src="js/main.js"></script>
+                    </footer>
+                </article> 
+            <?php endwhile; ?>
 
-         <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
-         <script>
-            (function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=
-                function(){(b[l].q=b[l].q||[]).push(arguments)});b[l].l=+new Date;
-            e=o.createElement(i);r=o.getElementsByTagName(i)[0];
-            e.src='//www.google-analytics.com/analytics.js';
-            r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));
-            ga('create','UA-XXXXX-X');ga('send','pageview');
-        </script>
-        <div id="fb-root"></div>
-        <script>(function(d, s, id) {
-          var js, fjs = d.getElementsByTagName(s)[0];
-          if (d.getElementById(id)) return;
-          js = d.createElement(s); js.id = id;
-          js.src = "//connect.facebook.net/fr_FR/all.js#xfbml=1";
-          fjs.parentNode.insertBefore(js, fjs);
-      }(document, 'script', 'facebook-jssdk'));</script>
-  </body>
-  </html>
+        <?php else : ?>
+            <?php get_template_part( 'content', 'none' ); ?>
+
+        <?php endif; // end have_posts() check ?>
+    </section>
+</section>
+<?php include('footer.php'); ?>
+
+
+</section>
+<?php get_footer(); ?>
