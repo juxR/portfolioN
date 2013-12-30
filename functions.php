@@ -46,17 +46,30 @@ function addlightboxrel_replace ($content)
 }
 function create_post_type() {
 	register_post_type( 'projets',
+    array(
+      'labels' => array(
+        'name' => __( 'Projets' ),
+        'singular_name' => __( 'Projet' )
+        ),
+      'public' => true,
+      'has_archive' => true,
+      'show_in_menu'=> true,
+      'show_in_nav_menus' => true,
+     'taxonomies' => array( 'category', 'post_tag' ),
+     'supports' => array('title','editor','thumbnail','custom-fields','pagination')
+     )
+    );
+  register_post_type( 'apropos',
 		array(
 			'labels' => array(
-				'name' => __( 'Projets' ),
-				'singular_name' => __( 'Projet' )
+				'name' => __( 'A propos' ),
+				'singular_name' => __( 'A propos' )
 				),
 			'public' => true,
 			'has_archive' => true,
 			'show_in_menu'=> true,
 			'show_in_nav_menus' => true,
-     'taxonomies' => array( 'category', 'post_tag' ),
-     'supports' => array('title','editor','thumbnail','custom-fields','pagination')
+     'supports' => array('title','editor','custom-fields')
      )
 		);
 }
