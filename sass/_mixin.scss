@@ -106,7 +106,33 @@
     }
   }
 }
-
+@mixin form(){
+  .errors{
+    display:block;
+    background-color: $errorBackground;
+    padding:1em;
+    border:1px solid red;
+    margin:1em;
+  }
+  .informations{
+    display:block;
+    box-sizing:border-box;
+    font-size: 0.8em;
+    background-color: $infosBackground;
+    padding:1em;
+    @include c(12);
+    border:1px solid darken(yellow,10%);
+    margin-bottom: 0.5em;
+  } 
+  .success{
+    display:block;
+    font-size: 0.8em;
+    background-color: $succesBackground;
+    padding:1em;
+    border:1px solid green;
+    margin:1em;
+  }
+}
 @mixin clear() {
   content: "";
   display: block;

@@ -15,101 +15,59 @@
   var map = new google.maps.Map(document.getElementById('gmap'),mapOptions);
   var initialize = function(){
     $('#gmap').find('img').remove();
+    var mapOptions = {
+      disableDefaultUI:true,
+      scrollwheel:false,
+      zoom: 8,
+      mapTypeId: google.maps.MapTypeId.ROADMAP,
+      center:geocoder.geocode({
+        address:'Rue Basse-Montagne 40, 5100 Wépion, Belgique',
+        region:'BE'
+      },function(aResults,sStatus)
+      {
+       if(sStatus === google.maps.GeocoderStatus.OK)
+       {
+         map.panTo(aResults[0].geometry.location);
+
+         var myLat = aResults[0].geometry.location.lb;
+         var myLg = aResults[0].geometry.location.mb;
+         var homePosition= new google.maps.LatLng(myLat,myLg); 
+         var content = "J'habite ici !"
+         display.setPosition(homePosition);
+         display.setContent(content);
+       }
+     })
+    }
+    var map = new google.maps.Map(document.getElementById('gmap'),mapOptions);
+    if(navigator.geolocation)
+    {  
+      navigator.geolocation.getCurrentPosition(PositionSucces,PositionFailed);
+    }
+    var display = new google.maps.InfoWindow({
+      content:"J'habite ici",
+      position: new google.maps.LatLng(50,4)
+    });
+    display.open(map);
+
+
+  };
+  var PositionSucces = function(position){
    var mapOptions = {
     disableDefaultUI:true,
     scrollwheel:false,
     zoom: 8,
-    mapTypeId: google.maps.MapTypeId.ROADMAP,
-    center:geocoder.geocode({
-      address:'Rue Basse-Montagne 40, 5100 Wépion, Belgique',
-      region:'BE'
-    },function(aResults,sStatus)
-    {
-     if(sStatus === google.maps.GeocoderStatus.OK)
-     {
-       map.panTo(aResults[0].geometry.location);
+    mapTypeId: google.maps.MapTypeId.ROADMAP
+  };
+  $('#map').change(function(){
+   var directionsService = new google.maps.DirectionsService();
 
-       var myLat = aResults[0].geometry.location.lb;
-       var myLg = aResults[0].geometry.location.mb;
-       var homePosition= new google.maps.LatLng(myLat,myLg); 
-       var content = "J'habite ici !"
-       display.setPosition(homePosition);
-       display.setContent(content);
-     }
-   })
-  }
-  var map = new google.maps.Map(document.getElementById('gmap'),mapOptions);
-  if(navigator.geolocation)
-  {  
-    navigator.geolocation.getCurrentPosition(PositionSucces,PositionFailed);
-  }
-  var display = new google.maps.InfoWindow({
-    content:"J'habite ici",
-    position: new google.maps.LatLng(50,4)
-  });
-  display.open(map);
+   directionsDisplay = new google.maps.DirectionsRenderer();
 
+   var position =document.getElementById('map').value;
 
-};
-var PositionSucces = function(position){
- var mapOptions = {
-  disableDefaultUI:true,
-  scrollwheel:false,
-  zoom: 8,
-  mapTypeId: google.maps.MapTypeId.ROADMAP
-};
-$('#map').change(function(){
- var directionsService = new google.maps.DirectionsService();
-
- directionsDisplay = new google.maps.DirectionsRenderer();
-
-  var position =document.getElementById('map').value;
-
- var start = 'Rue Basse-Montagne 40,5100 Wépion,Belgique';
- var end = position;
- var request = {
-  origin: start,
-  destination: end,
-  travelMode: google.maps.TravelMode.DRIVING
-};
-directionsService.route(request, function(response, status) {
-  if (status == google.maps.DirectionsStatus.OK) {
-    directionsDisplay.setDirections(response);
-  }
-});
-directionsDisplay.setMap(map);
-
-})
-$('#btn').click(function(){
- var directionsService = new google.maps.DirectionsService();
-
- directionsDisplay = new google.maps.DirectionsRenderer();
-
-  var position =document.getElementById('map').value;
-
- var start = 'Rue Basse-Montagne 40,5100 Wépion,Belgique';
- var end = position;
- var request = {
-  origin: start,
-  destination: end,
-  travelMode: google.maps.TravelMode.DRIVING
-};
-directionsService.route(request, function(response, status) {
-  if (status == google.maps.DirectionsStatus.OK) {
-    directionsDisplay.setDirections(response);
-  }
-});
-directionsDisplay.setMap(map);
-
-})
-var drawLine = function(position) {
-  var directionsService = new google.maps.DirectionsService();
-
-  directionsDisplay = new google.maps.DirectionsRenderer();
-
-  var start = 'Rue Basse-Montagne 40,5100 Wépion,Belgique';
-  var end = position;
-  var request = {
+   var start = 'Rue Basse-Montagne 40,5100 Wépion,Belgique';
+   var end = position;
+   var request = {
     origin: start,
     destination: end,
     travelMode: google.maps.TravelMode.DRIVING
@@ -121,23 +79,65 @@ var drawLine = function(position) {
   });
   directionsDisplay.setMap(map);
 
-};
+})
+  $('#btn').click(function(){
+   var directionsService = new google.maps.DirectionsService();
 
-var map = new google.maps.Map(document.getElementById('gmap'),mapOptions);
+   directionsDisplay = new google.maps.DirectionsRenderer();
 
-var position = new google.maps.LatLng(position.coords.latitude,position.coords.longitude);
-var display = new google.maps.InfoWindow({
-  content:"J'habite ici",
-  position: new google.maps.LatLng(50.4329476,4.855422999999973)
-});
-display.open(map);
-var displayU = new google.maps.Marker({
-  title:"Tu habites ici",
-  position: position,
-  map:map,
-});
-drawLine(position);
-map.setCenter(position);
+   var position =document.getElementById('map').value;
+
+   var start = 'Rue Basse-Montagne 40,5100 Wépion,Belgique';
+   var end = position;
+   var request = {
+    origin: start,
+    destination: end,
+    travelMode: google.maps.TravelMode.DRIVING
+  };
+  directionsService.route(request, function(response, status) {
+    if (status == google.maps.DirectionsStatus.OK) {
+      directionsDisplay.setDirections(response);
+    }
+  });
+  directionsDisplay.setMap(map);
+
+})
+  var drawLine = function(position) {
+    var directionsService = new google.maps.DirectionsService();
+
+    directionsDisplay = new google.maps.DirectionsRenderer();
+
+    var start = 'Rue Basse-Montagne 40,5100 Wépion,Belgique';
+    var end = position;
+    var request = {
+      origin: start,
+      destination: end,
+      travelMode: google.maps.TravelMode.DRIVING
+    };
+    directionsService.route(request, function(response, status) {
+      if (status == google.maps.DirectionsStatus.OK) {
+        directionsDisplay.setDirections(response);
+      }
+    });
+    directionsDisplay.setMap(map);
+
+  };
+
+  var map = new google.maps.Map(document.getElementById('gmap'),mapOptions);
+
+  var position = new google.maps.LatLng(position.coords.latitude,position.coords.longitude);
+  var display = new google.maps.InfoWindow({
+    content:"J'habite ici",
+    position: new google.maps.LatLng(50.4329476,4.855422999999973)
+  });
+  display.open(map);
+  var displayU = new google.maps.Marker({
+    title:"Tu habites ici",
+    position: position,
+    map:map,
+  });
+  drawLine(position);
+  map.setCenter(position);
 };
 
 

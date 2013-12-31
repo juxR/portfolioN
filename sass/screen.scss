@@ -16,6 +16,7 @@
  @include all-socialH-sprites;
  @include body();
  @include wrapper();
+ @include form();
  body{
  	background-color: rgb(255,255,255);
  	font-family: 'Lora',Rockwell, 'Helvetica Neue', Arial;
@@ -506,6 +507,7 @@ ul{
 	min-height: 100%;
 	display:block;
 	margin:auto;
+	padding:1em 0;
 	//height:100%;
 	background-color: #FFF;
 	&:after{
@@ -807,6 +809,9 @@ address{
 			margin-bottom: 1em;
 		}
 	}
+	.show{
+		@include transition(all 0.3s ease);
+	}
 	.wrapper{
 		//margin-bottom: 0;
 	}
@@ -817,7 +822,7 @@ address{
 
 }
 .tri{
-margin-bottom: 1em;
+	margin-bottom: 1em;
 	ul{
 		@include horizontal-list();
 		text-align: center;
@@ -878,7 +883,18 @@ margin-bottom: 1em;
 	margin: auto;
 	margin-bottom: 1em;
 	@include cf(12);
-
+	padding:0 1em;
+	.titleIndex{
+		margin-bottom: 0;
+		font-size: 24px;
+	}
+	hr{
+		border:0;
+		height: 1px;
+		border-left: 50px solid #000;
+		background: $greyL2;
+		margin-bottom: 2em;
+	}
 	img{
 		width:100%;
 		height:auto;
@@ -897,23 +913,27 @@ margin-bottom: 1em;
 		input{
 			width:100%;
 			font-weight: 300;
-			
 			padding:0.3em 0.5em;
 			border:1px solid $lightBlack;
 			box-sizing:border-box;
 			margin-bottom: 0.3em;
+			@include transition(all 0.3s ease);
+			&:hover,&:focus{
+				border:1px solid $lBlue;
+				@include transition(all 0.3s ease);
+			}
 		}
 		button{
 			background-color: lighten($lBlue,20%);
-
 			padding:0.3em 0.5em;
 			color:white;
 			border:none;
 			width:100%;
 			box-sizing:border-box;
-			@include single-box-shadow($lightBlack, 0 , 1px, 8px, 1px,inset);
+			@include transition( all 0.3s ease);
 			&:hover{
-				@include single-box-shadow(lighten($lBlue,30%), 0 , 1px, 8px, 1px,inset);
+				background-color: $lBlue;
+				@include transition( all 0.3s ease);
 			}
 		}
 	}
@@ -921,8 +941,19 @@ margin-bottom: 1em;
 .form{
 	@include cf(12);
 	margin: auto;
+	padding:0 1em;
 	margin-bottom: 1em;
-
+	.titleIndex{
+		margin-bottom: 0;
+		font-size: 24px;
+	}
+	hr{
+		border:0;
+		height: 1px;
+		border-left: 50px solid #000;
+		background: $greyL2;
+		margin-bottom: 2em;
+	}
 	label,input{
 		display:block;
 
@@ -938,17 +969,18 @@ margin-bottom: 1em;
 		box-sizing: border-box;
 		padding:0.3em 0.5em;
 		border:1px solid $lightBlack;
-		
 		margin-bottom: 1em;
-		@include single-box-shadow($lightBlack, 0 , 1px, 8px, 1px,inset);
-
+		@include transition(all 0.3s ease);
 		&:hover,&:focus,&:active{
-
-			background-color: lighten($lBlue,55%);
 			border:0;
 			border:1px solid $lBlue;
-			@include single-box-shadow(lighten($lBlue,30%), 0 , 1px, 8px, 1px,inset);
-
+			@include transition(all 0.3s ease);@include transition(all 0.3s ease);
+		}
+		&:focus:valid{
+			border:1px solid green;
+		}
+		&:focus:invalid{
+			border:1px solid red;
 		}
 	}
 	input[type=submit]{
@@ -958,19 +990,22 @@ margin-bottom: 1em;
 	}
 	textarea{
 		border:1px solid $lightBlack;
-		
+		@include transition(all 0.3s ease);
 		width:100%;
 		min-height: 100px;
 		margin-bottom: 1em;
 		text-align: left;
-
+		@include box-sizing(border-box);
 		&:hover,&:focus,&:active{
-
-			background-color: lighten($lBlue,55%);
 			border:0;
 			border:1px solid $lBlue;
-			@include single-box-shadow(lighten($lBlue,30%), 0 , 1px, 8px, 1px,inset);
-
+			@include transition(all 0.3s ease);
+		}
+		&:focus:valid{
+			border:1px solid green;
+		}
+		&:focus:invalid{
+			border:1px solid red;
 		}
 	}
 	&:after{
@@ -1097,9 +1132,9 @@ margin-bottom: 1em;
 		}
 	}
 	.comment-header{
-			&:after{
-				@include clear();
-			}
+		&:after{
+			@include clear();
+		}
 		.photoAuthor{
 			
 			@include cfl-nm(1.5);
@@ -1160,22 +1195,22 @@ margin-bottom: 1em;
 		@include box-sizing(border-box);
 	}
 	input[type="submit"]{
-	padding:0.5em;
-	background-color: lighten(red,10%);
-	color:white;
-	font-weight: bold;
-	min-width: 150px;
-	width:100%;
-	border:1px solid red;
-	height:50px;
-	@include border-radius(2px);
-	@include box-shadow(rgba(255,255,255,0.3) 0 1px 1px 1px inset);
-	@include transition(all 0.3s ease);
-	&:hover,&:focus{
-		background-color: lighten(red,8%);
-		@include box-shadow(rgba(0,0,0,0.3) 0 1px 1px 1px inset);
+		padding:0.5em;
+		background-color: lighten(red,10%);
+		color:white;
+		font-weight: bold;
+		min-width: 150px;
+		width:100%;
+		border:1px solid red;
+		height:50px;
+		@include border-radius(2px);
+		@include box-shadow(rgba(255,255,255,0.3) 0 1px 1px 1px inset);
 		@include transition(all 0.3s ease);
-	}
+		&:hover,&:focus{
+			background-color: lighten(red,8%);
+			@include box-shadow(rgba(0,0,0,0.3) 0 1px 1px 1px inset);
+			@include transition(all 0.3s ease);
+		}
 	}
 
 }
@@ -1183,6 +1218,17 @@ margin-bottom: 1em;
 /* LISTE ARTICLE */
 .listArticles{
 	padding:1em;
+	.titleIndex{
+		margin-bottom: 0;
+		font-size: 24px;
+	}
+	hr{
+		border:0;
+		height: 1px;
+		border-left: 50px solid #000;
+		background: $greyL2;
+		margin-bottom: 2em;
+	}
 }
 /* END ARTICLE */
 @import "responsive";

@@ -9,7 +9,8 @@ Template Name: Blog
 <section role="main" id="main" class="main">
     <h2 aria-level="2" role="heading" class="section">Partie principale de la page</h3>
     <section class="listArticles">
-           <h4 class="section" role="heading" aria-level="4">Les 5 derniers articles que j'ai postés</h4>
+           <h3 class="titleIndex" aria-level="3" role="heading">Mes articles</h3>
+            <hr/>
 
            <?php if ( have_posts() ) : ?>
              <? $args = array(
@@ -34,7 +35,7 @@ Template Name: Blog
                             </a>
                         </div>
                         <time class="inf" datetime="<?php the_time('c'); ?>" date="<?php the_time('Y-m-d'); ?>" itemprop="datePublished"><?php the_time('j F Y'); ?></time>
-                        <span itemprop="comment" class="commentaire inf"><i class="fa fa-comments">&nbsp;</i><?php comments_number('Pas de commentaire', '1 commentaire', '% commentaires' );?></span>      
+                        <span itemprop="comment" class="commentaire inf"><i class="fa fa-comments">&nbsp;</i><a href="<?php the_permalink(); echo '#comments'; ?>"><?php comments_number('Pas de commentaire', '1 commentaire', '% commentaires' );?></a></span>      
                         <span class="inf social"><a href="<?php the_permalink(); ?>" title="Aller sur l'article en entier"><span>J'aime</span><iframe src="//www.facebook.com/plugins/like.php?href=http%3A%2F%2Fjulien-roland.be".<?php the_permalink();?>."&amp;width&amp;layout=button&amp;action=like&amp;show_faces=false&amp;share=true&amp;height=35" scrolling="no" frameborder="0" style="border:none; overflow:hidden; height:35px;" allowTransparency="true"></iframe></a></span> 
 
 
