@@ -250,7 +250,9 @@
 
  	}
  	.projet{
+
  		@include cc(10);
+ 		margin-top: 1em;
  		img{
  			width:100%;
  			margin:1em 0;

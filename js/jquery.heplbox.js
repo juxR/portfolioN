@@ -118,12 +118,7 @@
             },"fast",function(){
                 $img.remove().appendTo ($container).show().on("click",nextImage);
             });
-            $img.css({
-                maxWidth:'100%',
-                maxHeight:'98%',
-                margin:'auto',
-                display:'block'
-            });
+            
         });
     };
 

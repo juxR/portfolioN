@@ -2,7 +2,8 @@
 ;(function($){
   google.maps.visualRefresh = true;
 
-  var map;
+  var map,
+  sAdressPerso = 'Belgique';
 
   var geocoder = new google.maps.Geocoder();
 
@@ -15,13 +16,18 @@
   var map = new google.maps.Map(document.getElementById('gmap'),mapOptions);
   var initialize = function(){
     $('#gmap').find('img').remove();
+
+    if($('#adress').attr('data-adress') != null){
+      sAdressPerso = $('#adress').attr('data-adress');
+    }
+
     var mapOptions = {
       disableDefaultUI:true,
       scrollwheel:false,
       zoom: 8,
       mapTypeId: google.maps.MapTypeId.ROADMAP,
       center:geocoder.geocode({
-        address:'Rue Basse-Montagne 40, 5100 Wépion, Belgique',
+        address:sAdressPerso,
         region:'BE'
       },function(aResults,sStatus)
       {
@@ -65,7 +71,7 @@
 
    var position =document.getElementById('map').value;
 
-   var start = 'Rue Basse-Montagne 40,5100 Wépion,Belgique';
+   var start = sAdressPerso;
    var end = position;
    var request = {
     origin: start,
@@ -87,7 +93,7 @@
 
    var position =document.getElementById('map').value;
 
-   var start = 'Rue Basse-Montagne 40,5100 Wépion,Belgique';
+   var start = sAdressPerso;
    var end = position;
    var request = {
     origin: start,
@@ -107,7 +113,7 @@
 
     directionsDisplay = new google.maps.DirectionsRenderer();
 
-    var start = 'Rue Basse-Montagne 40,5100 Wépion,Belgique';
+    var start = sAdressPerso;
     var end = position;
     var request = {
       origin: start,

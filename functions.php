@@ -55,6 +55,7 @@ function create_post_type() {
       'has_archive' => true,
       'show_in_menu'=> true,
       'show_in_nav_menus' => true,
+      'rewrite'=>true,
      'taxonomies' => array( 'category', 'post_tag' ),
      'supports' => array('title','editor','thumbnail','custom-fields','pagination')
      )
@@ -68,6 +69,7 @@ function create_post_type() {
 			'public' => true,
 			'has_archive' => true,
 			'show_in_menu'=> true,
+      'rewrite'=>true,
 			'show_in_nav_menus' => true,
      'supports' => array('title','editor','custom-fields')
      )

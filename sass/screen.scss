@@ -507,7 +507,7 @@ ul{
 	min-height: 100%;
 	display:block;
 	margin:auto;
-	padding:1em 0;
+	padding-bottom: 1em;
 	//height:100%;
 	background-color: #FFF;
 	&:after{
@@ -928,8 +928,10 @@ address{
 			padding:0.3em 0.5em;
 			color:white;
 			border:none;
+			min-height: 35px;
 			width:100%;
 			box-sizing:border-box;
+			margin-top: 5px;
 			@include transition( all 0.3s ease);
 			&:hover{
 				background-color: $lBlue;
@@ -1017,7 +1019,7 @@ address{
 /*END CONTACT*/
 /* PROJET */
 .projet{
-
+	margin-top: 1em;
 	h4,h3{
 		text-align: center;
 
@@ -1026,7 +1028,6 @@ address{
 		text-align:left;
 		padding-bottom: 3em;
 		margin-bottom: 0.5em;
-		border-bottom: 1px solid rgba(100,100,100,0.5);
 		&:last-child{
 			border-bottom: none;
 		}
