@@ -83,6 +83,20 @@ function create_post_type() {
      'supports' => array('title','editor','custom-fields')
      )
     );
+  register_post_type( 'liens',
+    array(
+     'labels' => array(
+      'name' => __( 'Liens' ),
+      'singular_name' => __( 'Lien' )
+      ),
+     'public' => true,
+     'has_archive' => true,
+     'show_in_menu'=> true,
+     'rewrite'=>true,
+     'show_in_nav_menus' => true,
+     'supports' => array('title','editor','custom-fields')
+     )
+    );
 }
 
 /*==================================
@@ -180,17 +194,17 @@ class Custom_Walker_Nav_Menu extends Walker_Nav_Menu {
       break;
       case 'Blog':
       $icon = '<i class="fa fa-comments"></i>';
-      
+
       break;
       case 'Projets':
-      $icon = '<i class="fa fa-briefcase"></i>';
+      $icon = '<i class="fa fa-folder"></i>';
       break;
       case 'A propos':
-      
-      $icon = '<i class="fa fa-male"></i>';
+
+      $icon = '<i class="fa fa-user"></i>';
       break;
       case 'Contact':
-      $icon = '<i class="fa fa-globe"></i>';
+      $icon = '<i class="fa fa-envelope"></i>';
       break;
 
     }
