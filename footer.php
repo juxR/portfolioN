@@ -20,7 +20,7 @@
     </div>
     <div class="wrapper">
       <div class="lastArticle">
-       <h4 class="titleIndex" aria-level="4" role="heading" >Derniers articles lu</h4>
+       <h4 class="titleIndex" aria-level="4" role="heading" >Derniers articles lus</h4>
        <hr/>
        <?php $args = array( 'post_type' => 'liens', 'posts_per_page' => 4 );
        $loop = new WP_Query( $args );
