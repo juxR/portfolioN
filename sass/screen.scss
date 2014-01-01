@@ -24,6 +24,7 @@
  	font-weight: normal;
  	line-height: 1.5;
  	color:#333;
+ 	padding-bottom: 50px;
  	font-smoothing:antialiased;
  	margin-bottom: 50px;
  	//background-color: $greyL2;
@@ -103,7 +104,7 @@
  			}
  			&:hover{
  				background-position: 0 -128px;
- 				height: 64px;
+ 				//height: 64px;
  			}
  		}
  		li.gmail{
@@ -624,20 +625,29 @@ body .sectionContent{
 /* FOOTER */
 .foot{
 	padding:1em 1em;
-	background-color: $greyD;
+	background-color: lighten($greyDB,10%);
 	border-top:1em solid lighten($black,40%);
 	color:black;
 	margin-top: 0;
 	box-sizing: border-box;
 	font-size: 14px;
+	.titleIndex{
+		margin-bottom: 0;
+		font-size: 24px;
+	}
+	hr{
+		border:0;
+		height: 1px;
+		border-left: 50px solid #FFF;
+		background: $greyL2;
+		margin-bottom: 1em;
+	}
 	a{
 		color:white;
 	}
 	h1,h2,h3,h4,h5,h6{
 		color:white;
-		font-weight: 700;
-		font-style: italic;
-		letter-spacing: 1px;
+		font-family: $ff2;
 	}
 	.wrapper{
 		
@@ -645,11 +655,24 @@ body .sectionContent{
 		overflow:visible;
 		text-align: center;
 	}
+	.lastArticle,.usefull{
+		@include c(12);
+		margin-bottom: 2em;
+		a{
+			font-size: 18px;
+			font-style: italic;
+		}
+	}
+	.copyright{
+		color:white;
+	}
+
 
 }
 
 .footer{
-	@include cfl( 6 );
+	@include c( 12 );
+	margin-bottom: 2em;
 	margin: auto;
 	float:none;
 	//@include offsetL( 2 );

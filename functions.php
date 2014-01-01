@@ -94,7 +94,35 @@ function create_post_type() {
      'show_in_menu'=> true,
      'rewrite'=>true,
      'show_in_nav_menus' => true,
-     'supports' => array('title','editor','custom-fields')
+     'supports' => array('title','custom-fields')
+     )
+    );
+     register_post_type( 'conseil',
+    array(
+     'labels' => array(
+      'name' => __( 'Conseil' ),
+      'singular_name' => __( 'Conseil' )
+      ),
+     'public' => true,
+     'has_archive' => true,
+     'show_in_menu'=> true,
+     'rewrite'=>true,
+     'show_in_nav_menus' => true,
+     'supports' => array('title','custom-fields')
+     )
+    );
+     register_post_type( 'reseaux',
+    array(
+     'labels' => array(
+      'name' => __( 'Reseaux' ),
+      'singular_name' => __( 'Reseau' )
+      ),
+     'public' => true,
+     'has_archive' => true,
+     'show_in_menu'=> true,
+     'rewrite'=>true,
+     'show_in_nav_menus' => true,
+     'supports' => array('title','custom-fields')
      )
     );
 }

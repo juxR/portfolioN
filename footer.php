@@ -19,14 +19,40 @@
 
     </div>
     <div class="wrapper">
-     <span>Crée par Julien Roland, 2013</span>
+      <div class="lastArticle">
+       <h4 class="titleIndex" aria-level="4" role="heading" >Derniers articles lu</h4>
+       <hr/>
+       <?php $args = array( 'post_type' => 'liens', 'posts_per_page' => 4 );
+       $loop = new WP_Query( $args );
+       while ( $loop->have_posts() ) : $loop->the_post();?>
+       <a href="<?php the_field('url')?>"><?php the_title(); ?></a>   
+       <?endwhile;?>
+     </div>
+     <div class="usefull">
+       <h4 aria-level="4" role="heading" class="titleIndex">Liens utiles</h4>
+       <hr/>
+       <?php $args = array( 'post_type' => 'conseil', 'posts_per_page' => 1,'orderby'=>'rand' );
+       $loop = new WP_Query( $args );
+       while ( $loop->have_posts() ) : $loop->the_post();?>
+       <a href="<?php the_field('url')?>"><?php the_title(); ?></a>   
+       <?endwhile;?>
+     </div>
      <div class="footer reseaux social">
-       <h4 aria-level="4" role="heading" class="section">Retrouvez moi la-bas !</h4>
+       <h4 aria-level="4" role="heading" class="titleIndex">Retrouvez moi la-bas !</h4>
+       <hr/>
        <ul >
-         <li class="facebook animated bounce"><a href="" title="Aller sur ma page facebook">Facebook</a></li>
-         <li class="linkedin animated bounce"><a href="" title="Aller sur ma page Linkedin">Linkedin</a></li>
+       <?php $args = array( 'post_type' => 'reseaux','posts_per_page' => 5);
+       $loop = new WP_Query( $args );
+       while ( $loop->have_posts() ) : $loop->the_post();?>
+
+         <li class="<?php echo strtolower(get_the_title()); ?> animated bounce"><a href="<?php the_field('url'); ?>" title="Aller sur ma page <?php the_title(); ?>"><?php the_title(); ?></a></li>
+         
+       <?endwhile;?>
        </ul> 
      </div>
+     <span class="copyright">
+       Crée par Julien Roland, 2013
+     </span>
    </div>
  </div>
 </footer>
