@@ -22,6 +22,7 @@
         <!--[if lt IE 7]>
             <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
             <![endif]-->
+            
             <h1 aria-level="1" role="heading" class="section">Souhaitez-vous me contacter ?</h1>
             <?php include('nav.php'); ?>
             <section role="main" id="main" class="main">

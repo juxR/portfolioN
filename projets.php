@@ -16,8 +16,8 @@ Template Name: Projet
 				<h3 aria-level="3" role="heading" class="section">Système de tri des projects</h4>
 					<ul>
 						<li class="active toutt"><a href="">Tout</a></li>
-						<li class="webt"><a href="">Web</a></li>
-						<li class="printt"><a href="">Print</a></li>
+						<li class="webt"><a title="Voir les projets de la catégorie web" href="<?php bloginfo('template_directory') ?>/category/web">Web</a></li>
+						<li class="printt"><a title="Voir les projets de la catégorie print" href="<?php bloginfo('template_directory') ?>/category/print">Print</a></li>
 					</ul>
 				</section>
 				<?php $args = array( 'post_type' => 'projets' );

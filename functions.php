@@ -12,13 +12,15 @@ add_filter('excerpt_more', 'new_excerpt_more');
 add_filter( 'post_thumbnail_html', 'remove_width_attribute', 10 );
 add_filter( 'image_send_to_editor', 'remove_width_attribute', 10 );
 add_filter('the_content', 'addlightboxrel_replace');
-/* ADD */
+
+/* SUPPORT */
 if (function_exists('add_theme_support')) {
   add_theme_support( 'post-thumbnails');
   add_theme_support('menus');
   add_theme_support('html5');
 }
 /* ACTION */
+add_action( 'init', 'register_my_menus' );
 add_action( 'init', 'create_post_type' );
 add_action( 'restrict_manage_posts', 'olab_add_image_category_filter' );
 
@@ -32,6 +34,13 @@ function olab_add_image_category_filter() {
     $dropdown_options = array( 'show_option_all' => __( 'View all categories', 'olab' ), 'hide_empty' => false, 'hierarchical' => true, 'orderby' => 'name', );
     wp_dropdown_categories( $dropdown_options );
   }
+}
+function register_my_menus() {
+  register_nav_menus(
+    array(
+      'main-menu' => __( 'Main Menu' ),
+      )
+    );
 }
 function new_excerpt_more( $more ) {
   return '...';   
@@ -56,24 +65,24 @@ function create_post_type() {
       'show_in_menu'=> true,
       'show_in_nav_menus' => true,
       'rewrite'=>true,
-     'taxonomies' => array( 'category', 'post_tag' ),
-     'supports' => array('title','editor','thumbnail','custom-fields','pagination')
-     )
+      'taxonomies' => array( 'category', 'post_tag' ),
+      'supports' => array('title','editor','thumbnail','custom-fields','pagination')
+      )
     );
   register_post_type( 'apropos',
-		array(
-			'labels' => array(
-				'name' => __( 'A propos' ),
-				'singular_name' => __( 'A propos' )
-				),
-			'public' => true,
-			'has_archive' => true,
-			'show_in_menu'=> true,
-      'rewrite'=>true,
-			'show_in_nav_menus' => true,
+    array(
+     'labels' => array(
+      'name' => __( 'A propos' ),
+      'singular_name' => __( 'A propos' )
+      ),
+     'public' => true,
+     'has_archive' => true,
+     'show_in_menu'=> true,
+     'rewrite'=>true,
+     'show_in_nav_menus' => true,
      'supports' => array('title','editor','custom-fields')
      )
-		);
+    );
 }
 
 /*==================================
@@ -106,7 +115,27 @@ function reverie_pagination() {
   	echo '</div><!--// end .pagination -->';
   }
 }
-
+function jc_post_by_category($atts, $content = null) {
+  extract(shortcode_atts(array(
+    "nb" => '5',
+    "orderby" => 'post_date',
+    "order" => 'DESC',
+    "category" => '1'
+    ), $atts));
+  global $post;
+  $tmp_post = $post;
+  $myposts = get_posts('showposts='.$nb.'&orderby='.$orderby.'&category='.$category);
+  $out = '<ul>';
+  foreach($myposts as $post){
+    setup_postdata( $post );
+    $out .= '<li><a href="'.get_permalink().'">'.the_title("","",false).'</a></li>';
+  }
+  $out .= '</ul>';
+  wp_reset_postdata();
+  $post = $tmp_post;
+  return $out;
+}
+add_shortcode("post-by-category", "jc_post_by_category");
 /*-----  End of Pagination  ------*/
 /*Nav personnaliser*/
 class Custom_Walker_Nav_Menu extends Walker_Nav_Menu {
@@ -119,13 +148,14 @@ class Custom_Walker_Nav_Menu extends Walker_Nav_Menu {
     $classes = empty( $item->classes ) ? array() : (array) $item->classes;
     $classes[] = 'menu-item-' . $item->ID;
 
-    $class_names = join( ' ', apply_filters( 'nav_menu_css_class', array_filter( $classes ), $item, $args ) );
+    $class_names = in_array("current_page_item",$item->classes) ? ' active' : '';
+    //$class_names = join( ' ', apply_filters( 'nav_menu_css_class', array_filter( $classes ), $item, $args ) );
     $class_names = $class_names ? ' class="' . esc_attr( $class_names ) . '"' : '';
 
-    $id = apply_filters( 'nav_menu_item_id', 'menu-item-'. $item->ID, $item, $args );
-    $id = $id ? ' id="' . esc_attr( $id ) . '"' : '';
+    /*$id = apply_filters( 'nav_menu_item_id', 'menu-item-'. $item->ID, $item, $args );
+    $id = $id ? ' id="' . esc_attr( $id ) . '"' : '';*/
 
-    $output .= $indent . '<li' . $id . $value . $class_names .'>';
+    $output .= $indent . '<li' /*. $id */. $value . $class_names .'>';
 
     $atts = array();
     $atts['title']  = ! empty( $item->attr_title ) ? $item->attr_title : '';
@@ -139,14 +169,36 @@ class Custom_Walker_Nav_Menu extends Walker_Nav_Menu {
     foreach ( $atts as $attr => $value ) {
       if ( ! empty( $value ) ) {
         $value = ( 'href' === $attr ) ? esc_url( $value ) : esc_attr( $value );
-        $attributes .= ' ' . $attr . '="' . $value . '"';
+        $title = 'Aller sur cette page';
+        $attributes .= ' ' . $attr . '="' . $value . '"'. 'title="'. $title .'"';
       }
     }
 
-    $item_output = $args->before;
-    $item_output .= '<a'. $attributes .'>'.$icon;
-    $item_output .= '<p>'.$args->link_before . apply_filters( 'the_title', $item->title, $item->ID ) . $args->link_after.'</p>';
+    switch ($item->title) {
+      case 'Accueil':
+      $icon = '<i class="logo"></i>';
+      break;
+      case 'Blog':
+      $icon = '<i class="fa fa-comments"></i>';
+      
+      break;
+      case 'Projets':
+      $icon = '<i class="fa fa-briefcase"></i>';
+      break;
+      case 'A propos':
+      
+      $icon = '<i class="fa fa-male"></i>';
+      break;
+      case 'Contact':
+      $icon = '<i class="fa fa-globe"></i>';
+      break;
 
+    }
+
+    $item_output = $args->before;
+    $item_output .= '<a'. $attributes .'>';
+    $item_output .= '<span>'.$args->link_before . apply_filters( 'the_title', $item->title, $item->ID ) . $args->link_after.'</span>';
+    $item_output .= $icon;
     $item_output .= '</a>';
     $item_output .= $args->after;
 
