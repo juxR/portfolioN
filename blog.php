@@ -8,18 +8,18 @@ Template Name: Blog
 <?php include('nav.php'); ?>
 <section role="main" id="main" class="main">
     <h2 aria-level="2" role="heading" class="section">Partie principale de la page</h3>
-    <section class="listArticles">
+        <section class="listArticles">
            <h3 class="titleIndex" aria-level="3" role="heading">Mes articles</h3>
-            <hr/>
+           <hr/>
 
            <?php if ( have_posts() ) : ?>
              <? $args = array(
-                 'posts_per_page' => 5,
-                 'paged' => $paged
-                 );?>
+                'posts_per_page' => 10,
+                'paged' => $paged
+                );?>
 
-                 <?php query_posts($args); ?>
-                 <?php while ( have_posts() ) : the_post(); ?>
+                <?php query_posts($args); ?>
+                <?php while ( have_posts() ) : the_post(); ?>
 
                     <article itemscope itemtype="http://schema.org/BlogPosting" class="lastBlog wrapper">
 
@@ -41,13 +41,17 @@ Template Name: Blog
 
                     </footer>
                 </article> 
-            <?php endwhile; ?>
+                <section class="pagination wrapper">
+                  <div class="next"><?php previous_posts_link('Articles plus récent'); ?></div>
+                  <div class="previous"><?php next_posts_link('Articles plus anciens'); ?></div>
+              </section>
+          <?php endwhile; ?>
 
-        <?php else : ?>
-            <?php get_template_part( 'content', 'none' ); ?>
+      <?php else : ?>
+        <?php get_template_part( 'content', 'none' ); ?>
 
-        <?php endif; // end have_posts() check ?>
-    </section>
+    <?php endif; // end have_posts() check ?>
+</section>
 </section>
 <?php include('footer.php'); ?>
 

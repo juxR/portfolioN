@@ -1104,6 +1104,20 @@ address{
 	.headerProjet{
 		margin-bottom: 2em;
 	}
+	.projetInfos{
+		text-align: center;
+		.social{
+			@include c(12);
+			text-align: center;
+			iframe{
+				
+				@include c(12);
+				text-align: center;
+				display:inline-block;
+				width:120px;
+			}
+		}
+	}
 }
 /* END projet */
 /* COMMENTS */
@@ -1232,4 +1246,29 @@ address{
 	}
 }
 /* END ARTICLE */
+/* PAGINATION */
+
+.pagination{
+	margin-top: 1em;
+	text-align: center;
+	.next,.previous{
+		display:inline-block;
+	}
+	.previous{
+		a{
+			&:after{
+				content:" >>";
+			}
+		}
+	}
+	.next{
+		a{
+			&:before{
+				content:"<< ";
+			}
+		}
+	}
+}
+
+/* END PAGINATION*/
 @import "responsive";
