@@ -1046,12 +1046,14 @@ address{
 	margin-top: 1em;
 	h4,h3{
 		text-align: center;
-
+		margin-top: 1em;
 	}
 	p{
 		text-align:left;
-		padding-bottom: 3em;
-		margin-bottom: 0.5em;
+		//padding-bottom: 3em;
+		//margin-bottom: 0.5em;
+		margin-top: 0;
+		margin-bottom: 0;	
 		&:last-child{
 			border-bottom: none;
 		}
