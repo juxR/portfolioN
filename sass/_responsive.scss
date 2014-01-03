@@ -133,6 +133,14 @@
  			}
  		}
  	}
+ 	.lastBlog{
+ 		.imageTheme{
+ 			&:before{
+ 				@include box-shadow(0 0 0 0);
+ 			}
+ 			display:block;
+ 		}
+ 	}
  	.date{
  		text-align: left;
  	}

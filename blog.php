@@ -8,7 +8,7 @@ Template Name: Blog
 <?php include('nav.php'); ?>
 <section role="main" id="main" class="main">
     <h2 aria-level="2" role="heading" class="section">Partie principale de la page</h3>
-        <section class="listArticles">
+        <section class="listArticles wrapper">
            <h3 class="titleIndex" aria-level="3" role="heading">Mes articles</h3>
            <hr/>
 
