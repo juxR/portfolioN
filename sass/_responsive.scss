@@ -281,11 +281,16 @@
  		@include cc(10);
  		margin-top: 1em;
  		img{
- 			width:100%;
+ 			max-width:100%;
  			margin:1em 0;
  			&:hover{
  				@include single-box-shadow(0 ,0, 0, 0);
  			}
+ 		}
+ 		.projetInfos{
+ 			margin-top: 1em;
+ 			border-top: 1px solid $greyL2;
+ 			padding-top: 1em;
  		}
  	}
  	.headerProjet{

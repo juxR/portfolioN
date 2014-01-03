@@ -1044,8 +1044,13 @@ address{
 /* PROJET */
 .projet{
 	margin-top: 1em;
-	h4,h3{
+	h3{
 		text-align: center;
+		//margin-top: 1em;
+	}
+	h4{
+		text-align: center;
+		margin-bottom: 0.5em;
 		margin-top: 1em;
 	}
 	p{
@@ -1054,8 +1059,22 @@ address{
 		//margin-bottom: 0.5em;
 		margin-top: 0;
 		margin-bottom: 0;	
-		&:last-child{
-			border-bottom: none;
+			&:last-child{
+				margin-bottom: 1em;
+			border-bottom: 1px solid $greyL2;
+		}
+		.thumbnail{
+			display:block;
+			img{
+				margin:1em auto;
+				display:block;
+
+			}
+		}
+	}
+	ol,ul{
+		li{
+			text-align: left;
 		}
 	}
 	.previous{
@@ -1098,7 +1117,7 @@ address{
 		width:100px;
 	}
 	img{
-		float:right;
+		//float:right;
 		margin: 0 0 1em 1em;
 	}
 	.social{

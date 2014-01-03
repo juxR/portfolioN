@@ -5,16 +5,7 @@
     <a class="reader" href="#main" title="Retourner au début du contenu">Remonter au contenu</a>
     <div class="wrapper sectionContent">
       <div class="footer link ">
-        <nav role="navigation ">
-          <h4 aria-level="4" role="heading">Navigation</h4>
-          <ul>
-            <li><a href="" title="Aller à l'accueil du site">Accueil</a></li>
-            <li><a href="" title="Aller à la section qui suis-je du site">Qui suis-je</a></li>
-            <li><a href="" title="Aller à la section blog du site">Blog</a></li>
-            <li><a href="" title="Aller à la section projets du site">Projets</a></li>
-            <li><a href="" title="Aller à la section contact du site">Contact</a></li>
-          </ul>
-        </nav>
+       <?php wp_nav_menu( array('menu' => 'main-menu', 'walker' => new Custom_Walker_Nav_Menu(1)) ); ?>
       </div>
 
     </div>
@@ -24,18 +15,32 @@
        <hr/>
        <?php $args = array( 'post_type' => 'liens', 'posts_per_page' => 4 );
        $loop = new WP_Query( $args );
+       if($loop->have_posts()):
+        ?><ul><?php
        while ( $loop->have_posts() ) : $loop->the_post();?>
-       <a href="<?php the_field('url')?>"><?php the_title(); ?></a>   
-       <?endwhile;?>
+       <li><a href="<?php the_field('url')?>" title="Aller sur l'article"><?php the_title(); ?></a></li> 
+       <?endwhile;
+       ?></ul><?php
+       else:?>
+       <p>Aucun articles lus...</p>
+     <?php endif;
+     wp_reset_query();?>
      </div>
      <div class="usefull">
        <h4 aria-level="4" role="heading" class="titleIndex">Liens utiles</h4>
        <hr/>
-       <?php $args = array( 'post_type' => 'conseil', 'posts_per_page' => 1,'orderby'=>'rand' );
+       <?php $args = array( 'post_type' => 'conseil', 'posts_per_page' => 4,'orderby'=>'rand' );
        $loop = new WP_Query( $args );
+       if($loop->have_posts()):
+        ?><ul><?php
        while ( $loop->have_posts() ) : $loop->the_post();?>
-       <a href="<?php the_field('url')?>"><?php the_title(); ?></a>   
-       <?endwhile;?>
+       <li><a href="<?php the_field('url')?>" title="Aller sur le lien"><?php the_title(); ?></a></li>   
+       <?endwhile;
+       ?></ul><?php
+       else:?>
+       <p>Aucun lien à conseiller...</p>
+     <?php endif;
+     wp_reset_query(); ?>
      </div>
      <div class="footer reseaux social">
        <h4 aria-level="4" role="heading" class="titleIndex">Retrouvez moi la-bas !</h4>
@@ -43,11 +48,16 @@
        <ul >
        <?php $args = array( 'post_type' => 'reseaux','posts_per_page' => 5);
        $loop = new WP_Query( $args );
+       if($loop->have_posts()):
        while ( $loop->have_posts() ) : $loop->the_post();?>
 
          <li class="<?php echo strtolower(get_the_title()); ?> animated bounce"><a href="<?php the_field('url'); ?>" title="Aller sur ma page <?php the_title(); ?>"><?php the_title(); ?></a></li>
          
-       <?endwhile;?>
+       <?endwhile;
+       else:?>
+       <p>Je suis sur aucun réseau...</p>
+     <?php endif;
+     wp_reset_query(); ?>
        </ul> 
      </div>
      <span class="copyright">
@@ -66,6 +76,7 @@
   jQuery( function() {
     jQuery( ' .caption a.thumbnail' ).heplbox();
     jQuery( ' .listBlog a.thumbnail' ).heplbox();
+    jQuery( ' .projet a.thumbnail' ).heplbox();
   } );
 
 </script>

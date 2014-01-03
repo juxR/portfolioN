@@ -14,26 +14,33 @@
             <hr/>
             <?php $args = array( 'post_type' => 'projets', 'posts_per_page' => 2 );
             $loop = new WP_Query( $args );
-            while ( $loop->have_posts() ) : $loop->the_post();
+            if($loop->have_posts()):
+                while ( $loop->have_posts() ) : $loop->the_post();
             get_template_part( 'projet', get_post_format() ); 
-            endwhile;?>
+            endwhile;
+            else:?>
+            <p>Il n'y a aucun projet...</p>
+        <?php endif;
+        wp_reset_query();
+        ?>
 
-        </section>
-        <section class="lastArticles" role="content">
-            <div class="wrapper">
-             <h3 class="titleIndex" aria-level="3" role="heading">Mes derniers articles</h3>
-             <hr/>
-             <?php if ( have_posts() ) : ?>
-                 <?php while ( have_posts() ) : the_post(); ?>
-                    <?php get_template_part( 'content', get_post_format() ); ?>
-                <?php endwhile; ?>
-
-            <?php else : ?>
-                <?php get_template_part( 'content', 'none' ); ?>
-
-            <?php endif; // end have_posts() check ?>
-        </div>
     </section>
+    <section class="lastArticles" role="content">
+        <div class="wrapper">
+         <h3 class="titleIndex" aria-level="3" role="heading">Mes derniers articles</h3>
+         <hr/>
+         <?php if ( have_posts() ) : ?>
+             <?php while ( have_posts() ) : the_post(); ?>
+                <?php get_template_part( 'content', get_post_format() ); ?>
+            <?php endwhile; ?>
+
+        <?php else : ?>
+            <p>Aucun article...</p>
+
+        <?php endif;
+        wp_reset_query(); ?>
+    </div>
+</section>
 </section>
 <?php get_footer(); ?>
 
