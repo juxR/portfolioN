@@ -1,6 +1,6 @@
 
 <footer role="contentinfo" class="foot">
-  <h2 aria-level="2" role="heading" class="section">Informations additionnel sur la page</h2>
+  <h2 aria-level="2" role="heading" class="section">Mes dernières lecture, mes liens utiles et me retrouver sur les réseaux sociaux</h2>
   <div class="wrapper">
     <a class="reader" href="#main" title="Retourner au début du contenu">Remonter au contenu</a>
     <div class="wrapper sectionContent">
@@ -11,15 +11,16 @@
     </div>
     <div class="wrapper">
       <div class="lastArticle">
-       <h4 class="titleIndex" aria-level="4" role="heading" >Derniers articles lus</h4>
+       <h4 class="titleIndex" aria-level="4" role="heading" >Dernières lectures</h4>
        <hr/>
-       <?php $args = array( 'post_type' => 'liens', 'posts_per_page' => 4 );
+       <?php $args = array( 'post_type' => 'liens', 'posts_per_page' => 4 ,'orderby'=>'rand');
        $loop = new WP_Query( $args );
        if($loop->have_posts()):
         ?><ul><?php
        while ( $loop->have_posts() ) : $loop->the_post();?>
        <li><a href="<?php the_field('url')?>" title="Aller sur l'article"><?php the_title(); ?></a></li> 
        <?endwhile;
+
        ?></ul><?php
        else:?>
        <p>Aucun articles lus...</p>
@@ -67,11 +68,7 @@
  </div>
 </footer>
 
-<script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
-<script>window.jQuery || document.write('<script src="<?php bloginfo('template_directory'); ?>/js/vendor/jquery-1.10.2.min.js"><\/script>')</script>
-<script src="<?php bloginfo('template_directory'); ?>/js/plugins.js"></script>
-<script src="<?php bloginfo('template_directory'); ?>/js/main.js"></script>
-<script src="<?php bloginfo('template_directory'); ?>/js/jquery.heplbox.js"></script>
+<script src="<?php bloginfo('template_directory'); ?>/js/all-ck.js"></script>
 <script>
   jQuery( function() {
     jQuery( ' .caption a.thumbnail' ).heplbox();
@@ -87,7 +84,7 @@
   e=o.createElement(i);r=o.getElementsByTagName(i)[0];
   e.src='//www.google-analytics.com/analytics.js';
   r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));
-  ga('create','UA-XXXXX-X');ga('send','pageview');
+  ga('create','UA-45029310-1');ga('send','pageview');
 </script>
 <div id="fb-root"></div>
 <script>(function(d, s, id) {

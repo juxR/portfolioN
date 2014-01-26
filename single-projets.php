@@ -11,11 +11,11 @@
                 </div>
                 
                 <?php the_content(); ?>
-                
+                <span class="projetLive"><a href="<?php the_field('link'); ?>">Voir le projet</a></span>
                 <footer class="projetInfos">
                     <div class="wrapper">
-                        <span class="social"><span>J'aime</span><iframe src="//www.facebook.com/plugins/like.php?href=http%3A%2F%2Fjulien-roland.be&amp;width&amp;layout=button&amp;action=like&amp;show_faces=false&amp;share=true&amp;height=35" scrolling="no" frameborder="0" style="border:none; overflow:hidden; height:35px;" allowTransparency="true"></iframe></a></span> 
-                        <span><a href="<?php bloginfo('template_directory') ?>/projet">Revenir aux projets</a></span>
+                        <span class="social"><span>J'aime</span><iframe src="//www.facebook.com/plugins/like.php?href=<?php the_permalink(); ?>&amp;width&amp;layout=button&amp;action=like&amp;show_faces=false&amp;share=true&amp;height=35" scrolling="no" frameborder="0" style="border:none; overflow:hidden; height:35px;" allowTransparency="true"></iframe></a></span> 
+                        <span><a href="<?php echo home_url($path = '/projet',$scheme = relative); ?>">Revenir aux projets</a></span>
                     </div>
                     <div class="wrapper">
 

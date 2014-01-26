@@ -1,7 +1,44 @@
  @import "compass";
  @import "mixin";
  @import "variables";
- @media (max-width: 800px){
+ @media screen and(min-width: 400px){
+ 	.tools{
+ 		i{
+ 			width:60px;
+ 			line-height: 60px;
+ 			height:60px;
+ 			font-size: 2em;
+ 		}
+ 		span{
+
+ 			font-size: 14px;
+
+ 		}
+ 	}	
+ }
+ @media screen and(min-width: 600px) and (max-width: 799px){
+ 	.lastBlog{
+ 		@include cl(6);
+ 	}
+ 	
+ }
+ @media screen and(min-width: 700px){
+ 	.p{
+ 		@include cl(6);
+ 	}
+ }
+ @media screen and(min-width: 600px){
+ 	.lastBlog{
+ 		max-width: 400px;
+ 		.article{
+ 			@include c(12);
+ 			p{
+ 				height:300px;
+ 			} 
+ 		}
+ 	}
+ }
+ @media screen and(max-width: 800px){
  	h1{
  		font-size: 2.5em;
  	}
@@ -10,7 +47,7 @@
  	}
  	h3{
  		font-size: 2em;
- 		text-align: center;
+ 		
  	}
  	h4{
  		font-size: 1.2em;
@@ -18,30 +55,16 @@
  	.lastProject{
  		text-align: center;
  	}
- 	.p{
- 		@include cf( 12 );
- 		margin-bottom: 1em;
-
- 	}
+ 	
  	.menu{
  		h1{
  			display:none;
  		}
  	}
- 	.p + .p{
- 		@include c( 12 );
+ 	
+ 	
 
- 		
- 	}
-
- 	.article{
- 		@include c( 12 );
-
- 		h3{
- 			text-align: center;
- 		}
- 	}
- 	.infoSupp{
+ 	/* .infoSupp{
  		@include c( 6 );
  		text-align: center;
  		margin:0 auto;
@@ -49,11 +72,11 @@
  		overflow:hidden;
  		margin-top: 1em;
  		border-top:0;
- 	}
+ 	} */
 
 
  } 
- @media(min-width: 1200px){
+ @media screen and(min-width: 1200px){
  	.intro{
  		h1{
  			font-size: 68px;
@@ -78,8 +101,11 @@
  			}
  		}
  	}
+ 	.lastBlog{
+ 		@include cl(4);	
+ 	}
  }
- @media (min-width: 800px) and (max-width: 1200px){
+ @media screen and(min-width: 800px) and (max-width: 1200px){
  	h1{
  		font-size: 3em;
  	}
@@ -103,9 +129,13 @@
  			}
  		}
  	}
+ 	.lastBlog{
+ 		@include cl(6);	
+ 		
+ 	}
 
  } 
- @media (min-width: 900px) and (max-width: 1200px){
+ @media screen and(min-width: 900px) and (max-width: 1200px){
  	h1{
  		font-size: 3em;
  	}
@@ -119,11 +149,11 @@
  		font-size: 1.5em;
  	}
  }
- @media (min-width: 800px){
+ @media screen and(min-width: 800px){
  	body{
  		margin-bottom: 0;
  		padding-bottom: 0;
- 		padding-left: 100px;
+ 		padding-left: 150px;
  	}
  	.vcard{
  		@include cfl( 6 );
@@ -134,11 +164,13 @@
  		}
  	}
  	.lastBlog{
- 		.imageTheme{
- 			&:before{
- 				@include box-shadow(0 0 0 0);
- 			}
- 			display:block;
+ 		
+ 		.article{
+
+ 			p{
+
+ 				height:250px;
+ 			} 
  		}
  	}
  	.date{
@@ -189,11 +221,17 @@
  					height:50px;
  					text-indent: 1px;
  					@include translate(60px,0);
+ 					.no-cssanimations &{
+ 						display:block;
+ 					}
  				}
  				&:hover i{
  					@include single-transition(all,0.3s,ease-out,0.2s);
  					@include translate(60px,0);
  					opacity: 0;
+ 					.no-cssanimations &{
+ 						display:none;
+ 					}
  				}
  				a{
  					span{
@@ -205,6 +243,11 @@
  						line-height: 1em;
  						z-index: 10;
  						opacity:0;
+ 						.no-cssanimations &{
+ 							display:none;
+ 							left:0;
+ 							text-indent: 0;
+ 						}
  					}
  				}
 
@@ -337,6 +380,15 @@
  		input[type="submit"]{
  			width:auto;
  		}
+ 		input{
+ 			min-width: 600px;
+ 			width:auto;
+ 		}
+ 		textarea{
+ 			min-width: 600px;
+ 			width:auto;
+ 		}
  	}
  }
+
 

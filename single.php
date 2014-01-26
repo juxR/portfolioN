@@ -15,7 +15,7 @@
 
             <?php endif; // end have_posts() check ?>
         </section>
-        <?php comments_template(); ?>
+        <?php comments_template('', true);?>
     </section>
     <?php get_footer(); ?>
 

@@ -4,6 +4,10 @@
  * <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css" /> */
 
  @import "compass";
+ @import "normalize.css";
+
+ @import "font-awesome.min.css";
+ @import "animate.css";
  @import "compass/css3";
  //@import "colonnes";
  @import "variables";
@@ -17,13 +21,14 @@
  @include body();
  @include wrapper();
  @include form();
+ 
  body{
  	background-color: rgb(255,255,255);
- 	font-family: 'Lora',Rockwell, 'Helvetica Neue', Arial;
+ 	font-family: $ff;
  	font-size: 18px;
  	font-weight: normal;
  	line-height: 1.5;
- 	color:#333;
+ 	color:$tc;
  	padding-bottom: 50px;
  	font-smoothing:antialiased;
  	margin-bottom: 50px;
@@ -36,16 +41,87 @@
  		@include box-shadow(rgba(0,0,0,0.4) 0 0 10px 2px);
  	}
  }
- a{
- 	color:$gMain;
- 	&:hover{
- 		text-decoration: none;
+ .titreArticle{
+ 	font-size: 1.618em;
+ 	text-align: center;
+ }
+ iframe{
+ 	border:0!important;
+ }
+ .delete{
+ 	text-indent: -99999px;
+ 	top:-5px;
+ 	right:-5px;
+ 	margin-left: 0;
+ 	margin-top: 0!important;
+ 	position:absolute;
+ 	background-repeat: no-repeat;
+ 	background-image: image-url('close.png');
+ 	width:16px!important;
+ 	height:16px!important;
+ 	padding:0;
+ 	background-color: transparent!important;
+ 	&:hover,&:focus{
+ 		border:0;
+ 		@include box-shadow( 0 0 0 0);
  	}
+ }
+ .date{
+ 	padding:2px 0.5em;
+ 	background-color: lighten(red,15%);
+ 	@include border-radius(4px);
+ 	color:white;
+ 	display:inline-block;
+ 	width:auto;
+ 	font-weight: bold;
+ 	margin-top: 0.5em;
+ 	font-size: 0.8em;
+ 	text-align: center;
+
+ }
+
+ a{
+ 	color:$mc;
+ 	@include a();
  }
  .wrapper{
  	//padding:1em 1em 0.5em 1em;
  	overflow:hidden;
  	margin-bottom: 1em;
+ }
+ pre{
+ 	background-color: lighten($tc,5%)!important;
+ 	white-space: pre;       
+ 	width:100%!important;
+ 	white-space: pre-wrap;       
+ 	white-space: -moz-pre-wrap;  
+ 	white-space: -pre-wrap;      
+ 	white-space: -o-pre-wrap;   
+ 	display:block; 
+ 	word-wrap: break-word; 
+ 	color:white;
+ 	font-family: Menlo, Monaco, monospace;
+ 	padding:0!important;
+ 	font-weight: bold;
+ 	@include border-radius(0!important);
+ 	&:before{
+ 		background-color: #2672ec;
+ 		display:block;
+ 		visibility:visible;
+ 		font-family: $ff2;
+ 		font-size: 1.2em;
+ 		text-transform:uppercase;
+ 		padding:0 1em;
+ 		font-weight: bold;
+ 		content:attr(rel);
+ 	}
+ 	code{
+ 		padding:1em;
+ 		display:block;
+ 		@include box-sizing(border-box);
+
+
+ 	}
  }
  .wrapper:after{
  	clear: both;
@@ -71,15 +147,18 @@
  .linkedin,
  .twitter,
  .wordpress {
- 	background: url('../img/socialH-s6f05c78d5d.png') no-repeat;
- 	&:hover{
- 		background: url('../img/social-sde45399f23.png') no-repeat;
+ 	background: url('../img/social-s8e8e443951.png') no-repeat;
+ 	&:hover,&:focus,&:active{
+ 		background: url('../img/socialH-sa90d5faebb.png') no-repeat;
  	}
  }
  .social{
  	min-height: 60px;
  	@include horizontal-list();
  	overflow:visible;
+ 	a{
+ 		@include a(0,none);
+ 	}
  	ul{
  		text-align: center;
  		width:100%;
@@ -102,13 +181,28 @@
  				width:32px;
  				height:32px;
  				
+ 				
  			}
- 			&:hover{
- 				background-position: 0 -128px;
+ 			&:hover,&:focus,&:active{
+ 				background-position: 0 -96px;
  				//height: 64px;
  			}
  		}
  		li.gmail{
+ 			background-position: 0 0px;
+ 			a{
+ 				text-indent: -9999px;
+ 				display:block;
+ 				width:32px;
+ 				height:32px;
+ 			}
+ 			&:hover,&:focus,&:active{
+ 				background-position: 0 -128px;
+
+
+ 			}
+ 		}
+ 		li.linkedin{
  			background-position: 0 -96px;
  			a{
  				text-indent: -9999px;
@@ -116,47 +210,33 @@
  				width:32px;
  				height:32px;
  			}
- 			&:hover{
- 				background-position: 0 0;
-
-
- 			}
- 		}
- 		li.linkedin{
- 			background-position: 0 -64px;
- 			a{
- 				text-indent: -9999px;
- 				display:block;
- 				width:32px;
- 				height:32px;
- 			}
- 			&:hover{
- 				background-position: 0 -96px;
+ 			&:hover,&:focus,&:active{
+ 				background-position: 0 -64px;
  			}
  		}
  		li.twitter{
- 			background-position: 0 -32px;
+ 			background-position: 0 -96px;
  			a{
  				text-indent: -9999px;
  				display:block;
  				width:32px;
  				height:32px;
  			}
- 			&:hover{
+ 			&:hover,&:focus,&:active{
  				background-position: 0 -64px;
 
  			}
  		}
  		li.wordpress{
- 			background-position: 0 0;
+ 			background-position: 0 32px;
  			a{
  				text-indent: -9999px;
  				display:block;
  				width:32px;
  				height:32px;
  			}
- 			&:hover{
- 				background-position: 0 -32px;
+ 			&:hover,&:focus,&:active{
+ 				background-position: 0 0px;
 
  			}
  		}
@@ -221,11 +301,19 @@
  				@include single-transition(all,0.5s,ease,0.3s);
  				top:10px;
  				opacity: 1;
+ 				.no-cssanimations &{
+ 					display:block;
+ 					opacity: 1;
+ 				}
  			}
  			&:hover i{
  				@include single-transition(all,0.3s,ease-out,0.2s);
  				@include translate(0,-60px);
  				opacity: 0;
+ 				.no-cssanimations &{
+ 					display:none;
+ 					opacity: 1;
+ 				}
  			}
  			a{
  				display:block;
@@ -236,17 +324,25 @@
  				text-decoration: none;
  				z-index: 20;
  				pointer-events:auto;
-
+ 				@include a(0,none);
  				span{
  					//text-indent: -9999px;
  					position:absolute;
  					display:block;
+ 					font-weight: bold;
  					bottom:-60px;
  					width:100%;
  					line-height: 1em;
  					z-index: 10;
  					opacity:0;
  					pointer-events:none;
+ 					.no-cssanimations &{
+ 						display: none;
+ 						bottom:0;
+ 						opacity: 1;
+ 						text-indent: 0;
+
+ 					}
  				}
  				i{
  					font-size: 2.5em;
@@ -255,6 +351,10 @@
  					position:absolute;
  					z-index: 1;
  					pointer-events:none;
+ 					.no-cssanimations &{
+ 						display:block;
+ 					}
+
  				}
  			}
  		}
@@ -301,7 +401,7 @@
  	font-weight: 700;
  	font-style: normal;
  	letter-spacing: 0;
- 	line-height: 1.1em;
+ 	line-height: 1.1;
  	margin-top: 0;
  }
  h1{
@@ -322,10 +422,11 @@
 	display:block;
 	height:250px;
 	margin-bottom: 3em;
-	@include box-shadow(rgba(0,0,0,0.6) 0 50px 200px 5px inset);
+	@include box-shadow(rgba(0,0,0,0.3) 0 50px 200px 5px inset);
 	//background-color: #567782;
-	background-color: lighten($blue,5%);
+	background-color:$mc;
 	color:white;
+	background-image: image-url('noise.png');
 	@include box-sizing(border-box);
 	line-height: 250px;
 	text-align: center;
@@ -334,15 +435,16 @@
 		vertical-align: middle;
 		line-height: 1.2;
 		height:auto;
+		padding:0 1em;
 	}
 	h1{
 		margin-bottom: 0.5em;
-		//font-size: 68px;
-		font-size: 48px;
+		font-family: $ff2;
+		font-size: 38px;
 		@include text-shadow( 0 2px 0px  $greyDB);
 	}
 	.underTitle{
-		//font-size: 28px;
+		font-family: $ff2;
 		font-size: 18px;
 	}
 }
@@ -352,6 +454,7 @@
  	position:relative;
  	background-color: #FFF;
  	padding:0 1em;
+ 	height:auto;
  	overflow:hidden;
  	margin-bottom: 3em;
  	.image{
@@ -360,6 +463,7 @@
  	.titleIndex{
  		margin-bottom: 0;
  		font-size: 24px;
+ 		margin-left: gutter()/2;
  	}
  	hr{
  		border:0;
@@ -367,11 +471,13 @@
  		border-left: 50px solid #000;
  		background: $greyL2;
  		margin-bottom: 2em;
+ 		margin-left: gutter()/2;
  	}
  }
  .legend{
  	max-height: 50px;
  	overflow:hidden;
+ 	color:$tc;
  }
  .tools{
  	position:absolute;
@@ -385,67 +491,109 @@
  	a{
  		display:inline-block;
  		text-decoration: none;
+ 		@include a(0, none);
  	}
  	a + a {
  		margin-left: 1em;
  	}
  	i{
  		color:#FFF;
- 		font-size: 2em;
+ 		font-size: 1.5em;
  		margin:0.5em 0.5em 0.2em 0.5em;
  		width:40px;
+ 		@include box-sizing(border-box);
+ 		line-height: 40px;
  		height:40px;
- 		background-color: lighten($blue,10%);
- 		padding:10px;
+ 		background-color: $mc;
+ 		@include transition(all 0.3s ease);
  		@include border-radius(50%);
  		@include box-shadow (rgba(255,255,255,0.3) 0 0 5px 2px,rgba(0,0,0,0.5) 0 0 15px 0px inset);
  		
- 		&:hover,a:focus{
- 			background-color: $blue;
+ 		&:hover,a:focus,a:active{
+ 			background-color: $mcc;
+ 			@include transition(all 0.3s ease);
 
+ 		}
+ 		&:before{
+ 			vertical-align: middle;
+ 			display:inline;
  		}
  	}
  	span{
  		display:block;
  		color:black;
- 		font-size: 14px;
+ 		text-align: center;
+ 		font-size: 12px;
 
  	}
  }
  /*END LAST PROJECT*/
 /* ARTICLE */
 .lastBlog{
+	@include c(12);
 	text-align: left;
-	margin-bottom: 2em;
+	margin-bottom: $gutter*2;
+	@include transition(all 0.5s ease);
 	img{
 		margin:1em 0;
 	}
-}
-.infoSupp {
-	@include cfl-nm( 3 );
-	overflow:hidden;
-	text-align: left;
-	border-top:0.3em solid red;
-	padding-top: 1em;
-	span{
-		margin-top: 0.5em;
+	.titreArticle{
+		height: 70px;
+		overflow:hidden;
+		text-overflow:ellipsis;
+	}
+	h3{
+		
+		a{
+			color:$tc;
+			text-decoration: none;
+			@include a();
+		}
+	}
+	.article{
+		@include c(12);
+		
+		p{
+
+			text-overflow:ellipsis;
+			overflow:hidden;
+		} 
+	}
+	&:hover,&:focus,&:active{
+		/* .infoSupp{
+			height:0;
+			padding:0; 
+			@include transform(rotate3d(1, 0 , 0, 90deg));
+			@include transition(all 0.5s ease-in-out 0.1s);
+		} */
 	}
 }
+.infoSupp {
+	@include c(12);
+	@include transition(all 0.5s ease-in-out 0.3s);
+	overflow:hidden;
+	text-align: center;
+	border-top:5px solid $mc;
+	padding:1em 0;
+	height:300px;
+	margin-bottom: 1em;
+	background-color: $greyL;
+} 
 .article{
 	@include cr ( 9 );
-	border-top:0.3em solid red;
-	padding-top: 1em;
 	margin-left: gutter()*2;
 }
 .image img{
 	display:block;
 }
 .imageTheme{
-	float:left;
-	display:none;
+	@include c(12);
+	display:block;
+	max-width: 200px;
 	overflow:hidden;
+	height: 200px;
 	position:relative;
-	margin-top: 0.5em;
+	
 	&::before{
 		display:block;
 		position:absolute;
@@ -454,36 +602,40 @@
 		width:100%;
 		height:100%;
 		pointer-events:none;
-		@include box-shadow(rgba(0,0,0,0.2) 0 0 8px 1px inset);
 	}
 	a{
 		display:block;
 		width:100%;
-		height:100%;
+		min-height: 100%;
+		@include a(0,none);
+	}
+	figure{
+		height:200px;
+		position: relative;
 	}
 	img{
 		margin:0;
-		max-width: 100%;
-		display:block
+		width: 100%;
+		@include abs-bot();
+		display:block;
+		margin: auto;
+		@include box-shadow( 0 0 0 0);
 	}
-}
-time{
-	margin-top: 0.5em;
-	font-size: 1.2em;
 }
 .commentaire{
 	font-style: italic;
-
+	display:none;
 }
 .inf{
-	width:100%;
-	display:inline-block;
+	max-width:100%;
+	
 }
 ul{
 	list-style-type: none;
 }
 .social{
 	@include c( 12 );
+	display:none;
 	a{
 		max-width:100%;
 		display:inline-block;
@@ -520,31 +672,46 @@ ul{
 .p{
 	position:relative;
 	z-index:10;
-	@include cfl( 6 );
+	@include c( 12 );
 	margin-left: 0;
 	display:inline-block;
-	margin-right: gutter()*2;
 	text-align: center;
 	overflow: hidden;
-	min-width: 358px;
 	max-height:250px;
 	pointer-events:none;
+	&:hover  .image,&:focus  .image,&:active  .image{
 
-	&:hover,&:focus{
-		//@include box-shadow(rgba(0,0,0,0.4) 0 0 2px 2px);
-	}
-	&:hover > .image{
-		
-		@include transform( translate3d(0, -150px,0) );
+		@include transform( translate3d(0, -120px,0) );
 		@include transition(all 0.5s ease 0.2s);
 
 	}
-	&:hover > .caption{
+	&:hover  .caption,	&:focus  .caption,	&:active  .caption{
 
 		@include translate3d(0, -200px,0);
 		@include transition(all 0.5s ease 0.2s);
-
+		.no-cssanimations &{
+			display:block;
+		}
 	}
+	a{
+		display:block;
+		&:hover > .image,&:focus > .image,&:active > .image{
+
+			@include transform( translate3d(0, -120px,0) );
+			@include transition(all 0.5s ease 0.2s);
+
+		}
+		&:hover + .caption,	&:focus + .caption,	&:active + .caption{
+
+			@include translate3d(0, -200px,0);
+			@include transition(all 0.5s ease 0.2s);
+			.no-cssanimations &{
+				display:block;
+			}
+		}
+	}
+
+
 	&:after{
 		content:"";
 		clear:both;
@@ -553,24 +720,33 @@ ul{
 .p + .p{
 	@include cl ( 6 );
 	margin-right: 0;
-	margin-left: gutter()*2;
 
 }
 .p.impair{
 	margin-left: 0;
 }
+.tools{
+	a{
+		display:inline-block;
+	}
+}
 .caption{
 	position:relative;
 	z-index: 50;
 	height: 200px;
-	@include transition(all 0.3s ease-in 0.2s);
-	background-color: $caca;
-	float:left;
+	@include transition(all 0.4s ease-in 0.2s);
+	background-color: darken($greyL,5%);
+	//float:left;
 	width:100%;
 	padding:1em 0.5em;
-	box-sizing: border-box;
+	@include box-sizing(border-box);
 	pointer-events:auto;
 	//@include translate3d(0, 300px,0);
+	.no-cssanimations &{
+		display:none;
+		position:absolute;
+		bottom:0;
+	}
 }
 .p .image{
 	position:relative;
@@ -591,18 +767,19 @@ ul{
 	}
 	img{
 		width:100%;
-
+		min-height:100%;
 		display:block;
 	}
 
 }
 
 .section, .reader{
-	position:absolute;
-	text-indent: -999999px;
-	border-bottom:0;
+	position:absolute!important;
+	text-indent: -999999px!important;
+	border-bottom:0!important;
 	height:0;
 	width: 0;
+	@include a(0 , none);
 }
 body .sectionContent{
 	display:none;
@@ -612,12 +789,14 @@ body .sectionContent{
 	.titleIndex{
 		margin-bottom: 0;
 		font-size: 24px;
+		margin-left: gutter()/2;
 	}
 	hr{
 		border:0;
 		height: 1px;
 		border-left: 50px solid #000;
 		background: $greyL2;
+		margin-left: gutter()/2;
 		margin-bottom: 2em;
 	}
 
@@ -630,7 +809,7 @@ body .sectionContent{
 	border-top:1em solid lighten($black,40%);
 	color:black;
 	margin-top: 0;
-	box-sizing: border-box;
+	@include box-sizing(border-box);
 	font-size: 14px;
 	.titleIndex{
 		margin-bottom: 0;
@@ -645,6 +824,7 @@ body .sectionContent{
 	}
 	a{
 		color:white;
+		@include a(white);
 	}
 	h1,h2,h3,h4,h5,h6{
 		color:white;
@@ -757,9 +937,24 @@ address{
 /*END VCARD*/
 /* Random style */
 .btn{
-	background-color: $gMain;
+	background-color: $mc;
+	border:1px solid $mcc;
 	@include btn();
+	position:relative;
 	font-weight: bold;
+	@include transition(all 0.3s ease 0.1s);
+	@include a(0,none);
+	&:hover,&:focus,&:active{
+		@include transition(all 0.3s ease);
+		text-indent: 10px;
+		
+		&:before{
+			font-family: FontAwesome;
+			content:"\f0da";
+			display:block;
+			float:left;
+		}
+	}
 }
 /*END RS*/
 /*ONE ARTICLE*/
@@ -779,23 +974,13 @@ address{
 		margin: auto;
 		padding:3em 0;
 		text-align: left;
+
 		border-bottom: 1px solid $greyL2;
-	}
-	.date{
-		padding:2px 0.5em;
-		background-color: lighten(red,15%);
-		@include border-radius(4px);
-		color:white;
-		display:block;
-		width:auto;
-		font-weight: bold;
-		margin-top: 0.5em;
-		text-align: center;
 	}
 	.infoSupp{
 		@include c(12);
 		max-width: 800px;
-
+		
 
 	}
 	img{
@@ -803,26 +988,14 @@ address{
 		margin:1em auto;
 	}
 }
-.date{
-	display:block;
-	margin: auto;
-	text-align: center;
-	font-size: 0.8em;
-	margin-bottom: 2em;
-	time{
-		font-size: 1em;
-	}
-}
+
 /*END ONE*/
 /* PROJETS */
 .projets{
 	@extend .lastProject;
 	padding:0 1em;
 	.p{
-		background-image: url('../img/tri.png');
-		background-attachment:fixed;
-		background-repeat:no-repeat;
-		background-position: right top;
+		max-width:500px;
 		@include c(12);
 		margin-bottom: 1em;
 		.image{
@@ -893,11 +1066,23 @@ address{
 		background-image: url('../img/triWeb.png');
 		background-position:100% 0;
 		background-size: cover;
+		pointer-events:none;
+		z-index:20;
+		.no-backgroundsize &{
+			background-image: url('../img/triWeb-IE.png');
+			background-position:top right;
+		}
 	}
 	.print{
 		background-image: url('../img/triPrint.png');
 		background-position:100% 0;
 		background-size: cover;
+		pointer-events:none;
+		z-index:20;
+		.no-backgroundsize &{
+			background-image: url('../img/triPrint-IE.png');
+			background-position:top right;
+		}
 	}
 
 }
@@ -934,13 +1119,15 @@ address{
 		margin-bottom: 0.5em;
 	}
 	.control-map{
-
+		.no-geolocation &{
+			display:none;
+		}
 		input{
 			width:100%;
 			font-weight: 300;
 			padding:0.3em 0.5em;
 			border:1px solid $lightBlack;
-			box-sizing:border-box;
+			@include box-sizing(border-box);
 			margin-bottom: 0.3em;
 			@include transition(all 0.3s ease);
 			&:hover,&:focus{
@@ -955,7 +1142,7 @@ address{
 			border:none;
 			min-height: 35px;
 			width:100%;
-			box-sizing:border-box;
+			@include box-sizing(border-box);
 			margin-top: 5px;
 			@include transition( all 0.3s ease);
 			&:hover{
@@ -993,7 +1180,7 @@ address{
 		font-size: 1em;
 		font-weight: 300;
 		width:100%;
-		box-sizing: border-box;
+		@include box-sizing(border-box);
 		padding:0.3em 0.5em;
 		border:1px solid $lightBlack;
 		margin-bottom: 1em;
@@ -1045,6 +1232,7 @@ address{
 /* PROJET */
 .projet{
 	margin-top: 1em;
+	padding:1em;
 	h3{
 		text-align: center;
 		//margin-top: 1em;
@@ -1053,6 +1241,13 @@ address{
 		text-align: center;
 		margin-bottom: 0.5em;
 		margin-top: 1em;
+		.thumbnail{
+			@include c(12);
+			img{
+				margin:0;
+				max-width: 100%;
+			}
+		}
 	}
 	p{
 		text-align:left;
@@ -1060,8 +1255,8 @@ address{
 		//margin-bottom: 0.5em;
 		margin-top: 0;
 		margin-bottom: 0;	
-			&:last-child{
-				margin-bottom: 1em;
+		&:last-child{
+			margin-bottom: 1em;
 			border-bottom: 1px solid $greyL2;
 		}
 		.thumbnail{
@@ -1120,29 +1315,32 @@ address{
 	img{
 		//float:right;
 		margin: 0 0 1em 1em;
+		max-width: 100%;
 	}
 	.social{
 		display:inline-block;
 		width:auto;
+		
 	}	
 	.projetLive{
 		
 		max-width: 200px;
 		display:block;
-		margin: auto;
+		margin: 1em auto;
 		text-align: center;
 		background-color: yellow;
 
 
 		a{
 			
-			box-sizing:border-box;
+			@include box-sizing(border-box);
 			width:100%;
 			display:inline-block;
 			font-weight: 700;
 			@include btn();
 			color:#333;
 			text-decoration: none;
+			
 		}
 		
 
@@ -1253,14 +1451,29 @@ address{
 	label{
 		margin-bottom: 0;
 		font-weight: bold;
+		display:block;
 	}
 	textarea{
 		padding:0.5em;
 		margin:0;
 		min-height: 100px;
+		width:100%;
 		border:1px solid $greyL2;
 		max-width: 100%;
 		@include box-sizing(border-box);
+	}
+	input{
+		padding:0.5em;
+		margin:0;
+		width:100%;
+		border:1px solid $greyL2;
+		@include box-sizing(border-box);
+		&:focus:valid{
+			border:1px solid green;
+		}
+		&:focus:invalid{
+			border:1px solid red;
+		}
 	}
 	input[type="submit"]{
 		padding:0.5em;
@@ -1280,8 +1493,31 @@ address{
 			@include transition(all 0.3s ease);
 		}
 	}
+	.formRep{
+		display:none;
+		position:fixed;
+		top:0;
+		left:0;
+		right:0;
+		bottom:0;
+		width:600px;
+		height:450px;
+		@include box-shadow($greyL2 0 0 40px 0);
+		margin: auto;
+		background-color: $greyL;
+		border:1px solid $greyD;
+		padding:1em;
+		@include border-radius(1em);
+	}
 
 }
+.children{
+	@include c(10);
+	@include offsetL(2);
+	padding:1em;
+	background-color: $greyL;
+}
+
 /* END COMMENTS*/
 /* LISTE ARTICLE */
 .listArticles{

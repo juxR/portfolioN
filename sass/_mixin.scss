@@ -4,7 +4,7 @@
     max-width: $mw;
     overflow: hidden;
     margin: auto;
-    height: 100%;
+    height: auto;
     box-sizing: border-box;
     @include c(12);
     //margin-bottom: 1em;
@@ -12,6 +12,62 @@
       @include clear();
     }
   }
+}
+@mixin a( $color:$tc, $none:"" ){
+
+
+  @if($none == ""){
+    border-bottom: 1px dotted #{$color};
+    position: relative;
+    overflow:visible;
+    text-decoration: none;
+    display: inline-block;
+    @include transition(all 0.3s ease);
+    &:after{
+      content:"";
+      @include opacity(0);
+      @include abs-right();
+      @include box-sizing(border-box);
+      right: -5px;
+      border-right: 1px solid #{$color};
+      @include transition(all 0.3s ease);
+    }
+    &:before{
+      content:"";
+      @include abs-left();
+      @include opacity(0);
+      @include box-sizing(border-box);
+      left: -5px;
+      border-left: 1px solid #{$color};
+      @include transition(all 0.3s ease);
+    }
+    &:hover,&:focus,&:active{
+      text-decoration: none;
+      border-bottom: 1px dotted transparent;
+      &:after{
+        @include opacity(1);
+        @include transition(all 0.3s ease);
+      }
+      &:before{
+       @include opacity(1);
+
+       @include transition(all 0.3s ease);
+     }
+
+   }
+ }@else{
+  border-bottom:0!important;
+  &:before{
+    border-left: 0!important;
+    position: static;
+    left:auto;
+  }
+  &:after{
+    border-right: 0!important;
+    position: static;
+    right:auto;
+  }
+}
 }
 @mixin body() {
   body {
@@ -34,7 +90,7 @@
     min-height: 100%;
   }
   p {
-    margin: 0.5em 0;
+    margin:0 0 1em 0;
     line-height: 1.5;
     font-family: $ff;
   }
@@ -43,15 +99,18 @@
 @mixin btn(){
   color:white;
   padding:5px 10px;
-  border:0;
   display:inline-block;
   text-decoration: none;
   @include border-radius(5% 5%);
 
   &:hover{
     @include box-shadow(rgba(0,0,0,0.2)0 0 6px 2px);
+    .no-boxshadow &{
+      background-color: darken($gMain,10%);
+    }
 
   }
+
 }
 @mixin mhb-p($height, $item) {
   background-color: $grey;
@@ -133,6 +192,67 @@
     margin:1em;
   }
 }
+@mixin abs() {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  margin: auto;
+}
+
+@mixin abs-left($left:0) {
+  position: absolute;
+  left: $left;
+  //right:0;
+  top: 0;
+  bottom: 0;
+  margin: auto;
+}
+
+@mixin abs-top() {
+  position: absolute;
+  left: 0;
+  right:0;
+  top: 0;
+  //bottom: 0;
+  margin: auto;
+}
+
+@mixin abs-right() {
+  position: absolute;
+  //left:0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  margin: auto;
+}
+
+@mixin abs-top-left() {
+  position: absolute;
+  left: 0;
+  //right:0;
+  top: 0;
+  //bottom:0;
+  margin: auto;
+}
+@mixin abs-top-right() {
+  position: absolute;
+  //left: 0;
+  right:0;
+  top: 0;
+  //bottom:0;
+  margin: auto;
+}
+
+@mixin abs-bot() {
+  position: absolute;
+  left: 0;
+  right: 0;
+  //top:0;
+  bottom: 0;
+  margin: auto;
+}
 @mixin clear() {
   content: "";
   display: block;
@@ -170,8 +290,8 @@
 @mixin cl($nNumber) {
 
   width: col($nNumber);
-  margin-left: gutter();
-  margin-right: gutter();
+  margin-left: gutter() / 2;
+  margin-right: gutter() / 2;
   float: left;
   display: block;
   @include box-sizing(border-box);
@@ -205,8 +325,8 @@
 
   width: colf($nNumber);
   float: left;
-  margin-left: gutter();
-  margin-right: gutter();
+  margin-left:0;
+  margin-right: gutter()/2;
   display: block;
   @include box-sizing(border-box);
   //margin-top:0; 

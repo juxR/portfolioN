@@ -1,10 +1,22 @@
-;(function( $ )
-{
+;(function( $ ){
 	var $value,
 	$showType,
 	$nImage;
 
 	$(function(){
+		$('.comment-reply-link').on('click',function( e ){
+			e.preventDefault();
+			var mouseX = e.pageX;
+			var mouseY = e.pageY;
+			$id = $(this).parent().parent().parent().attr('data-id');
+			console.log($('.formRep #comment_parent').val($id));
+			$('.formRep').fadeIn().end().css({'top':mouseY});
+		});
+		$('a[rel="external"').attr('target','_new');
+		
+		$('.delete').on('click',function( e ){
+			$(this).parent().parent().fadeOut('fast');
+		});
 
 		$('.tri a').on("click", function( e ){
 			$value = $(this).html()

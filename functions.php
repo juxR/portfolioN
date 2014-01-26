@@ -23,12 +23,44 @@ if (function_exists('add_theme_support')) {
 add_action( 'init', 'register_my_menus' );
 add_action( 'init', 'create_post_type' );
 add_action( 'restrict_manage_posts', 'olab_add_image_category_filter' );
+add_action( 'comment_form_before', 'xtreme_enqueue_comments_reply' );
 
 function remove_width_attribute( $html ) {
  $html = preg_replace( '/(width|height)="\d*"\s/', "", $html );
  return $html;
 }
-function olab_add_image_category_filter() {
+function myComms($comment, $args, $depth){
+  ?>
+  <li class="comment" data-id="<?php comment_ID() ?>" id="comment-<?php comment_ID() ?>">
+
+    <div class="comment-header">
+      <div class="photoAuthor">
+        <?php  echo get_avatar( get_the_author_id(), $size = '60' );?>
+      </div> 
+      <div class="vcardComment">
+       <p class="comment-name" ><?php comment_author_link() ?></p> <a class="comment-date" href="#comment-<?php comment_ID() ?>" title="Cibler le commentaire"><?php comment_date('d M Y') ?> <?php _e('&agrave;');?> <?php comment_time('G:i') ?></a> <?php edit_comment_link('Modifier le commentaire','',''); ?>
+
+       <?php  comment_reply_link(array_merge( $args, array('depth' => $depth, 'max_depth' => $args['max_depth']))); ?> 
+     </div>
+
+     <div class="textComment">
+       <?php comment_text(); ?>
+     </div>
+
+   </li>
+
+
+   <?php /* Changes every other comment to a different class */
+   if ('comment' == $oddcomment) $oddcomment = '';
+   else $oddcomment = 'comment';
+
+ }
+ function xtreme_enqueue_comments_reply() {
+  if( get_option( 'thread_comments' ) )  {
+    wp_enqueue_script( 'comment-reply' );
+  }
+}
+ function olab_add_image_category_filter() {
   $screen = get_current_screen();
   if ( 'upload' == $screen->id ) {
     $dropdown_options = array( 'show_option_all' => __( 'View all categories', 'olab' ), 'hide_empty' => false, 'hierarchical' => true, 'orderby' => 'name', );
@@ -97,7 +129,7 @@ function create_post_type() {
      'supports' => array('title','custom-fields')
      )
     );
-     register_post_type( 'conseil',
+  register_post_type( 'conseil',
     array(
      'labels' => array(
       'name' => __( 'Conseil' ),
@@ -111,7 +143,7 @@ function create_post_type() {
      'supports' => array('title','custom-fields')
      )
     );
-     register_post_type( 'reseaux',
+  register_post_type( 'reseaux',
     array(
      'labels' => array(
       'name' => __( 'Reseaux' ),
@@ -212,7 +244,7 @@ class Custom_Walker_Nav_Menu extends Walker_Nav_Menu {
       if ( ! empty( $value ) ) {
         $value = ( 'href' === $attr ) ? esc_url( $value ) : esc_attr( $value );
         $title = 'Aller sur cette page';
-        $attributes .= ' ' . $attr . '="' . $value . '"'. 'title="'. $title .'"';
+        $attributes .= ' ' . $attr . '="' . $value . '"'. ' title="'. $title .'"';
       }
     }
 
