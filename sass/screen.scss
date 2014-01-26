@@ -85,7 +85,7 @@
  .wrapper{
  	//padding:1em 1em 0.5em 1em;
  	overflow:hidden;
- 	margin-bottom: 1em;
+ 	margin-bottom: $gutter;
  }
  pre{
  	background-color: lighten($tc,5%)!important;
@@ -153,7 +153,7 @@
  			height: 60px;
  			width: 48px;
  			display: inline-block;
- 			//line-height: 48px;
+ 			line-height: 60px;
  			&:before{
  				font-family: $ffi;
  				text-indent: 0px;
@@ -161,6 +161,10 @@
  				font-size: 48px;
  				vertical-align: middle;
  				display: block;
+ 			}
+ 			&:hover,&:focus,&:active{
+ 				border-bottom: 0;
+ 				@include translateY(-10px);
  			}
  		}
  	}
@@ -252,6 +256,8 @@
  	position: fixed;
  	height: 50px;
  	line-height: 50px;
+ 	border-bottom: 1px solid $mcc;
+ 	@include box-shadow($greyD 0 0 5px 0);
  	a{
  		padding:0 1em;
  		background-color: $mc;
@@ -279,23 +285,22 @@
  }
  .menu-main-container{
  	width:100%;
- 	min-width: 300px;
  	@include box-sizing(border-box);
- 	@include abs-left();
+ 	@include abs-top();
+ 	margin-top: 50px;
  	position:fixed;
  	height: 100%;
  	background-color: white;
  	background-image: image-url('motif.png');
- 	border-right: 1px solid $mc;
  	z-index: 100;
- 	bottom:0;
+ 	bottom:auto;
  	font-family: $ff2;
  	top:0;
+ 	overflow:hidden;
+ 	border-bottom: 2px solid $mc;
+ 	@include box-shadow($greyD 0 0 5px 0);
  	left:0;
- 	width:200px;
- 	height: 100%;
- 	min-width: 0;
- 	padding:2em 0;
+ 	height: auto;
  	display: none;
  	.logo{
  		background-image: url('../img/logo.png');
@@ -323,25 +328,24 @@
 
  		margin: auto;
  		padding:0;
- 		display: inline-block;
+ 		display: block;
  		text-align: center;
  		position: relative;
  		overflow:hidden;
- 		width:200px;
+ 		width:100%;
  		height:auto;
  		li{
  			display:block;
  			float:left;
  			height:60px;
  			padding:8px 0;
- 			width:19%;
  			position:relative;
  			cursor:pointer;
  			
  			width:100%;
  			float:none;
  			height:50px;
- 			margin-bottom: 20%;
+ 			margin-bottom: $gutter;
 
  			a{
  				display:block;
@@ -353,7 +357,11 @@
  				z-index: 20;
  				pointer-events:auto;
  				@include a(0,none);
+ 				padding:6px 0;
+ 				@include box-sizing(border-box);
  				@include transition(all 0.3s ease);
+ 				border-top:1px solid transparent;
+ 				border-bottom:1px solid transparent;
  				.title{
 
  					font-weight: 500;
@@ -392,7 +400,10 @@
  					}
  				}
  				&:hover,&:focus,&:active{
+ 					background-color: white;
  					color:$mc;
+ 					border-top:1px solid $mcc;
+ 					border-bottom:1px solid $mcc;
  					@include transition(all 0.3s ease);
  					.icon{
  						color:$mc;
@@ -478,7 +489,6 @@
  	padding:0 1em;
  	height:auto;
  	overflow:hidden;
- 	margin-bottom: 3em;
  	.image{
  		@include box-shadow( 0 0 0 0);
  	}
@@ -554,13 +564,13 @@
 .lastBlog{
 	@include c(12);
 	text-align: left;
-	margin-bottom: $gutter*2;
+	margin-bottom: $gutter;
 	@include transition(all 0.5s ease);
 	img{
 		margin:1em 0;
 	}
 	.titreArticle{
-		height: 70px;
+		height: 60px;
 		overflow:hidden;
 		display: inline-block;
 		margin-right: auto;
@@ -732,8 +742,8 @@ ul{
 		//	@include transform( translate3d(0, -150px,0) );
 		//	@include transition(all 0.5s ease 0.2s);
 
-		}
-		&:hover + .caption,	&:focus + .caption,	&:active + .caption{
+	}
+	&:hover + .caption,	&:focus + .caption,	&:active + .caption{
 
 			//@include translate3d(0, -200px,0);
 			//@include transition(all 0.5s ease 0.2s);
@@ -815,7 +825,7 @@ body .sectionContent{
 	padding:0 1em;
 	.titleIndex{
 		margin-bottom: 0;
-		font-size: 24px;
+		font-size: 28px;
 		margin-left: gutter()/2;
 		margin-right: gutter()/2;
 	}

@@ -13,7 +13,7 @@
 			$('.formRep').fadeIn().end().css({'top':mouseY});
 		});
 		$('a[rel="external"').attr('target','_new');
-		$('.menuToggle').on('click',openMenu);
+		$('.menuToggle').on('click',menu);
 		$('.delete').on('click',function( e ){
 			$(this).parent().parent().fadeOut('fast');
 		});
@@ -77,10 +77,12 @@
 			
 		});
 });
-var openMenu = function( e ){
+var menu = function( e ){
 	e.preventDefault();
-	console.log('open');
-}
+	$('.menu-main-container').slideToggle();
+};
+
+
 
 
 }).call(this, jQuery);

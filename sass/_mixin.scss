@@ -16,7 +16,7 @@
 @mixin a( $color:$tc, $none:"" ){
 
 
-  @if($none == ""){
+  @if($none!="none"){
     border-bottom: 1px dotted #{$color};
     position: relative;
     overflow:visible;
@@ -56,16 +56,16 @@
 
    }
  }@else{
-  border-bottom:0!important;
+  border-bottom:0;
   &:before{
-    border-left: 0!important;
+    border-left: 0;
     position: static;
     left:auto;
     @include opacity(1);
   }
   &:after{
     content:none;
-    border-right: 0!important;
+    border-right: 0;
     position: static;
     right:auto;
     @include opacity(1);
