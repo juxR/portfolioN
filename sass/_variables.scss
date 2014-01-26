@@ -1,7 +1,5 @@
 @import "compass";
 
-$mWidth: 1200px;
-
 $black:rgb(100,100,100);
 
 $lightBlack:rgba(100,100,100,0.4);
@@ -32,13 +30,17 @@ $bh:1px solid #eee;
 
 $ff: palatino, 'palatino lt std', 'palatino linotype', 'book antiqua', garamond, serif;
 
-$ff2: 'Lora',Rockwell, 'Helvetica Neue', Arial;
+$ff2: helvetica, 'Helvetica Neue', Arial, sans-serif;
+
+$ffi: FontAwesome;
 
 $fs:15px; //font-size
 
 $lh:1.5; //line-height
 
 $tc: rgb(68,68,68); //text-color 333333
+
+$menu: #f7f7f4;
 
 $success :rgb(20,180,50);
 

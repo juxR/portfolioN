@@ -13,7 +13,7 @@
 			$('.formRep').fadeIn().end().css({'top':mouseY});
 		});
 		$('a[rel="external"').attr('target','_new');
-		
+		$('.menuToggle').on('click',openMenu);
 		$('.delete').on('click',function( e ){
 			$(this).parent().parent().fadeOut('fast');
 		});
@@ -77,6 +77,10 @@
 			
 		});
 });
+var openMenu = function( e ){
+	e.preventDefault();
+	console.log('open');
+}
 
 
 }).call(this, jQuery);

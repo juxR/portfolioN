@@ -11,14 +11,14 @@
     </div>
     <div class="wrapper">
       <div class="lastArticle">
-       <h4 class="titleIndex" aria-level="4" role="heading" >Dernières lectures</h4>
+       <h3 class="titleIndex" aria-level="3" role="heading" >Dernières lectures</h3>
        <hr/>
        <?php $args = array( 'post_type' => 'liens', 'posts_per_page' => 4 ,'orderby'=>'rand');
        $loop = new WP_Query( $args );
        if($loop->have_posts()):
         ?><ul><?php
        while ( $loop->have_posts() ) : $loop->the_post();?>
-       <li><a href="<?php the_field('url')?>" title="Aller sur l'article"><?php the_title(); ?></a></li> 
+       <li><a href="<?php the_field('url')?>" title="Aller sur l'article <?php the_title(); ?>"><?php the_title(); ?></a></li> 
        <?endwhile;
 
        ?></ul><?php
@@ -28,14 +28,14 @@
      wp_reset_query();?>
      </div>
      <div class="usefull">
-       <h4 aria-level="4" role="heading" class="titleIndex">Liens utiles</h4>
+       <h3 aria-level="3" role="heading" class="titleIndex">Liens utiles</h3>
        <hr/>
        <?php $args = array( 'post_type' => 'conseil', 'posts_per_page' => 4,'orderby'=>'rand' );
        $loop = new WP_Query( $args );
        if($loop->have_posts()):
         ?><ul><?php
        while ( $loop->have_posts() ) : $loop->the_post();?>
-       <li><a href="<?php the_field('url')?>" title="Aller sur le lien"><?php the_title(); ?></a></li>   
+       <li><a href="<?php the_field('url')?>" title="Aller sur le lien <?php the_title(); ?>"><?php the_title(); ?></a></li>   
        <?endwhile;
        ?></ul><?php
        else:?>
@@ -44,7 +44,7 @@
      wp_reset_query(); ?>
      </div>
      <div class="footer reseaux social">
-       <h4 aria-level="4" role="heading" class="titleIndex">Retrouvez moi la-bas !</h4>
+       <h3 aria-level="3" role="heading" class="titleIndex">Retrouvez moi la-bas !</h3>
        <hr/>
        <ul >
        <?php $args = array( 'post_type' => 'reseaux','posts_per_page' => 5);
@@ -52,7 +52,7 @@
        if($loop->have_posts()):
        while ( $loop->have_posts() ) : $loop->the_post();?>
 
-         <li class="<?php echo strtolower(get_the_title()); ?> animated bounce"><a href="<?php the_field('url'); ?>" title="Aller sur ma page <?php the_title(); ?>"><?php the_title(); ?></a></li>
+         <li class="<?php echo strtolower(get_the_title()); ?>"><a href="<?php the_field('url'); ?>" title="Aller sur ma page <?php the_title(); ?>"></a></li>
          
        <?endwhile;
        else:?>

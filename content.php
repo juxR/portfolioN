@@ -12,11 +12,11 @@
     
   </footer>
   <div itemprop="text" class="article">
-    <h3 aria-level="3" role="heading" itemprop="headline" class="titreArticle"><a href="<?php the_permalink(); ?>" title="Voir l'article en entier"><?php the_title(); ?></a></h3>
+    <h4 aria-level="4" role="heading" itemprop="headline" class="titreArticle"><a href="<?php the_permalink(); ?>" title="Voir l'article en entier"><?php the_title(); ?></a></h4>
 
-     <?php the_excerpt(); ?>
+    <?php the_excerpt(); ?>
 
-   <a class="btn" itemprop="url" href="<?php the_permalink(); ?>" >Lire la suite</a>
- </div>
+    <p class="button"> <a class="btn" itemprop="url" href="<?php the_permalink(); ?>" >Lire la suite</a></p>
+  </div>
 
 </article> 

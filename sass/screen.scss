@@ -5,7 +5,6 @@
 
  @import "compass";
  @import "normalize.css";
-
  @import "font-awesome.min.css";
  @import "animate.css";
  @import "compass/css3";
@@ -13,7 +12,7 @@
  @import "variables";
  @import "mixin";
  @import "lightbox";
- @import url("http://fonts.googleapis.com/css?family=Lora:400,700,400italic");
+ //@import url("http://fonts.googleapis.com/css?family=Lora:400,700,400italic");
  @import "social/*.png";
  @include all-social-sprites;
  @import "socialH/*.png";
@@ -29,9 +28,8 @@
  	font-weight: normal;
  	line-height: 1.5;
  	color:$tc;
- 	padding-bottom: 50px;
  	font-smoothing:antialiased;
- 	margin-bottom: 50px;
+ 	margin-top: 50px;
  	height:100%;
  	//background-color: $greyL2;
  	text-rendering:optimizeLegibility;
@@ -142,104 +140,92 @@
  	}
  }
  /* SOCIAL */
- .facebook,
- .gmail,
- .linkedin,
- .twitter,
- .wordpress {
- 	background: url('../img/social-s8e8e443951.png') no-repeat;
- 	&:hover,&:focus,&:active{
- 		background: url('../img/socialH-sa90d5faebb.png') no-repeat;
- 	}
- }
  .social{
- 	min-height: 60px;
- 	@include horizontal-list();
- 	overflow:visible;
- 	a{
- 		@include a(0,none);
+ 	li{
+ 		float:left;
+ 		width: 48px;
+ 		margin-left: gutter()/2;
+ 		margin-right: gutter()/2;
  	}
- 	ul{
- 		text-align: center;
- 		width:100%;
- 		overflow:visible;
-
- 		li{
- 			display:inline-block;
- 			width:32px;
- 			height: 32px;
- 			float:none;
- 			margin-top:5px;
-
- 		}
- 		li.facebook{
- 			background-position: 0 -128px;
-
- 			a{
- 				text-indent: -9999px;
- 				display:block;
- 				width:32px;
- 				height:32px;
- 				
- 				
- 			}
- 			&:hover,&:focus,&:active{
- 				background-position: 0 -96px;
- 				//height: 64px;
+ 	.linkedin{
+ 		a{
+ 			@include a(0,none);
+ 			height: 60px;
+ 			width: 48px;
+ 			display: inline-block;
+ 			//line-height: 48px;
+ 			&:before{
+ 				font-family: $ffi;
+ 				text-indent: 0px;
+ 				content:"\f08c";
+ 				font-size: 48px;
+ 				vertical-align: middle;
+ 				display: block;
  			}
  		}
- 		li.gmail{
- 			background-position: 0 0px;
- 			a{
- 				text-indent: -9999px;
- 				display:block;
- 				width:32px;
- 				height:32px;
- 			}
- 			&:hover,&:focus,&:active{
- 				background-position: 0 -128px;
-
-
+ 	}
+ 	.facebook{
+ 		@extend .linkedin;
+ 		a{
+ 			&:before{
+ 				content:"\f082";
  			}
  		}
- 		li.linkedin{
- 			background-position: 0 -96px;
- 			a{
- 				text-indent: -9999px;
- 				display:block;
- 				width:32px;
- 				height:32px;
- 			}
- 			&:hover,&:focus,&:active{
- 				background-position: 0 -64px;
- 			}
- 		}
- 		li.twitter{
- 			background-position: 0 -96px;
- 			a{
- 				text-indent: -9999px;
- 				display:block;
- 				width:32px;
- 				height:32px;
- 			}
- 			&:hover,&:focus,&:active{
- 				background-position: 0 -64px;
 
+ 	}
+ 	.github{
+ 		@extend .linkedin;
+ 		a{
+ 			&:before{
+ 				content:"\f09b";
  			}
  		}
- 		li.wordpress{
- 			background-position: 0 32px;
- 			a{
- 				text-indent: -9999px;
- 				display:block;
- 				width:32px;
- 				height:32px;
- 			}
- 			&:hover,&:focus,&:active{
- 				background-position: 0 0px;
 
+ 	}
+ 	.twitter{
+ 		@extend .linkedin;
+ 		a{
+ 			&:before{
+ 				content:"\f081";
  			}
  		}
+
+ 	}
+ 	.bitbucket{
+ 		@extend .linkedin;
+ 		a{
+ 			&:before{
+ 				content:"\f172";
+ 			}
+ 		}
+
+ 	}
+ 	.dribble{
+ 		@extend .linkedin;
+ 		a{
+ 			&:before{
+ 				content:"\f17d";
+ 			}
+ 		}
+
+ 	}
+ 	.youtube{
+ 		@extend .linkedin;
+ 		a{
+ 			&:before{
+ 				content:"\f167";
+ 			}
+ 		}
+
+ 	}
+ 	.rss{
+ 		@extend .linkedin;
+ 		a{
+ 			&:before{
+ 				content:"\f143";
+ 			}
+ 		}
+
  	}
  }
 /*END SOLCIAL*/
@@ -256,15 +242,61 @@
  	padding-bottom: 5px;
  	border-bottom: 1px solid $caca;
  }
- .menu{
+ .menuToggle{
+ 	
+ 	overflow:hidden;
+ 	z-index: 1000;
+ 	@include abs-top();
+ 	width: 100%;
+ 	@include box-sizing(border-box);
+ 	position: fixed;
+ 	height: 50px;
+ 	line-height: 50px;
+ 	a{
+ 		padding:0 1em;
+ 		background-color: $mc;
+ 		display: block;
+ 		height: 100%;
+ 		@include a(0,none);
+ 		span{
+ 			color:white;
+ 			float:right;
+ 			font-family: $ff2;
+ 			font-weight: bold;
+ 			vertical-align: middle;
+ 			&:after{
+ 				font-size: 1.3em;
+ 				font-family: $ffi;
+ 				margin-left: $gutter;
+ 				content:"\f0c9";
+
+ 			}
+ 		}
+ 		&:hover,&:focus,&:active{
+ 			background-color: darken($mc,5%);
+ 		}
+ 	}
+ }
+ .menu-main-container{
  	width:100%;
  	min-width: 300px;
+ 	@include box-sizing(border-box);
+ 	@include abs-left();
  	position:fixed;
- 	bottom:0;
- 	height: 50px;
- 	background-color: $blackMain;
- 	@include box-shadow( black 0  0  10px  1px);
+ 	height: 100%;
+ 	background-color: white;
+ 	background-image: image-url('motif.png');
+ 	border-right: 1px solid $mc;
  	z-index: 100;
+ 	bottom:0;
+ 	font-family: $ff2;
+ 	top:0;
+ 	left:0;
+ 	width:200px;
+ 	height: 100%;
+ 	min-width: 0;
+ 	padding:2em 0;
+ 	display: none;
  	.logo{
  		background-image: url('../img/logo.png');
  		background-size:contain;
@@ -274,126 +306,116 @@
  		height:50px;
  	}
  	.active{
- 		background-color: lighten($blackMain,10%);
+ 		.title{
+ 			color:$mc;
+ 		}
+ 		.icon{
+ 			color:$mc;
+ 			&:before{
+ 				background-color:$mc;
+ 			}
+ 			&:after{
+ 				background-color:$mc;
+ 			}
+ 		}
  	}
  	ul{
+
  		margin: auto;
  		padding:0;
+ 		display: inline-block;
  		text-align: center;
- 		height: 50px;
+ 		position: relative;
  		overflow:hidden;
- 		
+ 		width:200px;
+ 		height:auto;
  		li{
  			display:block;
  			float:left;
- 			height:100%;
+ 			height:60px;
  			padding:8px 0;
  			width:19%;
  			position:relative;
  			cursor:pointer;
+ 			
+ 			width:100%;
+ 			float:none;
+ 			height:50px;
+ 			margin-bottom: 20%;
 
- 			&:hover{
- 				background-color: lighten($blackMain,5%);
- 				margin-bottom: 100px;
- 				//@include single-box-shadow($gMain, 0, 2px, 0, 0, inset);
- 			}
- 			&:hover span{
- 				@include single-transition(all,0.5s,ease,0.3s);
- 				top:10px;
- 				opacity: 1;
- 				.no-cssanimations &{
- 					display:block;
- 					opacity: 1;
- 				}
- 			}
- 			&:hover i{
- 				@include single-transition(all,0.3s,ease-out,0.2s);
- 				@include translate(0,-60px);
- 				opacity: 0;
- 				.no-cssanimations &{
- 					display:none;
- 					opacity: 1;
- 				}
- 			}
  			a{
  				display:block;
- 				width:100px;
+ 				width:100%;
  				position:absolute;
  				height:100%;
- 				color:white;
+ 				color:black;
  				text-decoration: none;
  				z-index: 20;
  				pointer-events:auto;
  				@include a(0,none);
- 				span{
- 					//text-indent: -9999px;
- 					position:absolute;
- 					display:block;
- 					font-weight: bold;
- 					bottom:-60px;
- 					width:100%;
+ 				@include transition(all 0.3s ease);
+ 				.title{
+
+ 					font-weight: 500;
+ 					text-transform: uppercase;
+ 					display: inline-block;
+ 					font-size: 1em;
+ 					width: 100%;
+
+ 				}
+ 				.icon{
  					line-height: 1em;
- 					z-index: 10;
- 					opacity:0;
- 					pointer-events:none;
- 					.no-cssanimations &{
- 						display: none;
- 						bottom:0;
- 						opacity: 1;
- 						text-indent: 0;
+ 					height: 1em;
+ 					display: block;
+ 					&:before{
+ 						content:"";
+ 						height: 1px;
+ 						width: 2em;
+ 						vertical-align: middle;
+ 						display: inline-block;
+ 						background-color: $tc;
+
+ 					}
+ 					&:after{
+ 						content:"";
+ 						height: 1px;
+ 						width: 2em;
+ 						vertical-align: middle;
+ 						display: inline-block;
+ 						background-color: $tc;
+
+ 					}
+ 					i{
+ 						font-size: 0.8em;
+ 						margin: auto 5px;
 
  					}
  				}
- 				i{
- 					font-size: 2.5em;
- 					display:block;
- 					width:100%;
- 					position:absolute;
- 					z-index: 1;
- 					pointer-events:none;
- 					.no-cssanimations &{
- 						display:block;
- 					}
+ 				&:hover,&:focus,&:active{
+ 					color:$mc;
+ 					@include transition(all 0.3s ease);
+ 					.icon{
+ 						color:$mc;
+ 						&:before{
+ 							background-color: $mc;
 
+ 						}
+ 						&:after{
+ 							background-color: $mc;
+
+ 						}
+ 					}
+ 					.title{
+ 						color:$mc;
+
+ 					}
  				}
  			}
  		}
- 		li:first-child{
- 			border-left: 0;
- 			margin-left: 7px;
- 			&:hover{
- 				@include single-box-shadow(red, 0, 2px, 0, 0, inset);
- 			}
- 		}
- 		.who{
 
- 			&:hover{
- 				@include single-box-shadow($gMain, 0, 2px, 0, 0, inset);
- 			}
- 		}
- 		.blog{
-
- 			&:hover{
- 				@include single-box-shadow(red, 0, 2px, 0, 0, inset);
- 			}
- 		}
- 		.project{
-
- 			&:hover{
- 				@include single-box-shadow(yellow, 0, 2px, 0, 0, inset);
- 			}
- 		}
- 		.contact{
-
- 			&:hover{
- 				@include single-box-shadow(blue, 0, 2px, 0, 0, inset);
- 			}
- 			
- 		}
- 		
  	}
  }
- 
+
  /*END MENU*/
 
  /* HEADER */
@@ -437,7 +459,7 @@
 		height:auto;
 		padding:0 1em;
 	}
-	h1{
+	.title{
 		margin-bottom: 0.5em;
 		font-family: $ff2;
 		font-size: 38px;
@@ -463,6 +485,7 @@
  	.titleIndex{
  		margin-bottom: 0;
  		font-size: 24px;
+ 		margin-right: gutter()/2;
  		margin-left: gutter()/2;
  	}
  	hr{
@@ -472,6 +495,7 @@
  		background: $greyL2;
  		margin-bottom: 2em;
  		margin-left: gutter()/2;
+ 		margin-right: gutter()/2;
  	}
  }
  .legend{
@@ -493,9 +517,7 @@
  		text-decoration: none;
  		@include a(0, none);
  	}
- 	a + a {
- 		margin-left: 1em;
- 	}
+
  	i{
  		color:#FFF;
  		font-size: 1.5em;
@@ -540,7 +562,13 @@
 	.titreArticle{
 		height: 70px;
 		overflow:hidden;
+		display: inline-block;
+		margin-right: auto;
+		text-align:left;
 		text-overflow:ellipsis;
+		a{
+			color:$tc;
+		}
 	}
 	h3{
 		
@@ -552,12 +580,16 @@
 	}
 	.article{
 		@include c(12);
-		
+		text-align: center;
 		p{
-
+			text-align: left;
 			text-overflow:ellipsis;
 			overflow:hidden;
 		} 
+		.button{
+			height: auto;
+		}
+		
 	}
 	&:hover,&:focus,&:active{
 		/* .infoSupp{
@@ -672,23 +704,23 @@ ul{
 .p{
 	position:relative;
 	z-index:10;
-	@include c( 12 );
-	margin-left: 0;
+	@include cl( 12 );
 	display:inline-block;
 	text-align: center;
 	overflow: hidden;
 	max-height:250px;
+	margin-bottom: $gutter;
 	pointer-events:none;
 	&:hover  .image,&:focus  .image,&:active  .image{
 
-		@include transform( translate3d(0, -120px,0) );
-		@include transition(all 0.5s ease 0.2s);
+		//@include transform( translate3d(0, -150px,0) );
+		//@include transition(all 0.5s ease 0.2s);
 
 	}
-	&:hover  .caption,	&:focus  .caption,	&:active  .caption{
+	&:hover  .caption,&:focus  .caption,&:active  .caption{
 
-		@include translate3d(0, -200px,0);
-		@include transition(all 0.5s ease 0.2s);
+		//@include translate3d(0, -200px,0);
+		//@include transition(all 0.5s ease 0.2s);
 		.no-cssanimations &{
 			display:block;
 		}
@@ -697,14 +729,14 @@ ul{
 		display:block;
 		&:hover > .image,&:focus > .image,&:active > .image{
 
-			@include transform( translate3d(0, -120px,0) );
-			@include transition(all 0.5s ease 0.2s);
+		//	@include transform( translate3d(0, -150px,0) );
+		//	@include transition(all 0.5s ease 0.2s);
 
 		}
 		&:hover + .caption,	&:focus + .caption,	&:active + .caption{
 
-			@include translate3d(0, -200px,0);
-			@include transition(all 0.5s ease 0.2s);
+			//@include translate3d(0, -200px,0);
+			//@include transition(all 0.5s ease 0.2s);
 			.no-cssanimations &{
 				display:block;
 			}
@@ -716,11 +748,6 @@ ul{
 		content:"";
 		clear:both;
 	}
-}
-.p + .p{
-	@include cl ( 6 );
-	margin-right: 0;
-
 }
 .p.impair{
 	margin-left: 0;
@@ -734,7 +761,7 @@ ul{
 	position:relative;
 	z-index: 50;
 	height: 200px;
-	@include transition(all 0.4s ease-in 0.2s);
+	@include transition(all 0.3s ease-out 0.2s);
 	background-color: darken($greyL,5%);
 	//float:left;
 	width:100%;
@@ -754,7 +781,7 @@ ul{
 	height:250px;
 	//min-width:400px;
 	//float:left;
-	@include transition(all 0.3s ease-in 0.2s);
+	@include transition(all 0.3s ease-out 0.2s);
 	pointer-events:auto;
 	&::before{
 		display:block;
@@ -790,6 +817,7 @@ body .sectionContent{
 		margin-bottom: 0;
 		font-size: 24px;
 		margin-left: gutter()/2;
+		margin-right: gutter()/2;
 	}
 	hr{
 		border:0;
@@ -797,6 +825,7 @@ body .sectionContent{
 		border-left: 50px solid #000;
 		background: $greyL2;
 		margin-left: gutter()/2;
+		margin-right: gutter()/2;
 		margin-bottom: 2em;
 	}
 
@@ -814,6 +843,9 @@ body .sectionContent{
 	.titleIndex{
 		margin-bottom: 0;
 		font-size: 24px;
+	}
+	ul{
+		text-align: left;
 	}
 	hr{
 		border:0;
@@ -834,14 +866,16 @@ body .sectionContent{
 		
 		color:black;
 		overflow:visible;
-		text-align: center;
 	}
 	.lastArticle,.usefull{
-		@include c(12);
-		margin-bottom: 2em;
+		@include cl(12);
+		margin-bottom: $gutter;
 		a{
 			font-size: 18px;
 			font-style: italic;
+		}
+		li{
+			margin-bottom: 0.5em;
 		}
 	}
 	.copyright{
@@ -852,11 +886,11 @@ body .sectionContent{
 }
 
 .footer{
-	@include c( 12 );
-	margin-bottom: 2em;
-	margin: auto;
+	@include cl( 12 );
+	margin-bottom: $gutter;
+	
 	float:none;
-	//@include offsetL( 2 );
+
 }
 .link{
 
@@ -949,7 +983,7 @@ address{
 		text-indent: 10px;
 		
 		&:before{
-			font-family: FontAwesome;
+			font-family: $ffi;
 			content:"\f0da";
 			display:block;
 			float:left;

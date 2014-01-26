@@ -168,11 +168,11 @@ $(document).ready(function(){
 }).call(this,jQuery);
 
 ;(function( $ ){
-    var $value,
-    $showType,
-    $nImage;
+	var $value,
+	$showType,
+	$nImage;
 
-    $(function(){
+	$(function(){
 		$('.comment-reply-link').on('click',function( e ){
 			e.preventDefault();
 			var mouseX = e.pageX;
@@ -180,11 +180,13 @@ $(document).ready(function(){
 			$id = $(this).parent().parent().parent().attr('data-id');
 			console.log($('.formRep #comment_parent').val($id));
 			$('.formRep').fadeIn().end().css({'top':mouseY});
-		})
+		});
+		$('a[rel="external"').attr('target','_new');
+		$('.menuToggle').on('click',openMenu);
 		$('.delete').on('click',function( e ){
 			$(this).parent().parent().fadeOut('fast');
 		});
-		$('a[rel="external"').attr('target','_new');
+
 		$('.tri a').on("click", function( e ){
 			$value = $(this).html()
 			e.preventDefault();
@@ -244,9 +246,14 @@ $(document).ready(function(){
 			
 		});
 });
+var openMenu = function( e ){
+	e.preventDefault();
+	console.log('open');
+}
 
 
 }).call(this, jQuery);
+
 
 
 !function(){var r=null;

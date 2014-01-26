@@ -2,16 +2,16 @@
 <h1 aria-level="1" role="heading" class="section">Page d'accueil du portfolio de Julien Roland, designer et développeur web.</h1>
 <?php include('nav.php'); ?>
 <section role="main" id="main" class="main">
-    <h2 aria-level="2" role="heading" class="section">Mes deux derniers projets et mes derniers articles</h3>
+    <h2 aria-level="2" role="heading" class="section">Qui suis-je, mes deux derniers projets et mes derniers articles</h2>
         <section class="intro">
             <div class="wrapper">
-                <h1 aria-level="1" role="heading">Hello ! Je m'appelle Julien Roland</h1>
+                <h3 aria-level="3" role="heading" class="title">Hello ! Je m'appelle Julien Roland</h3>
                 <span class="underTitle">Je suis web designer &  web developpeur </span>
             </div>
         </section>
         <section class="lastProject " itemscope itemtype="http://schema.org/Article">
             <div class="wrapper">
-                <h3 class="titleIndex" aria-level="3" role="heading">Mes derniers projets</h3>
+                <h3 class="titleIndex" aria-level="3" role="heading">Mes deux derniers projets</h3>
                 <hr/>
                 <?php $args = array( 'post_type' => 'projets', 'posts_per_page' => 2 );
                 $loop = new WP_Query( $args );
