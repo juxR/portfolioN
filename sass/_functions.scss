@@ -11,7 +11,7 @@ $gout: $gutter;
 
 @function col($nNumber){
 
-  @return ($nNumber / $col * 100%) - (( $gout / $mw * 100% ));
+  @return ($nNumber / $col * 100%) - ($gout / $mw * 100% );
 
 }
 @function gutter(){

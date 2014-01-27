@@ -60,7 +60,7 @@ function myComms($comment, $args, $depth){
     wp_enqueue_script( 'comment-reply' );
   }
 }
- function olab_add_image_category_filter() {
+function olab_add_image_category_filter() {
   $screen = get_current_screen();
   if ( 'upload' == $screen->id ) {
     $dropdown_options = array( 'show_option_all' => __( 'View all categories', 'olab' ), 'hide_empty' => false, 'hierarchical' => true, 'orderby' => 'name', );
@@ -222,13 +222,21 @@ class Custom_Walker_Nav_Menu extends Walker_Nav_Menu {
     $classes = empty( $item->classes ) ? array() : (array) $item->classes;
     $classes[] = 'menu-item-' . $item->ID;
 
-   // $class_names = in_array("current_page_item",$item->classes) ? ' active' : '';
-    //$class_names = join( ' ', apply_filters( 'nav_menu_css_class', array_filter( $classes ), $item, $args ) );
-    //$class_names = $class_names ? ' class="' . esc_attr( $class_names ) . '"' : '';
+
+    //$class_names = in_array("current-menu-item",$item->classes) ? 'active' : '';
+
+    $class_names = join( ' ', apply_filters( 'nav_menu_css_class', array_filter( $classes ), $item, $args ) );
+
+    $class_names = $class_names ? ' class="' . esc_attr( $class_names ) . '"' : '';
 
     /*$id = apply_filters( 'nav_menu_item_id', 'menu-item-'. $item->ID, $item, $args );
     $id = $id ? ' id="' . esc_attr( $id ) . '"' : '';*/
-
+  if(in_array('current-menu-item', $item->classes)) {
+      $class_names = ' class="active"';
+    }
+    else{
+      $class_names = '';
+    }
     $output .= $indent . '<li' /*. $id */. $value . $class_names .'>';
 
     $atts = array();
@@ -269,6 +277,7 @@ class Custom_Walker_Nav_Menu extends Walker_Nav_Menu {
 
     }
   
+
     $item_output = $args->before;
     $item_output .= '<a'. $attributes .'>';
     $item_output .= '<span class="title">'.$args->link_before . apply_filters( 'the_title', $item->title, $item->ID ) . $args->link_after.'</span>';

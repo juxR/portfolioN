@@ -4,7 +4,7 @@
   <div class="wrapper">
     <a class="reader" href="#main" title="Retourner au début du contenu">Remonter au contenu</a>
     <div class="wrapper sectionContent">
-      <div class="footer link ">
+      <div class="footer link">
        <?php wp_nav_menu( array('menu' => 'main-menu', 'walker' => new Custom_Walker_Nav_Menu(1)) ); ?>
       </div>
 
@@ -18,7 +18,7 @@
        if($loop->have_posts()):
         ?><ul><?php
        while ( $loop->have_posts() ) : $loop->the_post();?>
-       <li><a href="<?php the_field('url')?>" title="Aller sur l'article <?php the_title(); ?>"><?php the_title(); ?></a></li> 
+       <li><a href="<?php the_field('url')?>" rel="external" title="Aller sur l'article <?php the_title(); ?>"><?php the_title(); ?></a></li> 
        <?endwhile;
 
        ?></ul><?php
@@ -35,7 +35,7 @@
        if($loop->have_posts()):
         ?><ul><?php
        while ( $loop->have_posts() ) : $loop->the_post();?>
-       <li><a href="<?php the_field('url')?>" title="Aller sur le lien <?php the_title(); ?>"><?php the_title(); ?></a></li>   
+       <li><a href="<?php the_field('url')?>" title="Aller sur le lien <?php the_title(); ?>" rel="external"><?php the_title(); ?></a></li>   
        <?endwhile;
        ?></ul><?php
        else:?>
@@ -52,7 +52,7 @@
        if($loop->have_posts()):
        while ( $loop->have_posts() ) : $loop->the_post();?>
 
-         <li class="<?php echo strtolower(get_the_title()); ?>"><a href="<?php the_field('url'); ?>" title="Aller sur ma page <?php the_title(); ?>"></a></li>
+         <li class="<?php echo strtolower(get_the_title()); ?>"><a href="<?php the_field('url'); ?>" rel="external" title="Aller sur ma page <?php the_title(); ?>"><span><?php the_title(); ?></span></a></li>
          
        <?endwhile;
        else:?>

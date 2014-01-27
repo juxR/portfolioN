@@ -43,6 +43,21 @@
  	font-size: 1.618em;
  	text-align: center;
  }
+ .titleIndex{
+ 	margin-bottom: 0;
+ 	font-size: 28px;
+ 	margin-left: gutter()/2;
+ 	margin-right: gutter()/2;
+ }
+ hr{
+ 	border:0;
+ 	height: 1px;
+ 	border-left: 50px solid #000;
+ 	background: $greyL2;
+ 	margin-left: gutter()/2;
+ 	margin-right: gutter()/2;
+ 	margin-bottom: 2em;
+ }
  iframe{
  	border:0!important;
  }
@@ -454,7 +469,6 @@
 .intro{
 	display:block;
 	height:250px;
-	margin-bottom: 3em;
 	@include box-shadow(rgba(0,0,0,0.3) 0 50px 200px 5px inset);
 	//background-color: #567782;
 	background-color:$mc;
@@ -487,6 +501,7 @@
  	position:relative;
  	background-color: #FFF;
  	padding:0 1em;
+ 	padding-top: 3em;
  	height:auto;
  	overflow:hidden;
  	.image{
@@ -700,16 +715,24 @@ ul{
 	}
 }
 .main{
-	
 	min-height: 100%;
 	display:block;
 	margin:auto;
-	padding-bottom: 1em;
+	position: relative;
+	z-index: 10;
+	//padding-bottom: 3em;
 	//height:100%;
 	background-color: #FFF;
 	&:after{
 		@include clear();
 	}
+}
+.content{
+	position: relative;
+	z-index: 10;
+	padding-top: 3em;
+	padding-bottom: 3em;
+	background-color: white;
 }
 .p{
 	position:relative;
@@ -823,6 +846,7 @@ body .sectionContent{
 }
 .lastArticles{
 	padding:0 1em;
+	background-color: white;
 	.titleIndex{
 		margin-bottom: 0;
 		font-size: 28px;
@@ -847,6 +871,8 @@ body .sectionContent{
 	background-color: lighten($greyDB,10%);
 	border-top:1em solid lighten($black,40%);
 	color:black;
+	position: relative;
+	z-index:10;
 	margin-top: 0;
 	@include box-sizing(border-box);
 	font-size: 14px;
@@ -1130,7 +1156,105 @@ address{
 	}
 
 }
-/*END PROJETS*/
+/* END PROJETS */
+/* PROJETS PERSO*/
+.projetsPersonnels{
+	@include c(12);
+	min-height: 400px;
+	background-image: image-url('personnel.jpg');
+	max-width: 100%;
+	background-attachment: fixed;
+	background-size: cover;
+	text-align: center;
+	line-height: 400px;
+	background-color: rgba(black,0.4);
+	.wrapper{
+		min-height: 300px;
+		line-height: 1.5em;
+		margin: auto;
+		vertical-align: middle;
+		display: inline-block;
+		
+	}
+	.titleIndex{
+		color:$mc;
+		font-family: $ff2;
+		text-transform: uppercase;
+		letter-spacing: -1px;
+		font-weight: bold;
+		font-size: 1.618em;
+		display: inline-block;
+		margin-bottom: $gutter*2;
+	}
+	
+	li{
+		height: 100px;
+		line-height: 100px;
+		overflow: hidden;
+		display: inline-block;
+		@include cl(6);
+		a{
+			vertical-align: middle;
+			position: relative;
+			height: 70px;
+			width: 100%;
+			overflow:hidden;
+			@include a(0,none);
+			line-height: 1.5;
+			&:hover,&:focus,&:active{
+				& .hover{
+					@include transition(all 0.5s ease-in-out);
+					@include transform(translate(0%,0%),rotate(0deg));
+				}
+			}
+		}
+		.hover{
+			@include transition(all 0.5s ease-in-out);
+			display: block;
+			width: 100%;
+			height: 100%;
+			@include transform(translate(100%,-100%) rotate(-60deg));
+			background-color: $mc;
+			color:white;
+			font-family: $ff2;
+			font-weight: bold;
+			line-height: 70px;
+			overflow:hidden;
+			@include abs-top-right();
+			span{
+				vertical-align: middle;
+			}
+		}
+
+		figure{
+			img{
+				max-width: 100%;
+				&:hover{
+					@include box-shadow( 0 0 0 0);
+				}
+			}
+
+		}
+
+		.title{
+			color:white;
+			position: relative;
+			padding-top: 5px;
+			line-height: 1.5;
+			font-family: $ff2;
+			font-weight: bold;
+			&:before{
+				content:"";
+				@include abs-top();
+				height: 1px;
+				background-color: white;
+				display: inline-block;
+			}
+		}
+	}
+	
+}
+/* END PROJETS PERSO */
 
 /*CONTACT*/
 .map{
@@ -1482,8 +1606,8 @@ address{
 			}
 		}
 		.textComment{
-			@include cl-nm(12);
-			//@include offsetL(1.5);
+			@include cl-nm(10.5);
+			@include offsetL(1.5);
 		}
 	}
 }
@@ -1565,7 +1689,10 @@ address{
 /* END COMMENTS*/
 /* LISTE ARTICLE */
 .listArticles{
+	@extend .lastArticles;
 	padding:1em;
+	position: relative;
+	z-index: 10;
 	.titleIndex{
 		margin-bottom: 0;
 		font-size: 24px;
@@ -1604,4 +1731,106 @@ address{
 }
 
 /* END PAGINATION*/
+/* ARTICLE CAT */
+.articlesCategories{
+	padding:1em;
+	position: relative;
+	z-index: 10;
+	background-color: #FFF;
+	.tuto{
+		.lastBlog{
+
+		}
+	}
+	.techno{
+		@include c(12);
+		.lastBlog{
+			@include cl(12);
+			max-width: 100%;
+			.infoSupp{
+				@include cfl(5);
+				height: 200px;
+				padding:0;
+				position: relative;
+				@include box-sizing(border-box);
+
+
+				.date{
+					@include abs-bot();
+					max-width: 100px;
+				}
+				.imageTheme{
+					max-width: 100%;
+				}
+				figure{
+					line-height: 200px;
+					height: 200px;
+					display: block;
+					img{
+						vertical-align: middle;
+						display: inline-block;
+						position: static;
+					}
+				}
+			}
+			.article{
+				@include cl(7);
+				max-height:200px;
+				
+				.titreArticle{
+					margin-bottom: $gutter;
+				}
+				p{
+					height: auto;
+				}
+			}
+		}
+	}
+}
+
+/* END ARTICLE CAT */
+/* INTRO BLOG */
+.introBlog{
+	height: 350px;
+	@include c(12);
+	overflow:hidden;
+	position: relative;
+	z-index: 1;
+	text-align: center;
+	line-height: 350px;
+	img{
+		width: auto;
+		position: fixed;
+		height: 350px;
+		top:0;
+		display: block;
+		po
+		&:hover{
+			@include box-shadow( 0 0 0 0);
+		}
+
+	}
+	.title{
+		font-family: $ff2;
+		font-weight: bold;
+		vertical-align: baseline;
+		color:white;
+		position: relative;
+		font-size: 2.618em;
+		padding: $gutter/2 $gutter;
+		background-color: $mc;
+	}
+	&:after{
+		background-image: image-url('grid.png');
+		width: 100%;
+		height: 100%;
+		display: block;
+		position: absolute;
+		top: 0;
+		visibility:visible;
+		left: 0;
+		z-index: 99;
+	}
+}
+/* END INTRO BLOG */
 @import "responsive";

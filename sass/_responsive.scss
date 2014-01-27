@@ -2,6 +2,29 @@
  @import "mixin";
  @import "variables";
  @media screen and(min-width: 500px){
+ 	.articlesCategories{
+ 		padding:1em;
+ 		.tuto{
+ 			@include c(12);
+ 			
+ 			.lastBlog{
+ 				@include cl(12);
+ 				max-width: 100%;
+ 				.article{
+ 					p{
+ 						height: 200px;
+ 					}
+ 					.button{
+ 						height: auto;
+ 					}
+ 					.titreArticle{
+ 						height: 40px;
+ 						margin-bottom: $gutter;
+ 					}
+ 				}
+ 			}
+ 		}
+ 	}
  	.tools{
  		a{
  			@include cl(6);
@@ -58,6 +81,7 @@
  	}
 
  }
+
  @media screen and(min-width: 600px){
  	.lastBlog{
  		max-width: 400px;
@@ -68,6 +92,22 @@
  			} 
  		}
  	}
+ 	.projetsPersonnels{
+ 		li{
+ 			@include cl(4);
+ 		}
+ 	}
+ }
+ @media screen and (min-width: 720px){
+ 	/* .lastBlog{
+
+ 		.article{
+ 			@include c(12);
+ 			p{
+ 				height:350px;
+ 			} 
+ 		}
+ 	} */
  }
  @media screen and(max-width: 799px){
  	h1{
@@ -107,35 +147,7 @@
 
 
  } 
- @media screen and(min-width: 1200px){
- 	.intro{
- 		h1{
- 			font-size: 68px;
- 		}
- 		.underTitle{
- 			font-size: 28px;
 
- 		}
- 	}
- 	.projets{
-
- 		.p{
- 			@include cfl(4);
- 			//height:250px;
- 			.image{
- 				&::before{
- 					@include box-shadow(0 0 0 0 );
- 				}
- 			}
- 			& + .p{
- 				@include cl(4);
- 			}
- 		}
- 	}
- 	.lastBlog{
- 		@include cl(4);	
- 	}
- }
  @media screen and(min-width: 800px) and (max-width: 1200px){
  	h1{
  		font-size: 3em;
@@ -150,7 +162,11 @@
  		font-size: 1.5em;
  	}
  	
-
+ 	.projetsPersonnels{
+ 		li{
+ 			@include cl(3);
+ 		}
+ 	}
  	.p{
  		@include cl(6);
 
@@ -175,7 +191,39 @@
  	h4{
  		font-size: 1.5em;
  	}
+ 	.lastBlog{
+ 		@include cl(4);
+ 		.article{
 
+ 			p{
+
+ 				height:300px;
+ 			} 
+ 		}
+ 	}
+
+ }
+ @media screen and (min-width: 900px){
+ 	.articlesCategories{
+ 		padding:1em;
+ 		.tuto{
+ 			@include c(12);
+ 			
+ 			.lastBlog{
+ 				@include cl(12);
+ 				max-width: 100%;
+ 				.article{
+ 					p{
+ 						height: 160px;
+ 					}
+ 					.titreArticle{
+ 						height: 40px;
+ 						margin-bottom: $gutter;
+ 					}
+ 				}
+ 			}
+ 		}
+ 	}
  }
  @media screen and(min-width: 1083px){
  	body{
@@ -284,6 +332,8 @@
  					z-index: 20;
  					pointer-events:auto;
  					@include a(0,none);
+ 					border-bottom: 0;
+ 					border-top: 0;
  					@include transition(all 0.3s ease);
  					.title{
 
@@ -324,6 +374,9 @@
  					}
  					&:hover,&:focus,&:active{
  						color:$mc;
+ 						border-top:0;
+ 						border-bottom:0;
+ 						background-color: transparent;
  						@include transition(all 0.3s ease);
  						.icon{
  							color:$mc;
@@ -355,6 +408,7 @@
 		padding-bottom: 0;
 
 	}
+	
 	.vcard{
 		@include cfl( 6 );
 		address{
@@ -364,12 +418,12 @@
 		}
 	}
 	.lastBlog{
-
+		@include cl(4);
 		.article{
 
 			p{
 
-				height:250px;
+				
 			} 
 		}
 	}
@@ -402,17 +456,14 @@
 			display:inline-block;
 		}
 		.lastArticle{
-			@include cfl(3);
-			margin-bottom: 2em;
+			@include cl(4);
 			a{
 				font-size: 18px;
 				font-style: italic;
 			}
 		}
 		.usefull{
-			@include cl(3);
-			margin-bottom: 2em;
-			@include offsetL(1.5);
+			@include cl(4);
 			a{
 				font-size: 18px;
 				font-style: italic;
@@ -427,8 +478,8 @@
 		}
 	}
 	.footer{
-		@include cl( 3 );
-		@include offsetL(1.5);
+		@include cl( 4 );
+
 	}
 	.projets{
 		padding:1em;
@@ -496,6 +547,65 @@
 			width:auto;
 		}
 	}
-}
 
+}
+@media screen and(min-width: 1200px){
+ 	.intro{
+ 		h1{
+ 			font-size: 68px;
+ 		}
+ 		.underTitle{
+ 			font-size: 28px;
+
+ 		}
+ 	}
+ 	.articlesCategories{
+ 		padding:1em;
+ 		.tuto{
+ 			@include cl(5);
+ 			
+ 			.lastBlog{
+ 				@include cl(12);
+ 				max-width: 100%;
+ 			}
+ 		}
+ 		.techno{
+ 			@include cl(7);
+ 		}
+ 	}
+ 	.projetsPersonnels{
+ 		li{
+ 			@include cl(2.4);
+ 		}
+ 	}
+
+ 	.lastBlog{
+
+ 		.article{
+ 			@include c(12);
+ 			p{
+ 				height:250px;
+ 			} 
+ 		}
+ 	}
+
+ 	.projets{
+
+ 		.p{
+ 			@include cfl(4);
+ 			//height:250px;
+ 			.image{
+ 				&::before{
+ 					@include box-shadow(0 0 0 0 );
+ 				}
+ 			}
+ 			& + .p{
+ 				@include cl(4);
+ 			}
+ 		}
+ 	}
+ 	.lastBlog{
+ 		@include cl(4);	
+ 	}
+ }
 
