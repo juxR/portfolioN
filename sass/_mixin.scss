@@ -70,6 +70,9 @@
     right:auto;
     @include opacity(1);
   }
+  &:hover,&:focus,&:active{
+    border-bottom: 0;
+  }
 }
 }
 @mixin body() {

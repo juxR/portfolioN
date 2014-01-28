@@ -527,24 +527,26 @@
 				display:block;
 			}
 			.vcardComment{
-				@include cl-nm(10.5);
+				@include cl(10);
 			}
 			.textComment{
-				@include offsetL(1.5);
+				@include offsetL(2.1);
 			}
 		}
 	}
 	.addComents{
+		@include cl(10);
+		@include offsetL(2);
 		input[type="submit"]{
 			width:auto;
 		}
 		input{
 			min-width: 600px;
-			width:auto;
+
 		}
 		textarea{
 			min-width: 600px;
-			width:auto;
+
 		}
 	}
 
@@ -592,16 +594,14 @@
  	.projets{
 
  		.p{
- 			@include cfl(4);
+ 			@include cl(4);
  			//height:250px;
  			.image{
  				&::before{
  					@include box-shadow(0 0 0 0 );
  				}
  			}
- 			& + .p{
- 				@include cl(4);
- 			}
+ 			
  		}
  	}
  	.lastBlog{

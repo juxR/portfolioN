@@ -21,17 +21,14 @@ Template Name: Projet
 					</ul>
 				</section>
 				<?php $args = array( 'post_type' => 'projets' );
+				$pref1 = array('3','9');
+				$pref2 = array('4','8');
+				$pref2 = array('4','4','4');
+				$pref3 = array('5','7');
 				$loop = new WP_Query( $args );
-				$i=1;
 				while ( $loop->have_posts() ) : $loop->the_post();?>
-				<?php if($i % 2 != 0 && $i != 1 ){
-					$val = 'impair';
-				}
-				else{
-					$val= 'pair';
-				}
-				?>
-				<div class="p show <?php echo $val; ?>">
+
+				<div class="p show">
 					<h4 aria-level="4" role="heading" class="section" itemprop="name">titre du projet</h4>
 					<?php 
 

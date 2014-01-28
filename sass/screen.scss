@@ -13,10 +13,6 @@
  @import "mixin";
  @import "lightbox";
  //@import url("http://fonts.googleapis.com/css?family=Lora:400,700,400italic");
- @import "social/*.png";
- @include all-social-sprites;
- @import "socialH/*.png";
- @include all-socialH-sprites;
  @include body();
  @include wrapper();
  @include form();
@@ -502,6 +498,7 @@
  	background-color: #FFF;
  	padding:0 1em;
  	padding-top: 3em;
+ 	margin-bottom: 3em;
  	height:auto;
  	overflow:hidden;
  	.image{
@@ -719,7 +716,7 @@ ul{
 	display:block;
 	margin:auto;
 	position: relative;
-	z-index: 10;
+	//z-index: 10;
 	//padding-bottom: 3em;
 	//height:100%;
 	background-color: #FFF;
@@ -731,6 +728,7 @@ ul{
 	position: relative;
 	z-index: 10;
 	padding-top: 3em;
+	overflow:hidden;
 	padding-bottom: 3em;
 	background-color: white;
 }
@@ -847,6 +845,7 @@ body .sectionContent{
 .lastArticles{
 	padding:0 1em;
 	background-color: white;
+	margin-bottom: 3em;
 	.titleIndex{
 		margin-bottom: 0;
 		font-size: 28px;
@@ -861,6 +860,13 @@ body .sectionContent{
 		margin-left: gutter()/2;
 		margin-right: gutter()/2;
 		margin-bottom: 2em;
+	}
+	.moreArticles{
+		text-align:right;
+		a{
+
+		}
+		
 	}
 
 }
@@ -962,7 +968,7 @@ body .sectionContent{
 .photo{
 	@include c( 12 );
 	margin:auto;
-	margin-top: 1em;
+	
 	
 	img{
 		@include border-radius( 100% 50% );
@@ -1028,24 +1034,38 @@ address{
 }
 /*END RS*/
 /*ONE ARTICLE*/
+.one{
+	margin-top:50px + $gutter;
+}
 .listBlog{
 	@extend .lastBlog;
-	//margin-top: 3em;
+	width:col(12)!important;
+	max-width:100%!important;
+	float:none!important;
+	margin-top: 1em;
 	.wrapper{
 		padding:0 1em;
 	}
-	h3{
+	.titleOneArticle{
 		margin-bottom: 0;
-		text-align: left;
+		text-align: center;
 	}
+	.date{
+		margin:$gutter/2 auto $gutter auto;
+		display:block;
+		max-width:200px;
+	}
+
 	.article{
 		@include c(12);
 		max-width: 800px;
 		margin: auto;
-		padding:3em 0;
 		text-align: left;
-
 		border-bottom: 1px solid $greyL2;
+		p{
+			margin-bottom:1.5em;
+			height:auto!important;
+		}
 	}
 	.infoSupp{
 		@include c(12);
@@ -1057,6 +1077,7 @@ address{
 		display:block;
 		margin:1em auto;
 	}
+
 }
 
 /*END ONE*/
@@ -1066,7 +1087,7 @@ address{
 	padding:0 1em;
 	.p{
 		max-width:500px;
-		@include c(12);
+		@include cl(12);
 		margin-bottom: 1em;
 		.image{
 			&::before{
@@ -1100,22 +1121,23 @@ address{
 		}
 		li.active{
 			a{
-				background-color: yellow;
+				background-color: $mc;
 				@include btn();
-				color:$black;
+				color:white;
 				font-weight: bold;
 
 			}
 		}
 		a:hover,a:focus{
-			background-color: yellow;
-			color:$black;
+			background-color: $mcc;
+			color:white;
 		}
 	}
 	a{
 		color:yellow;
 		background-color: $black;
 		@include btn();
+		@include a(0,none);
 		
 	}
 
@@ -1555,6 +1577,7 @@ address{
 	max-width: 800px;
 	margin: auto;
 	padding:1em;
+	@include box-sizing(border-box);
 	.comments{
 		margin: auto;
 		padding:0;
@@ -1571,12 +1594,11 @@ address{
 		}
 		.photoAuthor{
 			
-			@include cfl-nm(1.5);
-			display:none;
+			@include cfl(2);
 			img{
 				width: 100%;
 				max-width: 60px;
-				
+				margin:auto;
 				display:block;
 				float:none;
 			}
@@ -1585,8 +1607,9 @@ address{
 			}
 		}
 		.vcardComment{
-			@include cl-nm(12);
-			border-top: 3px solid lighten(red,15%);
+			@include cl(10);
+			border-top: 3px solid $mc;
+			padding-top:$gutter/2;
 			.comment-name{
 				font-weight: bold;
 				color:darken(red,10%);
@@ -1598,6 +1621,9 @@ address{
 				color:$greyD;
 				font-size: 0.8em;
 			}
+			.comment-reply-link{
+				float:right;
+			}
 			.comment-name{
 
 			}
@@ -1606,8 +1632,15 @@ address{
 			}
 		}
 		.textComment{
-			@include cl-nm(10.5);
-			@include offsetL(1.5);
+			@include cl(10);
+			@include offsetL(2.1);
+			p{
+				display:block;
+				overflow:hidden;
+				word-break:break-all;
+				
+
+			}
 		}
 	}
 }
@@ -1645,13 +1678,13 @@ address{
 	}
 	input[type="submit"]{
 		padding:0.5em;
-		background-color: lighten(red,10%);
+		background-color: $mc;
 		color:white;
 		font-weight: bold;
 		min-width: 150px;
 		width:100%;
-		border:1px solid red;
-		height:50px;
+		border:1px solid $mcc;
+		height:40px;
 		@include border-radius(2px);
 		@include box-shadow(rgba(255,255,255,0.3) 0 1px 1px 1px inset);
 		@include transition(all 0.3s ease);
@@ -1663,19 +1696,26 @@ address{
 	}
 	.formRep{
 		display:none;
-		position:fixed;
+		position:absolute;
 		top:0;
 		left:0;
+		max-height:80%;
 		right:0;
 		bottom:0;
 		width:600px;
-		height:450px;
+		height:350px;
 		@include box-shadow($greyL2 0 0 40px 0);
 		margin: auto;
 		background-color: $greyL;
 		border:1px solid $greyD;
 		padding:1em;
+		z-index:1000;
 		@include border-radius(1em);
+		margin-top:50px + $gutter;
+
+		textarea{
+			min-height:50px;
+		}
 	}
 
 }
@@ -1709,25 +1749,17 @@ address{
 /* PAGINATION */
 
 .pagination{
-	margin-top: 1em;
+	margin-top: 3em;
 	text-align: center;
-	.next,.previous{
+	font-weight:bold;
+	ul{
 		display:inline-block;
 	}
-	.previous{
-		a{
-			&:after{
-				content:" >>";
-			}
-		}
+	li{
+		float:left;
+		margin-left:$gutter;
 	}
-	.next{
-		a{
-			&:before{
-				content:"<< ";
-			}
-		}
-	}
+	
 }
 
 /* END PAGINATION*/
@@ -1737,6 +1769,7 @@ address{
 	position: relative;
 	z-index: 10;
 	background-color: #FFF;
+	margin-bottom:3em;
 	.tuto{
 		.lastBlog{
 
@@ -1779,6 +1812,8 @@ address{
 				
 				.titreArticle{
 					margin-bottom: $gutter;
+					text-align:left;
+					display:block;
 				}
 				p{
 					height: auto;
@@ -1833,4 +1868,60 @@ address{
 	}
 }
 /* END INTRO BLOG */
+/* LOADER */
+.spinner {
+	margin: 100px auto 0;
+	text-align: center;
+	@include abs();
+	position: fixed;
+	margin-left: 200px;
+	overflow:hidden;
+	background-color: $mc;
+	z-index: 1000;
+	background-image: image-url('grid.png');
+}
+.backgroundSpinner{
+	@include abs();
+	height: 32px;
+}
+
+.backgroundSpinner > div {
+	width: 22px;
+
+	height: 22px;
+	background-color: #FFF;
+	border-radius: 100%;
+	display: inline-block;
+	-webkit-animation: bouncedelay 1.4s infinite ease-in-out;
+	animation: bouncedelay 1.4s infinite ease-in-out;
+  /* Prevent first frame from flickering when animation starts */
+  -webkit-animation-fill-mode: both;
+  animation-fill-mode: both;
+}
+
+.spinner .bounce1 {
+	-webkit-animation-delay: -0.32s;
+	animation-delay: -0.32s;
+}
+
+.spinner .bounce2 {
+	-webkit-animation-delay: -0.16s;
+	animation-delay: -0.16s;
+}
+
+@-webkit-keyframes bouncedelay {
+	0%, 80%, 100% { -webkit-transform: scale(0.0) }
+	40% { -webkit-transform: scale(1.0) }
+}
+
+@keyframes bouncedelay {
+	0%, 80%, 100% { 
+		transform: scale(0.0);
+		-webkit-transform: scale(0.0);
+	} 40% { 
+		transform: scale(1.0);
+		-webkit-transform: scale(1.0);
+	}
+}
+/* END LOADER */
 @import "responsive";

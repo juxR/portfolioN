@@ -1,6 +1,6 @@
 <?php get_header();?>
 <h1 aria-level="1" role="heading" class="section">Page d'accueil du portfolio de Julien Roland, designer et développeur web.</h1>
-<?php include('nav.php'); ?>
+<?php get_template_part('nav'); ?>
 <section role="main" id="main" class="main">
     <h2 aria-level="2" role="heading" class="section">Qui suis-je, mes deux derniers projets et mes derniers articles</h2>
     <section class="intro">
@@ -31,16 +31,23 @@
        <h3 class="titleIndex" aria-level="3" role="heading">Mes derniers articles</h3>
        <hr/>
        <?php if ( have_posts() ) : ?>
-           <?php while ( have_posts() ) : the_post(); ?>
-            <?php get_template_part( 'content', get_post_format() ); ?>
-        <?php endwhile; ?>
+         <? $args = array(
+            'posts_per_page' => 6,
+            'paged' => $paged
+            );?>
 
-    <?php else : ?>
-        <p>Aucun article...</p>
+            <?php query_posts($args); ?>
+            <?php while ( have_posts() ) : the_post(); ?>
+                <?php get_template_part( 'content', get_post_format() ); ?>
+            <?php endwhile; ?>
 
-    <?php endif;
-    wp_reset_query(); ?>
-</div>
+        <?php else : ?>
+            <p>Aucun article...</p>
+
+        <?php endif;
+        wp_reset_query(); ?>
+    </div>
+    <p class="moreArticles wrapper"><a href="<?php bloginfo('url') ?>/blog">Voir tous les articles</a></p>
 </section>
 <?php $args = array( 'post_type' => 'projets', 'posts_per_page' => 10 ,'category_name' =>'personnel');
 $loop = new WP_Query( $args );
@@ -60,9 +67,11 @@ if($loop->have_posts()):?>
 <?php endif;
 wp_reset_query();
 ?>
+<?php get_template_part('foot'); ?>
 
 </section>
 <?php get_footer(); ?>
+
 
 
 

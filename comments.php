@@ -13,20 +13,19 @@ if (!empty($post->post_password)) { // if there's a password
 
 /* This variable is for alternating comment background */
 
-$oddcomment = 'comment';
+//$oddcomment = 'comment';
 
 ?>
 
-<!-- You can start editing here. -->
 
 <?php if ( have_comments() ) : ?>
 
   <div class="wrapper">
-    <div class=" comments">
+    <div class="comments">
 
       <div class="nbComments">
 
-        <h3 class="subheader" id="comments">&nbsp;<?php comments_number('Pas de commentaire', '1 personne en parle', '% personnes en parlent' );?></h3>
+        <h4 class="subheader" role="heading" aria-level="4" id="comments">&nbsp;<?php comments_number('Pas de commentaire', '1 personne en parle', '% personnes en parlent' );?></h4>
       </div>
     </div>
 
@@ -57,6 +56,7 @@ $oddcomment = 'comment';
       <?php else : ?>
 
         <form action="<?php echo get_option('siteurl'); ?>/wp-comments-post.php" method="post" id="commentform">
+          
           <?php if ( $user_ID ) : ?>
 
             <p>Connecté en tant que <a href="<?php echo get_option('siteurl'); ?>/wp-admin/profile.php" title="Aller sur le profil"><?php echo $user_identity; ?></a> <!--<a href="<?php echo get_option('siteurl'); ?>/wp-login.php?action=logout" title="D&eacute;connect&eacute; de ce compte">D&eacute;connection <i class="icon-user"></i></a>--></p>
@@ -71,17 +71,13 @@ $oddcomment = 'comment';
               <label for="email">Email (ne sera pas publi&eacute;) <?php if ($req) echo "(requis)"; ?></label>
               <input type="email" name="email" placeholder="Entrer votre email" required id="email" value="<?php echo $comment_author_email; ?>"  />
             </p>
-            <p>
-              <label for="url">Site Web</label>
-              <input type="url" name="url" placeholder="Entrer votre site web" id="url" value="<?php echo $comment_author_url; ?>"  />
-            </p>
 
           <?php endif; ?>
 
           <!--<p><small><strong>XHTML:</strong> <?php _e('Vous pouvez utiliser ces tags&#58;'); ?> <?php echo allowed_tags(); ?></small></p>-->
           <p>
             <label for="commentaire">Poster un commentaire</label>
-            <textarea id="commentaire comment" placeholder="Entrer votre commentaire ici" name="comment" rows="5" ></textarea>
+            <textarea id="commentaire comment" required placeholder="Entrer votre commentaire ici" name="comment" rows="5" ></textarea>
           </p>
 
           <p><input name="submit"  class="small button" value="Poster" type="submit" id="submit" />
@@ -99,28 +95,24 @@ $oddcomment = 'comment';
               <p>Connecté en tant que <a href="<?php echo get_option('siteurl'); ?>/wp-admin/profile.php" title="Aller sur le profil"><?php echo $user_identity; ?></a> <!--<a href="<?php echo get_option('siteurl'); ?>/wp-login.php?action=logout" title="D&eacute;connect&eacute; de ce compte">D&eacute;connection <i class="icon-user"></i></a>--></p>
 
             <?php else : ?>
-          
+          	
               <p>
-                <label for="author">Nom <?php if ($req) echo "(requis)"; ?></label>
-                <input type="text" name="author" required id="author" value="<?php echo $comment_author; ?>" placeholder="Entrer votre nom"  />
+                <label for="authorRep">Nom <?php if ($req) echo "(requis)"; ?></label>
+                <input type="text" name="author" required id="authorRep" value="<?php echo $comment_author; ?>" placeholder="Entrer votre nom"  />
               </p>
               <p> 
-                <label for="email">Email (ne sera pas publi&eacute;) <?php if ($req) echo "(requis)"; ?></label>
-                <input type="email" name="email" placeholder="Entrer votre email" required id="email" value="<?php echo $comment_author_email; ?>"  />
-              </p>
-              <p>
-                <label for="url">Site Web</label>
-                <input type="url" name="url" placeholder="Entrer votre site web" id="url" value="<?php echo $comment_author_url; ?>"  />
+                <label for="emailRep">Email (ne sera pas publi&eacute;) <?php if ($req) echo "(requis)"; ?></label>
+                <input type="email" name="email" placeholder="Entrer votre email" required id="emailRep" value="<?php echo $comment_author_email; ?>"  />
               </p>
 
             <?php endif; ?>
 
             <p>
-              <label for="commentaire">Poster un commentaire</label>
-              <textarea id="commentaire comment" id="comment" placeholder="Entrer votre commentaire ici" name="comment" rows="5" ></textarea>
+              <label for="commentRep">Poster un commentaire</label>
+              <textarea  required id="commentRep" placeholder="Entrer votre commentaire ici" name="comment" rows="1" ></textarea>
             </p>
 
-            <p><input name="submit"  class="small button" value="Poster" type="submit" id="submit" />
+            <p><input name="submit" class="small button" value="Poster" type="submit" id="submit" />
               <input type="hidden" name="comment_post_ID" value="<?php echo $id; ?>" id="comment_post_ID"/>
               <input type="hidden" name="comment_parent" value="" id="comment_parent"/>
               

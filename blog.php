@@ -5,13 +5,13 @@ Template Name: Blog
 ?>
 <?php get_header();?>
 <h1 aria-level="1" role="heading" class="section">Mon blog, page répertoriant mes articles.</h1>
-<?php include('nav.php'); ?>
+<?php get_template_part('nav'); ?>
 <section role="main" id="main" class="main">
-  <h2 aria-level="2" role="heading" class="section">Mon blog, mon dernier tutoriel, mes deux derniers articles sur les technologies et la liste de tous mes articles</h2>
+  <h2 aria-level="2" role="heading" class="section">Mon blog, mon dernier tutoriel, mes trois derniers articles sur les technologies et la liste de tous mes articles</h2>
 
   <section class="introBlog" >
     <h2 aria-level="2" role="heading" class="section">Dans mon blog j'écris des articles dans le domaine du web. J'ai différentes catégorie: les tutoriels, les technologies, les produits, le web en général et autre.</h2>
-    <img src="<?php bloginfo('template_directory'); ?>/img/introBlog2.jpg" alt="" data-parallax="go" data-speed="10">
+    <img src="<?php bloginfo('template_directory'); ?>/img/introBlog2.jpg" alt="Image d'introduction à mon blog" >
     <span class="title">Mon blog</span>
   </section>
   <div class="content">
@@ -61,7 +61,7 @@ Template Name: Blog
         wp_reset_query(); ?>
 
         <? $args = array(
-          'posts_per_page' => 2,
+          'posts_per_page' => 3,
           'category_name' => 'techno'
           );?>
           <?php query_posts($args); ?>
@@ -105,13 +105,13 @@ Template Name: Blog
         </section>
 
 
-        <section class="listArticles wrapper">
-         <h3 class="titleIndex" aria-level="3" role="heading">Mes articles</h3>
+        <section class="listArticles wrapper" id="articles">
+         <h3 class="titleIndex" aria-level="3" role="heading">Tous mes articles</h3>
          <hr/>
 
          <?php if ( have_posts() ) : ?>
            <? $args = array(
-            'posts_per_page' => 10,
+            'posts_per_page' => 4,
             'paged' => $paged
             );?>
 
@@ -134,7 +134,8 @@ Template Name: Blog
                 <div itemprop="text" class="article">
                   <h4 aria-level="4" role="heading" itemprop="headline" class="titreArticle"><a href="<?php the_permalink(); ?>" title="Voir l'article <?php the_title(); ?> en entier"><?php the_title(); ?></a></h4>
 
-                  <?php the_excerpt(); ?>
+                    <?php the_excerpt(); ?>
+
 
                   <p class="button"> <a class="btn" itemprop="url" href="<?php the_permalink(); ?>" title="Lire la suite de l'article <?php the_title(); ?>">Lire la suite</a></p>
                 </div>
@@ -143,9 +144,8 @@ Template Name: Blog
 
             <?php endwhile; ?>
             <section class="pagination wrapper">
-            <h4 aria-level="4" role="heading" class="section">Voir l'article suivant ou précédent</h4>
-              <div class="next"><?php previous_posts_link('Articles plus récent'); ?></div>
-              <div class="previous"><?php next_posts_link('Articles plus anciens'); ?></div>
+              <h4 aria-level="4" role="heading" class="section">Voir l'article suivant ou précédent</h4>
+             <?php  reverie_pagination();?>
             </section>
 
           <?php else : ?>
@@ -153,10 +153,12 @@ Template Name: Blog
 
           <?php endif; // end have_posts() check ?>
         </section>
-      </section>
-    </div>
-    <?php include('footer.php'); ?>
 
+      </div>
+      <?php get_template_part('foot'); ?>
 
-
+    </section>
+    
     <?php get_footer(); ?>
+
+

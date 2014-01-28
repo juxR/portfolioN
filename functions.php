@@ -31,31 +31,31 @@ function remove_width_attribute( $html ) {
 }
 function myComms($comment, $args, $depth){
   ?>
-  <li class="comment" data-id="<?php comment_ID() ?>" id="comment-<?php comment_ID() ?>">
+  <li class="comment" data-name="<?php comment_author_link() ?>" data-id="<?php comment_ID() ?>" id="comment-<?php comment_ID() ?>">
 
     <div class="comment-header">
       <div class="photoAuthor">
-        <?php  echo get_avatar( get_the_author_id(), $size = '60' );?>
+      <?php  echo get_avatar( get_the_author_id(), $size = '60',$default,$alt="Avatar de la personne");?>
       </div> 
       <div class="vcardComment">
-       <p class="comment-name" ><?php comment_author_link() ?></p> <a class="comment-date" href="#comment-<?php comment_ID() ?>" title="Cibler le commentaire"><?php comment_date('d M Y') ?> <?php _e('&agrave;');?> <?php comment_time('G:i') ?></a> <?php edit_comment_link('Modifier le commentaire','',''); ?>
+       <p class="comment-name" ><?php comment_author_link() ?></p> <span class="comment-date"><?php comment_date('d M Y') ?> <?php _e('&agrave;');?> <?php comment_time('G:i') ?></span> <?php edit_comment_link('Modifier le commentaire','',''); ?>
 
        <?php  comment_reply_link(array_merge( $args, array('depth' => $depth, 'max_depth' => $args['max_depth']))); ?> 
      </div>
+   
+   <div class="textComment">
+     <?php comment_text(); ?>
+   </div>
+</div>
+ </li>
 
-     <div class="textComment">
-       <?php comment_text(); ?>
-     </div>
 
-   </li>
+ <?php /* Changes every other comment to a different class */
+ if ('comment' == $oddcomment) $oddcomment = '';
+ else $oddcomment = 'comment';
 
-
-   <?php /* Changes every other comment to a different class */
-   if ('comment' == $oddcomment) $oddcomment = '';
-   else $oddcomment = 'comment';
-
- }
- function xtreme_enqueue_comments_reply() {
+}
+function xtreme_enqueue_comments_reply() {
   if( get_option( 'thread_comments' ) )  {
     wp_enqueue_script( 'comment-reply' );
   }
@@ -179,14 +179,14 @@ function reverie_pagination() {
   	'prev_next' => True,
   	'prev_text' => __('&laquo;'),
   	'next_text' => __('&raquo;'),
-  	'type' => 'list'
-  	) );
+  	'type' => 'list',
+    'add_fragment' => '#articles',
+
+    ) );
 
   // Display the pagination if more than one page is found
   if ( $paginate_links ) {
-  	echo '<div class="pagination-centered">';
   	echo $paginate_links;
-  	echo '</div><!--// end .pagination -->';
   }
 }
 function jc_post_by_category($atts, $content = null) {
@@ -231,7 +231,7 @@ class Custom_Walker_Nav_Menu extends Walker_Nav_Menu {
 
     /*$id = apply_filters( 'nav_menu_item_id', 'menu-item-'. $item->ID, $item, $args );
     $id = $id ? ' id="' . esc_attr( $id ) . '"' : '';*/
-  if(in_array('current-menu-item', $item->classes)) {
+    if(in_array('current-menu-item', $item->classes)) {
       $class_names = ' class="active"';
     }
     else{
@@ -276,7 +276,7 @@ class Custom_Walker_Nav_Menu extends Walker_Nav_Menu {
       break;
 
     }
-  
+
 
     $item_output = $args->before;
     $item_output .= '<a'. $attributes .'>';
