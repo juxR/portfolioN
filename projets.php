@@ -21,14 +21,29 @@ Template Name: Projet
 					</ul>
 				</section>
 				<?php $args = array( 'post_type' => 'projets' );
-				$pref1 = array('3','9');
-				$pref2 = array('4','8');
-				$pref2 = array('4','4','4');
-				$pref3 = array('5','7');
-				$loop = new WP_Query( $args );
-				while ( $loop->have_posts() ) : $loop->the_post();?>
+				$template = array(
+					'1'=> array('6','6'),
+					'2'=> array('4','8'),
+					'3'=> array('8','4'),
+					'4'=> array('5','7'),
+					'5'=> array('7','5'),
+					);
 
-				<div class="p show">
+				
+				$loop = new WP_Query( $args );
+				$i=0;
+				$oldTemplate;
+				while ( $loop->have_posts() ) : $loop->the_post();?>
+				
+				<?php if($i > 1){
+					$i=0;
+				} ?>
+				<?php
+
+				if($i % 2 != 0 ):
+
+				?>
+				<div class="p show col-<?php echo $thisTemplate[$i]; ?>">
 					<h4 aria-level="4" role="heading" class="section" itemprop="name">titre du projet</h4>
 					<?php 
 
@@ -60,17 +75,57 @@ Template Name: Projet
 					</div>
 
 				</div>
-
+			<?php elseif($i === 0):
+			$val = rand(1,5);
+			while($oldTemplate == $val){
+				$val = rand(1,5);
+			}
+			$thisTemplate = $template[$val]; 
+			$oldTemplate = $val;
+			?>
+			<div class="p show col-<?php echo $thisTemplate[$i]; ?>">
+				<h4 aria-level="4" role="heading" class="section" itemprop="name">titre du projet</h4>
 				<?php 
-				$i++;
-				endwhile;?>
 
+				$cat_name = get_the_category( $post->ID );
+				?>
+				<div class="<?php foreach($cat_name as $cat): echo "$cat->slug "; endforeach; ?> triage"><?php echo $cat_name[0]->name; ?></div>
+				<div class="image" itemprop="image">
+					<?php 
+					if(has_post_thumbnail()){
 
-			</section>
+						the_post_thumbnail();
+					}
+					?>
+				</div>
+
+				<div class="caption">
+					<div class="legend" itemprop="description">
+						<span>
+							<?php the_field('legende'); ?>
+						</span>
+					</div>
+					<div class="tools">
+						<a href="<?php the_permalink(); ?>" title="Aller sur la page du projet en question"><i class="fa fa-share"></i><span>Voir la fiche du projet</span></a>
+						<?php $image_id = get_post_thumbnail_id();
+						$image_url = wp_get_attachment_image_src($image_id,'large', true);
+						?>
+						<a href="<?php echo $image_url[0]; ?>" class="thumbnail" title="Afficher l'image en grand"><i class="fa fa-expand"></i><span>Agrandir l'image</span></a>
+					</div>
+				</div>
+
+			</div>
+			<?php 
+			endif;
+			$i++;
+			endwhile;?>
+
 
 		</section>
+
 	</section>
-	<?php get_footer(); ?>
+</section>
+<?php get_footer(); ?>
 
 
 

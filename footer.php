@@ -1,5 +1,5 @@
 <script  src="<?php bloginfo('template_directory'); ?>/js/all-ck.js"></script>
-<script src="https://google-code-prettify.googlecode.com/svn/loader/run_prettify.js?skin=sunburst"></script>
+<script async src="https://google-code-prettify.googlecode.com/svn/loader/run_prettify.js?skin=sunburst"></script>
 <script>window.jQuery || document.write('<script src="js/vendor/jquery.min.js"><\/script>')</script>
 <script>
   jQuery( function() {

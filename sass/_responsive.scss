@@ -438,8 +438,31 @@
 		margin-top: 0;
 	}
 	.p{
-		min-width: 250px;
+		
+
 	}
+	.p.col-4{
+		@include cl(4);
+	}
+	.p.col-5{
+		@include cl(5);
+	}
+	.p.col-6{
+		@include cl(6);
+	}
+	.p.col-7{
+		@include cl(7);
+	}
+	.p.col-9{
+		@include cl(9);
+	}
+	.p.col-3{
+		@include cl(3);
+	}
+	.p.col-8{
+		@include cl(8);
+	}
+
 	.form{
 		@include cfl( 6 );
 
@@ -591,19 +614,6 @@
  		}
  	}
 
- 	.projets{
-
- 		.p{
- 			@include cl(4);
- 			//height:250px;
- 			.image{
- 				&::before{
- 					@include box-shadow(0 0 0 0 );
- 				}
- 			}
- 			
- 		}
- 	}
  	.lastBlog{
  		@include cl(4);	
  	}

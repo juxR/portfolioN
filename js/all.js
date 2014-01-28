@@ -173,7 +173,10 @@ $(document).ready(function(){
 	$menuToggle = $('.menuToggle'),
 	$menuMainContainer = $('.menu-main-container'),
 	$window = $(window),
-	$rep = $('.formRep');
+	$rep = $('.formRep'),
+	$print = $('.print.triage'),
+	$web = $('.web.triage');
+
 
 
 	$(function(){
@@ -236,12 +239,18 @@ $(document).ready(function(){
 				$('.tri li.toutt').removeClass('active');
 
 				$(this).parent('li').addClass('active');
-
-				$('.print.triage').parent('.p').fadeOut();
-				$('.print.triage').parent('.p').removeClass('show');
-				$('.web.triage').parent('.p').removeClass('show').addClass('show');
+				$print.parent('.p').css({
+					'transform':'scale(0)',
+					'transition':'all 1s ease-in-out',
+					'opacity':'0',
+				});
+				$print.parent('.p').delay(500).fadeOut();
 				
-				$('.web.triage').parent('.p').fadeIn();
+				
+				$print.parent('.p').removeClass('show');
+				$web.parent('.p').removeClass('show').addClass('show');
+				
+				$web.parent('.p').fadeIn();
 				
 				$('.show:nth-child(odd)').addClass('impair');
 				$('.show:nth-child(even)').removeClass('impair');
@@ -253,15 +262,15 @@ $(document).ready(function(){
 
 				$(this).parent('li').addClass('active');
 				
-				$('.web.triage').parent('.p').removeClass('show');
-				$('.web.triage').parent('.p').fadeOut('fast',function(){
+				$web.parent('.p').removeClass('show');
+				$web.parent('.p').fadeOut('fast',function(){
 
-					$('.print.triage').parent('.p').removeClass('show').addClass('show');
+					$print.parent('.p').removeClass('show').addClass('show');
 				});
 				
 
 
-				$('.print.triage').parent('.p').fadeIn();
+				$print.parent('.p').fadeIn();
 
 				$('.show:nth-child(odd)').addClass('impair');
 				$('.show:nth-child(even)').removeClass('impair');
@@ -273,12 +282,12 @@ $(document).ready(function(){
 
 				$(this).parent('li').addClass('active');
 
-				$('.web.triage').parent('.p').removeClass('show').addClass('show');
-				$('.print.triage').parent('.p').removeClass('show').addClass('show');
+				$web.parent('.p').removeClass('show').addClass('show');
+				$print.parent('.p').removeClass('show').addClass('show');
 
-				$('.print.triage').parent('.p').fadeIn();
+				$print.parent('.p').fadeIn();
 				
-				$('.web.triage').parent('.p').fadeIn();
+				$web.parent('.p').fadeIn();
 
 				$('.show:nth-child(even)').addClass('impair');
 				$('.show:nth-child(odd)').removeClass('impair');

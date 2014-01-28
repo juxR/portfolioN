@@ -737,10 +737,12 @@ ul{
 	z-index:10;
 	@include cl( 12 );
 	display:inline-block;
+	@include opacity(1);
 	text-align: center;
 	overflow: hidden;
 	max-height:250px;
 	margin-bottom: $gutter;
+	@include transition(all 0.5s ease-in-out);
 	pointer-events:none;
 	&:hover  .image,&:focus  .image,&:active  .image{
 
@@ -1086,17 +1088,16 @@ address{
 	@extend .lastProject;
 	padding:0 1em;
 	.p{
-		max-width:500px;
+		//max-width:500px;
 		@include cl(12);
-		margin-bottom: 1em;
+		margin-bottom: gutter()/2;
+		margin-top: gutter()/2;
 		.image{
 			&::before{
 				@include box-shadow(0 0 0 0);
 			}
 		}
-		& + .p{
-			margin-bottom: 1em;
-		}
+
 	}
 	.show{
 		@include transition(all 0.3s ease);
