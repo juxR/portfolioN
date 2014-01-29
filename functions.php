@@ -12,6 +12,8 @@ add_filter('excerpt_more', 'new_excerpt_more');
 add_filter( 'post_thumbnail_html', 'remove_width_attribute', 10 );
 add_filter( 'image_send_to_editor', 'remove_width_attribute', 10 );
 add_filter('the_content', 'addlightboxrel_replace');
+add_filter( 'use_default_gallery_style', '__return_false' );
+add_filter( 'the_content', 'remove_br_gallery', 11, 2);
 
 /* SUPPORT */
 if (function_exists('add_theme_support')) {
@@ -28,6 +30,9 @@ add_action( 'comment_form_before', 'xtreme_enqueue_comments_reply' );
 function remove_width_attribute( $html ) {
  $html = preg_replace( '/(width|height)="\d*"\s/', "", $html );
  return $html;
+}
+function remove_br_gallery($output) {
+    return preg_replace('/(<br[^>]*>\s*){2,}/', '<br />', $output);
 }
 function myComms($comment, $args, $depth){
   ?>
@@ -90,7 +95,7 @@ function create_post_type() {
     array(
       'labels' => array(
         'name' => __( 'Projets' ),
-        'singular_name' => __( 'Projet' )
+        'singular_name' => __( 'Projets' )
         ),
       'public' => true,
       'has_archive' => true,

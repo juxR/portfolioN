@@ -232,6 +232,7 @@ $(document).ready(function(){
 		if($window.width() > 800){
 			//grid( $('.content').find('.p') );
 		}
+        $('.galerie').find('br').remove();
 		$('.tri a').on("click", function( e ){
 			$value = $(this).html()
 			e.preventDefault();
@@ -251,7 +252,13 @@ $(document).ready(function(){
 
 					//grid($('.content').find('.p:visible'));
 					$web.parent('.p').removeClass('show').addClass('show');
+				});	
+				$web.parent('.p').css({
+					'transform':'scale(0)',
+					'transition':'all 0.3s ease-in-out',
+					'opacity':'0',
 				});
+				$web.parent('.p').delay(100).fadeOut();
 
 				
 				$print.parent('.p').removeClass('show');
@@ -288,6 +295,13 @@ $(document).ready(function(){
 
 					$print.parent('.p').removeClass('show').addClass('show');
 				});
+
+				$print.parent('.p').css({
+					'transform':'scale(0)',
+					'transition':'all 0.3s ease-in-out',
+					'opacity':'0',
+				});
+				$print.parent('.p').delay(100).fadeOut();
 
 				$print.parent().show(function(){
 					$(this).css({
@@ -371,7 +385,7 @@ var grid = function( $selector ){
 	var $projets = $selector;
 	var $contentHeight = ((Math.round($projets.length / nCol)) * $height) + (nGutter * (Math.round($projets.length / nCol))) ;
 
-	$('.content').css({
+	$('.contentProjets').css({
 		'height':$contentHeight,
 	});
 	

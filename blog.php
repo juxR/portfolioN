@@ -9,11 +9,10 @@ Template Name: Blog
 <section role="main" id="main" class="main">
   <h2 aria-level="2" role="heading" class="section">Mon blog, mon dernier tutoriel, mes trois derniers articles sur les technologies et la liste de tous mes articles</h2>
 
-  <section class="introBlog" >
-    <h2 aria-level="2" role="heading" class="section">Dans mon blog j'écris des articles dans le domaine du web. J'ai différentes catégorie: les tutoriels, les technologies, les produits, le web en général et autre.</h2>
+  <div class="introBlog" >
     <img src="<?php bloginfo('template_directory'); ?>/img/introBlog2.jpg" alt="Image d'introduction à mon blog" >
     <span class="title">Mon blog</span>
-  </section>
+  </div>
   <div class="content">
     <section class="articlesCategories wrapper">
       <h3 class="section" aria-level="3" role="heading">Mon dernier tutoriel et mes deux derniers articles sur les technologies</h3>

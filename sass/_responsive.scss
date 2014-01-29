@@ -6,7 +6,7 @@
  		padding:1em;
  		.tuto{
  			@include c(12);
- 			
+
  			.lastBlog{
  				@include cl(12);
  				max-width: 100%;
@@ -40,7 +40,7 @@
 
  			}
  		}
- 	}	
+ 	}
  	.p{
  		&:hover  .image,&:focus  .image,&:active  .image{
 
@@ -79,6 +79,15 @@
  	.lastBlog{
  		@include cl(6);
  	}
+.projet{
+  .galerie {
+    .gallery {
+      .gallery-item {
+        @include cl(4);
+      }
+    }
+  }
+}
 
  }
 
@@ -89,7 +98,7 @@
  			@include c(12);
  			p{
  				height:300px;
- 			} 
+ 			}
  		}
  	}
  	.projetsPersonnels{
@@ -105,7 +114,7 @@
  			@include c(12);
  			p{
  				height:350px;
- 			} 
+ 			}
  		}
  	} */
  }
@@ -146,7 +155,7 @@
  	} */
 
 
- } 
+ }
 
  @media screen and(min-width: 800px) and (max-width: 1200px){
  	h1{
@@ -161,7 +170,7 @@
  	h4{
  		font-size: 1.5em;
  	}
- 	
+
  	.projetsPersonnels{
  		li{
  			@include cl(3);
@@ -173,11 +182,11 @@
  	}
 
  	.lastBlog{
- 		@include cl(6);	
- 		
+ 		@include cl(6);
+
  	}
 
- } 
+ }
  @media screen and(min-width: 900px) and (max-width: 1200px){
  	h1{
  		font-size: 3em;
@@ -198,7 +207,7 @@
  			p{
 
  				height:300px;
- 			} 
+ 			}
  		}
  	}
 
@@ -208,7 +217,7 @@
  		padding:1em;
  		.tuto{
  			@include c(12);
- 			
+
  			.lastBlog{
  				@include cl(12);
  				max-width: 100%;
@@ -239,7 +248,7 @@
  			font-size: 48px;
  		}
  	}
- 	
+
  	/* MENU */
  	ul{
  		margin:0;
@@ -408,7 +417,34 @@
 		padding-bottom: 0;
 
 	}
-	
+	.introBlog{
+      .title{
+        font-size: 2.618em;
+      }
+    }
+    .projet{
+ .infoIntro {
+   .contentText {
+     @include cl(8);
+   }
+   .addContentText {
+     @include cr(4);
+     .projetLive {
+
+     }
+
+   }
+
+ }
+      .galerie {
+        .gallery {
+          .gallery-item {
+            @include cl(2.4);
+          }
+        }
+      }
+    }
+
 	.vcard{
 		@include cfl( 6 );
 		address{
@@ -423,8 +459,8 @@
 
 			p{
 
-				
-			} 
+
+			}
 		}
 	}
 	.date{
@@ -438,7 +474,7 @@
 		margin-top: 0;
 	}
 	.p{
-		
+
 
 	}
 	.p.col-4{
@@ -510,7 +546,7 @@
 	}
 	.projet{
 
-		@include cc(10);
+		@include c(12);
 		margin-top: 1em;
 		img{
 			max-width:100%;
@@ -588,7 +624,7 @@
  		padding:1em;
  		.tuto{
  			@include cl(5);
- 			
+
  			.lastBlog{
  				@include cl(12);
  				max-width: 100%;
@@ -610,12 +646,12 @@
  			@include c(12);
  			p{
  				height:250px;
- 			} 
+ 			}
  		}
  	}
 
  	.lastBlog{
- 		@include cl(4);	
+ 		@include cl(4);
  	}
  }
 

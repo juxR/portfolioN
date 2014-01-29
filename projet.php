@@ -1,4 +1,4 @@
-<div class="p">
+    <div class="p">
     <a href="<?php the_permalink(); ?>" title="Aller sur la fiche du projet <?php the_title(); ?>">
         <h4 aria-level="4" role="heading" class="section" itemprop="name"><?php the_title(); ?></h4>
         <div class="image" itemprop="image">

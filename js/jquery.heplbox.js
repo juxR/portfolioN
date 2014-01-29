@@ -87,7 +87,7 @@
 
     var openBox = function()
     {
-        $(window).scrollTop(0);
+       // $(window).scrollTop(0)
         $overlay.fadeIn("fast");
         $container.fadeIn("normal", function(){
             loadImage();

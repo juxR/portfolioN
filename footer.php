@@ -6,6 +6,7 @@
     jQuery( ' .caption a.thumbnail' ).heplbox();
     jQuery( ' .listBlog a.thumbnail' ).heplbox();
     jQuery( ' .projet a.thumbnail' ).heplbox();
+    jQuery( ' .galerie a' ).heplbox();
   } );
 
 </script>
