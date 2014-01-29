@@ -19,7 +19,8 @@ Template Name: Projet
 						<li class="webt"><a title="Voir les projets de la catégorie web" href="<?php bloginfo('template_directory') ?>/category/web">Web</a></li>
 						<li class="printt"><a title="Voir les projets de la catégorie print" href="<?php bloginfo('template_directory') ?>/category/print">Print</a></li>
 					</ul>
-				</section>
+			</section>
+			<div class="content">	
 				<?php $args = array( 'post_type' => 'projets' );
 				$template = array(
 					'1'=> array('6','6'),
@@ -120,7 +121,7 @@ Template Name: Projet
 			$i++;
 			endwhile;?>
 
-
+</div>
 		</section>
 
 	</section>

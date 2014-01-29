@@ -1087,6 +1087,7 @@ address{
 .projets{
 	@extend .lastProject;
 	padding:0 1em;
+	position:relative;
 	.p{
 		//max-width:500px;
 		@include cl(12);

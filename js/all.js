@@ -229,31 +229,45 @@ $(document).ready(function(){
 		$('.delete').on('click',function( e ){
 			$(this).parent().parent().fadeOut('fast');
 		});
-
+		if($window.width() > 800){
+			//grid( $('.content').find('.p') );
+		}
 		$('.tri a').on("click", function( e ){
 			$value = $(this).html()
 			e.preventDefault();
 			if($value ==="Web")
 			{
+
 				$('.tri li.printt').removeClass('active');
 				$('.tri li.toutt').removeClass('active');
 
 				$(this).parent('li').addClass('active');
 				$print.parent('.p').css({
 					'transform':'scale(0)',
-					'transition':'all 1s ease-in-out',
+					'transition':'all 0.3s ease-in-out',
 					'opacity':'0',
 				});
-				$print.parent('.p').delay(500).fadeOut();
-				
+				$print.parent('.p').delay(100).fadeOut(function(){
+
+					//grid($('.content').find('.p:visible'));
+					$web.parent('.p').removeClass('show').addClass('show');
+				});
+
 				
 				$print.parent('.p').removeClass('show');
-				$web.parent('.p').removeClass('show').addClass('show');
 				
-				$web.parent('.p').fadeIn();
-				
+				$web.parent().show(function(){
+					$(this).css({
+						'transform':'scale(1)',
+						'transition':'all 0.3s ease-in-out',
+						'opacity':'1',
+						
+					});
+				});
+
 				$('.show:nth-child(odd)').addClass('impair');
 				$('.show:nth-child(even)').removeClass('impair');
+				
 			}
 			else if($value ==="Print")
 			{
@@ -261,16 +275,30 @@ $(document).ready(function(){
 				$('.tri li.toutt').removeClass('active');
 
 				$(this).parent('li').addClass('active');
-				
+
 				$web.parent('.p').removeClass('show');
-				$web.parent('.p').fadeOut('fast',function(){
+
+				$web.parent().css({
+					'transform':'scale(0)',
+					'transition':'all 0.3s ease-in-out',
+					'opacity':'0',
+
+				});
+				$web.parent('.p').delay(100).fadeOut(function(){
 
 					$print.parent('.p').removeClass('show').addClass('show');
 				});
+
+				$print.parent().show(function(){
+					$(this).css({
+						'transform':'scale(1)',
+						'transition':'all 0.3s ease-in-out',
+						'opacity':'1',
+
+					});
+				});
 				
-
-
-				$print.parent('.p').fadeIn();
+				
 
 				$('.show:nth-child(odd)').addClass('impair');
 				$('.show:nth-child(even)').removeClass('impair');
@@ -283,18 +311,150 @@ $(document).ready(function(){
 				$(this).parent('li').addClass('active');
 
 				$web.parent('.p').removeClass('show').addClass('show');
-				$print.parent('.p').removeClass('show').addClass('show');
-
-				$print.parent('.p').fadeIn();
 				
-				$web.parent('.p').fadeIn();
+				$web.parent().css({
+					'transform':'scale(0)',
+					'transition':'all 0.3s ease-in-out',
+					'opacity':'0',
+
+				});
+				$web.parent('.p').delay(100).fadeOut(function(){
+
+					$(this).removeClass('show');
+				});
+
+				$print.parent().css({
+					'transform':'scale(0)',
+					'transition':'all 0.3s ease-in-out',
+					'opacity':'0',
+
+				});
+				$print.parent('.p').delay(100).fadeOut(function(){
+
+					$(this).removeClass('show');
+				});
+
+				$print.parent().show(function(){
+					$(this).css({
+						'transform':'scale(1)',
+						'transition':'all 0.3s ease-in-out',
+						'opacity':'1',
+						
+					});
+					$(this).removeClass('show').addClass('show');
+				});
+
+
+
+				$web.parent().show(function(){
+					$(this).css({
+						'transform':'scale(1)',
+						'transition':'all 0.3s ease-in-out',
+						'opacity':'1',
+						
+					});
+					$(this).removeClass('show').addClass('show');
+				});
 
 				$('.show:nth-child(even)').addClass('impair');
 				$('.show:nth-child(odd)').removeClass('impair');
 			}
-			
+
 		});
 });
+var grid = function( $selector ){
+
+	var $height = 250;
+	var nCol = 2;
+	var nGutter = 24;
+	var $width;
+	var $projets = $selector;
+	var $contentHeight = ((Math.round($projets.length / nCol)) * $height) + (nGutter * (Math.round($projets.length / nCol))) ;
+
+	$('.content').css({
+		'height':$contentHeight,
+	});
+	
+	var c = nCol;
+	$projets.each(function( i ){
+
+		for( c = nCol ; c < $projets.length;c += nCol){	
+
+			if(i % nCol != 0 || i == 0){
+				
+				if(i % c == 0){
+
+					$(this).css({
+						'top':0,
+						'left':0,
+						'margin':'1%',
+						'position':'absolute',
+					});
+					if($(this).hasClass('col-7')){
+						$width = toGrid(7);
+					}
+					else if($(this).hasClass('col-5')){
+						$width = toGrid(5);
+					}
+					else if($(this).hasClass('col-8')){
+						$width = toGrid(8);
+					}
+					else if($(this).hasClass('col-4')){
+						$width = toGrid(4);
+					}
+					else if($(this).hasClass('col-6')){
+						$width = toGrid(6);
+					}
+				}else if(i % c != 0 ){
+
+					$(this).css({
+						'top':0,
+						'left':$width +'%',
+						'margin':'1%',
+						'position':'absolute',
+					})
+				}
+
+			}else{
+
+				if(i % c == 0){
+
+					$(this).css({
+						'top':($height * ( i / nCol )) + nGutter,
+						'left':0,
+						'margin':'1%',
+						'position':'absolute',
+					});
+					if($(this).hasClass('col-7')){
+						$width = toGrid(7);
+					}
+					else if($(this).hasClass('col-5')){
+						$width = toGrid(5);
+					}
+					else if($(this).hasClass('col-8')){
+						$width = toGrid(8);
+					}
+					else if($(this).hasClass('col-4')){
+						$width = toGrid(4);
+					}
+					else if($(this).hasClass('col-6')){
+						$width = toGrid(6);
+					}
+				}else if(i % c != 0 ){
+					$(this).css({
+						'top':($height * ( i / nCol )) + nGutter,
+						'left':$width +'%',
+						'margin':'1%',
+						'position':'absolute',
+					})
+				}
+			}
+		}
+	});
+}
+var toGrid = function( nNumber ){
+	return ( nNumber / 12 ) * 100 ;
+}
 var menu = function( e ){
 	e.preventDefault();
 	$menuMainContainer.slideToggle();
