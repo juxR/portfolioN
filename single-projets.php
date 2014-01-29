@@ -17,7 +17,7 @@
             <div class="addContentText">
                 <span class="projetLive"><a class="btn" href="<?php the_field('link'); ?>">Voir le projet</a></span>
             </div>
-            <h5 aria-level="5" role="heading" class="titleIndex">Introduction</h4>
+            <h5 aria-level="5" role="heading" class="titleIndex">Introduction</h5>
 
                 <div class="contentText">
                     <?php the_field('description')?>
@@ -36,7 +36,12 @@
         </section>
         <section class="moreInfos">
             <h5 aria-level="5" role="heading" class="titleIndex">Description et informations supplémentaires</h5>
+          <div class="contentText">
             <?php the_content(); ?>
+          </div>
+            <div class="imageSlider">
+
+            </div>
         </section>
         <footer class="projetInfos">
             <div class="wrapper">

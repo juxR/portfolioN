@@ -1558,6 +1558,20 @@ address {
       margin:0.5em 0;
     }
   }
+  .moreInfos{
+    @include c(12);
+    position: relative;
+    .thumbnail{
+      @include a(0, none);
+    }
+    img{
+      margin:0 auto;
+      height: auto;
+    }
+    .imageSlider{
+      display: none;
+    }
+  }
   p {
     text-align: left;
     //padding-bottom: 3em;
@@ -1601,6 +1615,7 @@ address {
     display: block;
     text-indent: -999999px;
     width: 99px;
+    @include a(0, none);
     height: 100px;
     float: right;
 
@@ -1951,6 +1966,7 @@ address {
   z-index: 1;
   text-align: center;
   line-height: 350px;
+
   img {
     width: auto;
     position: fixed;
@@ -1965,9 +1981,10 @@ address {
   .title {
     font-family: $ff2;
     font-weight: bold;
+    height: auto;
     vertical-align: baseline;
     color: white;
-    display: inline-block;
+    display: inline;
     position: relative;
     font-size: 1.618em;
     padding: $gutter/2 $gutter;
@@ -2058,4 +2075,14 @@ address {
 }
 
 /* END LOADER */
+/* BOX */
+.fancybox-skin{
+  a{
+    @include a(0, none);
+  }
+  img{
+    @include box-shadow( 0 0 0 0);
+  }
+}
+/* END BOX */
 @import "responsive";

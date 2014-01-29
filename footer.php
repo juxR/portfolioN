@@ -3,10 +3,36 @@
 <script>window.jQuery || document.write('<script src="js/vendor/jquery.min.js"><\/script>')</script>
 <script>
   jQuery( function() {
-    jQuery( ' .caption a.thumbnail' ).heplbox();
-    jQuery( ' .listBlog a.thumbnail' ).heplbox();
-    jQuery( ' .projet a.thumbnail' ).heplbox();
-    jQuery( ' .galerie a' ).heplbox();
+    jQuery( ' .caption a.thumbnail' ).fancybox({
+        helpers: {
+            overlay: {
+                locked: false
+            }
+        }
+    });
+    jQuery( ' .listBlog a.thumbnail' ).fancybox({
+        helpers: {
+            overlay: {
+                locked: false
+            }
+        }
+    });
+    jQuery( ' .projet a.thumbnail' ).fancybox({
+        helpers: {
+            overlay: {
+                locked: false
+            }
+        }
+    });
+    jQuery( ' .galerie a' ).fancybox({
+        helpers: {
+            overlay: {
+                locked: false
+            }
+        }
+    });
+
+
   } );
 
 </script>

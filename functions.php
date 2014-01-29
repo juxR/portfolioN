@@ -13,8 +13,7 @@ add_filter( 'post_thumbnail_html', 'remove_width_attribute', 10 );
 add_filter( 'image_send_to_editor', 'remove_width_attribute', 10 );
 add_filter('the_content', 'addlightboxrel_replace');
 add_filter( 'use_default_gallery_style', '__return_false' );
-add_filter( 'the_content', 'remove_br_gallery', 11, 2);
-
+add_filter('wp_get_attachment_link', 'add_gallery_id_rel');
 /* SUPPORT */
 if (function_exists('add_theme_support')) {
   add_theme_support( 'post-thumbnails');
@@ -27,13 +26,16 @@ add_action( 'init', 'create_post_type' );
 add_action( 'restrict_manage_posts', 'olab_add_image_category_filter' );
 add_action( 'comment_form_before', 'xtreme_enqueue_comments_reply' );
 
+
 function remove_width_attribute( $html ) {
  $html = preg_replace( '/(width|height)="\d*"\s/', "", $html );
  return $html;
 }
-function remove_br_gallery($output) {
-    return preg_replace('/(<br[^>]*>\s*){2,}/', '<br />', $output);
+function add_gallery_id_rel($link) {
+    global $post;
+    return str_replace('<a href', '<a rel="gallery-'. $post->ID .'" href', $link);
 }
+
 function myComms($comment, $args, $depth){
   ?>
   <li class="comment" data-name="<?php comment_author_link() ?>" data-id="<?php comment_ID() ?>" id="comment-<?php comment_ID() ?>">

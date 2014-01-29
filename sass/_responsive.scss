@@ -417,6 +417,17 @@
 		padding-bottom: 0;
 
 	}
+    .projet{
+ .moreInfos{
+  .contentText{
+    @include cl(8);
+  }
+   .imageSlider{
+     @include cl(4);
+
+   }
+ }
+    }
 	.introBlog{
       .title{
         font-size: 2.618em;

@@ -21,7 +21,7 @@
              <meta name="keywords" content="julien roland web webdesigner webdeveloper namur belgique hepl inpres julien-roland julien-roland.be">
              <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
              <link rel="icon" type="image/png" href="<?php bloginfo('template_directory'); ?>/img/favicon.png" />
-             <link rel="stylesheet" href="<?php bloginfo('template_directory'); ?>/css/screen.css" />
+             <link rel="stylesheet" href="<?php bloginfo('template_directory'); ?>/css/main.css" />
              <script src="<?php bloginfo('template_directory') ?>/js/vendor/modernizr-2.6.2.min.js"></script>
 
 
